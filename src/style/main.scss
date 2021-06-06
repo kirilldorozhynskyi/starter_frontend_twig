@@ -1,0 +1,28 @@
+/*
+ * File: /src/style/main.scss
+ * Project: starter_frontend_twig
+ * Version: 1.0.0
+ * Created Date: Monday, February 15th 2021, 9:46:48
+ * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ * -----
+ * Last Modified: Sunday, June 6th 2021 23:41:09
+ * Modified By: Kirill Dorozhynskyi
+ * -----
+ * Copyright (c) 2021 justDev
+ * 
+ * Root Style
+ * 
+ */
+
+@charset 'UTF-8';
+@import 'theme/theme_variables'; // <--------- Add your variables into this file.
+
+// Import Map Data
+@import 'maps/map-loader';
+
+// Import global styles
+@import 'default/*.scss'; // Mixins Settings
+@import 'components/*.scss'; // Web Components
+
+@import '../template/**/**/**/**/*.scss'; // Modules
+@import '../../../templates/**/**/*.scss'; // WP Modules

@@ -1,0 +1,32 @@
+/*
+ * File: /src/style/default/_mixin.scss
+ * Project: starter_frontend_twig
+ * Version: 1.0.0
+ * Created Date: Sunday, June 6th 2021, 17:46:00
+ * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ * -----
+ * Last Modified: Sunday, June 6th 2021 22:43:48
+ * Modified By: Kirill Dorozhynskyi
+ * -----
+ * Copyright (c) 2021 justDev
+ * 
+ * Mixin
+ * 
+ */
+
+@mixin transition($sec, $sec2) {
+	transition: all #{$sec + s} ease #{$sec2 + s};
+	-webkit-transition: all #{$sec + s} ease #{$sec2 + s};
+}
+
+@mixin square($size, $scale) {
+	width: $size;
+	height: $size;
+
+	@if $scale==true {
+		@media (min-width: map-get($grid-breakpoints, 'xl')) {
+			width: get-vw($size, xl);
+			height: get-vw($size, xl);
+		}
+	}
+}

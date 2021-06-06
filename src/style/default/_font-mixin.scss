@@ -1,0 +1,56 @@
+/*
+ * File: /src/style/default/_font-mixin.scss
+ * Project: starter_frontend_twig
+ * Version: 1.0.0
+ * Created Date: Sunday, June 6th 2021, 17:46:00
+ * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ * -----
+ * Last Modified: Sunday, June 6th 2021 22:43:39
+ * Modified By: Kirill Dorozhynskyi
+ * -----
+ * Copyright (c) 2021 justDev
+ * 
+ * Font Mixin
+ * 
+ */
+
+@function strip($number) {
+	@if type-of($number) == 'number' and not unitless($number) {
+		@return $number / ($number * 0 + 1);
+	}
+
+	@return $number;
+}
+
+@function get-vw($font, $viewport) {
+	$vw-viewport: strip(map-get($grid-breakpoints, $viewport));
+	$vw-context: $vw-viewport * 0.01 * 1px;
+	@return $font / $vw-context * 1vw;
+	@return $font;
+}
+
+@mixin adaptivfontsize($xl, $lg, $md, $sm) {
+	@media (max-width: map-get($grid-breakpoints, 'mob')) {
+		font-size: get-vw($sm, mob);
+	}
+
+	@media (min-width: map-get($grid-breakpoints, 'mob')) and (max-width: map-get($grid-breakpoints, 'sm')) {
+		font-size: $sm;
+	}
+
+	@media (min-width: map-get($grid-breakpoints, 'sm')) and (max-width: map-get($grid-breakpoints, 'md')) {
+		font-size: $sm;
+	}
+
+	@media (min-width: map-get($grid-breakpoints, 'md')) and (max-width: map-get($grid-breakpoints, 'lg')) {
+		font-size: $md;
+	}
+
+	@media (min-width: map-get($grid-breakpoints, 'lg')) and (max-width: map-get($grid-breakpoints, 'xl')) {
+		font-size: $lg;
+	}
+
+	@media (min-width: map-get($grid-breakpoints, 'xl')) {
+		font-size: get-vw($xl, xl);
+	}
+}

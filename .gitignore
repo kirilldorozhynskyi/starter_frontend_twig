@@ -1,0 +1,6 @@
+dist
+doc
+package-lock.json
+stats.json
+.env
+*.code-workspace
