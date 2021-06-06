@@ -1,0 +1,12 @@
+{% if environment == "production" %}
+    User-agent: *
+    Disallow: /assets
+    Disallow: /images
+    Allow: /
+
+    Host:
+{% else %}
+    User-agent: *
+    Disallow: /
+
+{% endif %}

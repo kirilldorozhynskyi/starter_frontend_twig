@@ -1,0 +1,456 @@
+// All SVG Sprites are in this Map
+//
+// @type Map
+/* stylelint-disable */
+
+$svgspritebase: (
+  width: 270px,
+  height: 270px
+);
+
+$svgsprites: (
+  airbnb: (
+    width: 30px,
+    height: 30px,
+    posX: 0px,
+    posY: 0px
+  ),
+  amazon: (
+    width: 30px,
+    height: 30px,
+    posX: -30px,
+    posY: 0px
+  ),
+  amex: (
+    width: 30px,
+    height: 30px,
+    posX: 0px,
+    posY: -30px
+  ),
+  android: (
+    width: 30px,
+    height: 30px,
+    posX: -30px,
+    posY: -30px
+  ),
+  angellist: (
+    width: 30px,
+    height: 30px,
+    posX: -60px,
+    posY: 0px
+  ),
+  apple: (
+    width: 30px,
+    height: 30px,
+    posX: -60px,
+    posY: -30px
+  ),
+  appstore: (
+    width: 30px,
+    height: 30px,
+    posX: 0px,
+    posY: -60px
+  ),
+  behance: (
+    width: 30px,
+    height: 30px,
+    posX: -30px,
+    posY: -60px
+  ),
+  bing: (
+    width: 30px,
+    height: 30px,
+    posX: -60px,
+    posY: -60px
+  ),
+  blackberry: (
+    width: 30px,
+    height: 30px,
+    posX: -90px,
+    posY: 0px
+  ),
+  blogger: (
+    width: 30px,
+    height: 30px,
+    posX: -90px,
+    posY: -30px
+  ),
+  delicious: (
+    width: 30px,
+    height: 30px,
+    posX: -90px,
+    posY: -60px
+  ),
+  deviantart: (
+    width: 30px,
+    height: 30px,
+    posX: 0px,
+    posY: -90px
+  ),
+  digg: (
+    width: 30px,
+    height: 30px,
+    posX: -30px,
+    posY: -90px
+  ),
+  dribbble: (
+    width: 30px,
+    height: 30px,
+    posX: -60px,
+    posY: -90px
+  ),
+  dropbox: (
+    width: 30px,
+    height: 30px,
+    posX: -90px,
+    posY: -90px
+  ),
+  ebay: (
+    width: 30px,
+    height: 30px,
+    posX: -120px,
+    posY: 0px
+  ),
+  edge: (
+    width: 30px,
+    height: 30px,
+    posX: -120px,
+    posY: -30px
+  ),
+  evernote: (
+    width: 30px,
+    height: 30px,
+    posX: -120px,
+    posY: -60px
+  ),
+  facebook: (
+    width: 30px,
+    height: 30px,
+    posX: -120px,
+    posY: -90px
+  ),
+  fb-messenger: (
+    width: 30px,
+    height: 30px,
+    posX: 0px,
+    posY: -120px
+  ),
+  firefox: (
+    width: 30px,
+    height: 30px,
+    posX: -30px,
+    posY: -120px
+  ),
+  flickr: (
+    width: 30px,
+    height: 30px,
+    posX: -60px,
+    posY: -120px
+  ),
+  forrst: (
+    width: 30px,
+    height: 30px,
+    posX: -90px,
+    posY: -120px
+  ),
+  github: (
+    width: 30px,
+    height: 30px,
+    posX: -120px,
+    posY: -120px
+  ),
+  gmail: (
+    width: 30px,
+    height: 30px,
+    posX: -150px,
+    posY: 0px
+  ),
+  google: (
+    width: 30px,
+    height: 30px,
+    posX: -150px,
+    posY: -30px
+  ),
+  google-drive: (
+    width: 30px,
+    height: 30px,
+    posX: -150px,
+    posY: -60px
+  ),
+  google-inbox: (
+    width: 30px,
+    height: 30px,
+    posX: -150px,
+    posY: -90px
+  ),
+  google-plus: (
+    width: 30px,
+    height: 30px,
+    posX: -150px,
+    posY: -120px
+  ),
+  html5: (
+    width: 30px,
+    height: 30px,
+    posX: 0px,
+    posY: -150px
+  ),
+  icloud: (
+    width: 30px,
+    height: 30px,
+    posX: -30px,
+    posY: -150px
+  ),
+  instagram: (
+    width: 30px,
+    height: 30px,
+    posX: -60px,
+    posY: -150px
+  ),
+  ios: (
+    width: 30px,
+    height: 30px,
+    posX: -90px,
+    posY: -150px
+  ),
+  lastfm: (
+    width: 30px,
+    height: 30px,
+    posX: -120px,
+    posY: -150px
+  ),
+  linkedin: (
+    width: 30px,
+    height: 30px,
+    posX: -150px,
+    posY: -150px
+  ),
+  mastercard: (
+    width: 30px,
+    height: 30px,
+    posX: -180px,
+    posY: 0px
+  ),
+  medium: (
+    width: 30px,
+    height: 30px,
+    posX: -180px,
+    posY: -30px
+  ),
+  myspace: (
+    width: 30px,
+    height: 30px,
+    posX: -180px,
+    posY: -60px
+  ),
+  opera: (
+    width: 30px,
+    height: 30px,
+    posX: -180px,
+    posY: -90px
+  ),
+  osx: (
+    width: 30px,
+    height: 30px,
+    posX: -180px,
+    posY: -120px
+  ),
+  outlook: (
+    width: 30px,
+    height: 30px,
+    posX: -180px,
+    posY: -150px
+  ),
+  paypal: (
+    width: 30px,
+    height: 30px,
+    posX: 0px,
+    posY: -180px
+  ),
+  pencilcase: (
+    width: 30px,
+    height: 30px,
+    posX: -30px,
+    posY: -180px
+  ),
+  periscope: (
+    width: 30px,
+    height: 30px,
+    posX: -60px,
+    posY: -180px
+  ),
+  picasa: (
+    width: 30px,
+    height: 30px,
+    posX: -90px,
+    posY: -180px
+  ),
+  pinterest: (
+    width: 30px,
+    height: 30px,
+    posX: -120px,
+    posY: -180px
+  ),
+  play: (
+    width: 30px,
+    height: 30px,
+    posX: -150px,
+    posY: -180px
+  ),
+  producthunt: (
+    width: 30px,
+    height: 30px,
+    posX: -180px,
+    posY: -180px
+  ),
+  reddit: (
+    width: 30px,
+    height: 30px,
+    posX: -210px,
+    posY: 0px
+  ),
+  rss: (
+    width: 30px,
+    height: 30px,
+    posX: -210px,
+    posY: -30px
+  ),
+  safari: (
+    width: 30px,
+    height: 30px,
+    posX: -210px,
+    posY: -60px
+  ),
+  skype: (
+    width: 30px,
+    height: 30px,
+    posX: -210px,
+    posY: -90px
+  ),
+  slack: (
+    width: 30px,
+    height: 30px,
+    posX: -210px,
+    posY: -120px
+  ),
+  snapchat: (
+    width: 30px,
+    height: 30px,
+    posX: -210px,
+    posY: -150px
+  ),
+  soundcloud: (
+    width: 30px,
+    height: 30px,
+    posX: -210px,
+    posY: -180px
+  ),
+  spotify: (
+    width: 30px,
+    height: 30px,
+    posX: 0px,
+    posY: -210px
+  ),
+  stackoverflow: (
+    width: 30px,
+    height: 30px,
+    posX: -30px,
+    posY: -210px
+  ),
+  stumbleupon: (
+    width: 30px,
+    height: 30px,
+    posX: -60px,
+    posY: -210px
+  ),
+  tumblr: (
+    width: 30px,
+    height: 30px,
+    posX: -90px,
+    posY: -210px
+  ),
+  twitter: (
+    width: 30px,
+    height: 30px,
+    posX: -120px,
+    posY: -210px
+  ),
+  uber: (
+    width: 30px,
+    height: 30px,
+    posX: -150px,
+    posY: -210px
+  ),
+  viber: (
+    width: 30px,
+    height: 30px,
+    posX: -180px,
+    posY: -210px
+  ),
+  vimeo: (
+    width: 30px,
+    height: 30px,
+    posX: -210px,
+    posY: -210px
+  ),
+  vine: (
+    width: 30px,
+    height: 30px,
+    posX: -240px,
+    posY: 0px
+  ),
+  visa: (
+    width: 30px,
+    height: 30px,
+    posX: -240px,
+    posY: -30px
+  ),
+  wechat: (
+    width: 30px,
+    height: 30px,
+    posX: -240px,
+    posY: -60px
+  ),
+  whatsapp: (
+    width: 30px,
+    height: 30px,
+    posX: -240px,
+    posY: -90px
+  ),
+  windows: (
+    width: 30px,
+    height: 30px,
+    posX: -240px,
+    posY: -120px
+  ),
+  windows-8: (
+    width: 30px,
+    height: 30px,
+    posX: -240px,
+    posY: -150px
+  ),
+  wordpress: (
+    width: 30px,
+    height: 30px,
+    posX: -240px,
+    posY: -180px
+  ),
+  yahoo: (
+    width: 30px,
+    height: 30px,
+    posX: -240px,
+    posY: -210px
+  ),
+  yelp: (
+    width: 30px,
+    height: 30px,
+    posX: 0px,
+    posY: -240px
+  ),
+  youtube: (
+    width: 30px,
+    height: 30px,
+    posX: -30px,
+    posY: -240px
+  ),
+);
