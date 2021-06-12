@@ -5,7 +5,7 @@
  * Created Date: Sunday, May 30th 2021, 22:46:47
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Sunday, June 6th 2021 22:49:16
+ * Last Modified: Saturday, June 12th 2021 11:35:24
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
@@ -97,14 +97,12 @@ function browserSyncTask(cb) {
 		open: true,
 		files: [
 			`${jdev.dist.js}**/*.js`,
-			`${jdev.dist.css}**/*.css`,
-			`${jdev.dist.base}**/*.{php,html}`,
+			`${jdev.dist.base}**/**/**.{php,html}`,
 			`${jdev.dist.cssimg}**/*.{jpg,gif,png,svg}`,
 			`${jdev.dist.contentimage}**/*.{jpg,gif,png,svg}`,
 			`${jdev.dist.base}**/assets/img/system/**`,
 			`${jdev.dist.fonts}**/**`,
 			`${jdev.dist.wptheme}**/**/**.{php,html,twig}`,
-			`${jdev.dist.wptheme}**/**/**.{scss}`,
 		],
 	})
 	cb()

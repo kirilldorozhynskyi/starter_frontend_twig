@@ -1,11 +1,11 @@
 /*
- * File: /gulpfile/tasks/browsersync.js
+ * File: /gulpfile/tasks/compile-css.js
  * Project: starter_frontend_twig
  * Version: 1.0.0
  * Created Date: Monday, February 15th 2021, 9:46:48
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Sunday, June 6th 2021 22:49:16
+ * Last Modified: Saturday, June 12th 2021 10:32:27
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
@@ -43,12 +43,12 @@ const compilerCssTask = (cb) => {
 				  })
 				: gutil.noop()
 		)
+		.pipe(envNode === 'development' ? $.sourcemaps.write('.') : gutil.noop())
 		.pipe(
 			browserSync.reload({
 				stream: true,
 			})
 		)
-		.pipe(envNode === 'development' ? $.sourcemaps.write('.') : gutil.noop())
 		.pipe(gulp.dest(jdev.dist.css))
 	cb()
 }
