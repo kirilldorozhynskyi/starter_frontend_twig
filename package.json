@@ -53,7 +53,7 @@
 		"@babel/preset-env": "^7.12.1",
 		"@babel/register": "^7.12.1",
 		"@popperjs/core": "^2.7.0",
-		"ansi-html": "^0.0.7",
+		"ansi-html-community": "^0.0.8",
 		"autoprefixer": "^9.8.6",
 		"babel-eslint": "^10.0.3",
 		"babel-loader": "^8.2.1",
