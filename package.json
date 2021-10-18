@@ -44,7 +44,12 @@
 		"subtask:archive": "gulp buildArchive --env=init",
 		"subtask:upload": "gulp uploadArchive --env=init",
 		"uiimages": "gulp rebuildImagesTask --env=init",
-		"webpack:analyze": "webpack-bundle-analyzer webpack/stats.json dist/assets/"
+		"webpack:analyze": "webpack-bundle-analyzer webpack/stats.json dist/assets/",
+		"----------------": "",
+		"add-prerelease:0.0.1-2": "NODE_ENV=prerelease gulp projectBump ",
+		"add-patch:0.0.2": "NODE_ENV=patch gulp projectBump",
+		"add-minor:0.1.0": "NODE_ENV=minor gulp projectBump",
+		"add-major:": "NODE_ENV=major gulp projectBump"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.12.1",
@@ -97,14 +102,17 @@
 		"gulp-hub": "^4.2.0",
 		"gulp-if": "^3.0.0",
 		"gulp-imagemin": "^7.1.0",
+		"gulp-json-modify": "^1.0.2",
 		"gulp-load-plugins": "^2.0.5",
 		"gulp-notify": "^3.2.0",
 		"gulp-postcss": "^8.0.0",
 		"gulp-rename": "^2.0.0",
+		"gulp-rimraf": "^1.0.0",
 		"gulp-sass": "^4.1.0",
 		"gulp-sass-glob": "^1.1.0",
 		"gulp-size": "^3.0.0",
 		"gulp-sourcemaps": "^2.6.5",
+		"gulp-string-replace": "^1.1.2",
 		"gulp-stylelint": "^13.0.0",
 		"gulp-svg-sprite": "^1.5.0",
 		"gulp-twig": "^1.2.0",
@@ -171,6 +179,5 @@
 	"engines": {
 		"node": ">=10.0.0"
 	},
-	"title": "Starter Frontend TWIG",
-	"dependencies": {}
+	"title": "Starter Frontend TWIG"
 }
