@@ -34,12 +34,14 @@
 		"email": "kyrylo.dorozhynskyi@justdev.org"
 	},
 	"scripts": {
+		"release": "cross-env NODE_ENV=production npm run subtask:buildgulp && cross-env NODE_ENV=production npm run subtask:bundlewebpack && cross-env NODE_ENV=production npm run subtask:archive",
 		"build": "cross-env NODE_ENV=production npm run subtask:buildgulp && cross-env NODE_ENV=production npm run subtask:bundlewebpack",
 		"dev": "cross-env NODE_ENV=development gulp",
 		"stage": "cross-env NODE_ENV=stage npm run subtask:buildgulp && cross-env NODE_ENV=stage npm run subtask:bundlewebpack",
 		"prettify": "prettier prettier --loglevel=warn --write \"{webpack,src}/**/*.{js,scss}\"",
 		"subtask:buildgulp": "gulp buildTask --env=production",
 		"subtask:bundlewebpack": "cross-env NODE_ENV=production webpack --config=webpack/webpack.prod.babel.js -p --colors --mode=production",
+		"subtask:archive": "gulp buildArchive --env=init",
 		"subtask:upload": "gulp uploadArchive --env=init",
 		"uiimages": "gulp rebuildImagesTask --env=init",
 		"webpack:analyze": "webpack-bundle-analyzer webpack/stats.json dist/assets/"
@@ -109,6 +111,7 @@
 		"gulp-uglify": "^3.0.2",
 		"gulp-util": "^3.0.8",
 		"gulp-watch": "^5.0.1",
+		"gulp-zip": "^5.1.0",
 		"gulp.spritesmith": "^6.11.0",
 		"html": "^1.0.0",
 		"html-webpack-plugin": "^3.2.0",
