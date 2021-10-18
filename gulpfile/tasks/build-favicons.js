@@ -1,11 +1,11 @@
 /*
- * File: /gulpfile/tasks/browsersync.js
+ * File: /gulpfile/tasks/build-favicons.js
  * Project: starter_frontend_twig
  * Version: 1.0.0
  * Created Date: Monday, February 15th 2021, 9:46:48
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Sunday, June 6th 2021 22:49:16
+ * Last Modified: Sunday, October 17th 2021 12:50:14
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
@@ -42,7 +42,7 @@ function buildFaviconTask() {
 				orientation: 'portrait',
 				scope: '/',
 				start_url: '/?homescreen=1',
-				version: webconfig.globaVersion,
+				version: webconfig.version,
 				logging: false,
 				icons: {
 					android: true,
@@ -54,8 +54,8 @@ function buildFaviconTask() {
 					opengraph: false,
 					twitter: false,
 					windows: false,
-					yandex: false,
-				},
+					yandex: false
+				}
 			})
 		)
 		.pipe(gulp.dest(jdev.dist.assets + '/system/favicons/'))
