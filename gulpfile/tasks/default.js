@@ -1,11 +1,11 @@
 /*
- * File: /gulpfile/tasks/browsersync.js
  * Project: starter_frontend_twig
+ * File: /gulpfile/tasks/default.js
  * Version: 1.0.0
  * Created Date: Monday, February 15th 2021, 9:46:48
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Sunday, June 6th 2021 22:49:16
+ * Last Modified: Saturday, June 12th 2021 12:06:08
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
@@ -17,7 +17,6 @@
 import gulp from 'gulp'
 import watchTask from './watch'
 import browserSyncTask from './browsersync'
-import sassdocGenerateTask from './sassdoc-generate'
 import copyLaunchTask from './copy-launch'
 import copyFontsTask from './copy-fonts'
 import javascript from './javascript'
@@ -39,19 +38,7 @@ const defaultTask = gulp.series(
 		global.checkChanged = true
 		cb()
 	},
-	sassdocGenerateTask,
-	gulp.parallel(
-		copyLaunchTask,
-		copyFontsTask,
-		javascript,
-		rebuildImagesTask,
-		copyContentimagesTask,
-		watchTask,
-		launchRobots,
-		copyMedia,
-		buildFaviconTask,
-		copyJsTask
-	),
+	gulp.parallel(copyLaunchTask, copyFontsTask, javascript, rebuildImagesTask, copyContentimagesTask, launchRobots, copyMedia, buildFaviconTask, copyJsTask),
 	gulp.series(compilerCssTask, compilerHtmlTask, watchTask),
 	gulp.series(browserSyncTask, copyCSS)
 )

@@ -5,13 +5,13 @@
  * Created Date: Sunday, June 6th 2021, 17:46:00
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Sunday, June 6th 2021 22:43:48
+ * Last Modified: Wednesday, October 13th 2021 21:50:45
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
- * 
+ *
  * Mixin
- * 
+ *
  */
 
 @mixin transition($sec, $sec2) {
@@ -29,4 +29,9 @@
 			height: get-vw($size, xl);
 		}
 	}
+}
+
+@function rem($value) {
+	$remValue: ($value / 16) + rem;
+	@return $remValue;
 }

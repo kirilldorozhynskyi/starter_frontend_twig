@@ -5,7 +5,7 @@
  * Created Date: Sunday, May 30th 2021, 22:46:47
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Sunday, June 6th 2021 22:49:16
+ * Last Modified: Tuesday, October 12th 2021 20:15:33
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
@@ -37,13 +37,13 @@ function browserSyncTask(cb) {
 	if (envBrowserSyncProxy) {
 		bsProxy = {
 			target: envBrowserSyncProxy,
-			ws: true,
+			ws: true
 		}
 		bsServer = false
 	} else {
 		bsProxy = false
 		bsServer = {
-			baseDir: jdev.dist.browserSyncDir,
+			baseDir: jdev.dist.browserSyncDir
 		}
 	}
 
@@ -58,19 +58,19 @@ function browserSyncTask(cb) {
 				logLevel: 'warn',
 				publicPath: webpackSettings.output.publicPath,
 				stats: {
-					colors: true,
-				},
+					colors: true
+				}
 			}),
 			webpackHotMiddleware(bundler, {
-				log: () => {},
-			}),
+				log: () => {}
+			})
 		],
 
 		ghostMode: {
 			clicks: true,
 			scroll: true,
 			links: true,
-			forms: true,
+			forms: true
 		},
 
 		logLevel: 'info',
@@ -88,8 +88,8 @@ function browserSyncTask(cb) {
 				'bottom: 0;',
 				'color: #f4f8f9;',
 				'background-color: #026277;',
-				'text-transform: uppercase',
-			],
+				'text-transform: uppercase'
+			]
 		},
 
 		server: bsServer,
@@ -97,15 +97,13 @@ function browserSyncTask(cb) {
 		open: true,
 		files: [
 			`${jdev.dist.js}**/*.js`,
-			`${jdev.dist.css}**/*.css`,
-			`${jdev.dist.base}**/*.{php,html}`,
+			`${jdev.dist.base}**/**/**.{php,html}`,
 			`${jdev.dist.cssimg}**/*.{jpg,gif,png,svg}`,
 			`${jdev.dist.contentimage}**/*.{jpg,gif,png,svg}`,
 			`${jdev.dist.base}**/assets/img/system/**`,
 			`${jdev.dist.fonts}**/**`,
-			`${jdev.dist.wptheme}**/**/**.{php,html,twig}`,
-			`${jdev.dist.wptheme}**/**/**.{scss}`,
-		],
+			`${jdev.dist.wptheme}**/**/**.{php,html,twig}`
+		]
 	})
 	cb()
 }

@@ -1,11 +1,11 @@
 /*
- * File: /gulpfile/tasks/browsersync.js
+ * File: /gulpfile/tasks/compile-html.js
  * Project: starter_frontend_twig
  * Version: 1.0.0
  * Created Date: Sunday, May 30th 2021, 22:46:47
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Sunday, June 6th 2021 22:49:16
+ * Last Modified: Sunday, October 17th 2021 12:50:11
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
@@ -60,7 +60,7 @@ function compilerHtmlTask(cb) {
 				siteURL: envSiteUrl,
 				assetsImg: '/' + jdev.templatePath.contentimage,
 				cms: cms,
-				siteVersiov: webconfig.globaVersion,
+				siteVersiov: webconfig.version
 			}
 			return gulp
 				.src('./src/template/page_templates/' + item.template + '.twig')
@@ -75,27 +75,27 @@ function compilerHtmlTask(cb) {
 									var content = 'content'
 									content = fs.readFileSync('dist' + path).toString()
 									return content
-								},
+								}
 							},
 							{
 								name: '__',
 								func: function (text, domaine) {
 									return text
-								},
+								}
 							},
 							{
 								name: 'Image',
 								func: function (text) {
 									return text
-								},
+								}
 							},
 							{
 								name: 'sprite',
 								func: function (icon, format) {
 									return "<svg class='" + format + "'><use xlink:href='/assets/img/symbol-sprite.svg#" + icon + "'></use></svg>"
-								},
-							},
-						],
+								}
+							}
+						]
 					})
 				)
 				.pipe(
@@ -113,14 +113,14 @@ function compilerHtmlTask(cb) {
 					htmlbeautify({
 						indent_char: ' ',
 						indent_size: 2,
-						max_preserve_newlines: 2,
+						max_preserve_newlines: 2
 					})
 				)
 				.pipe(
 					process.env.HTML_MINIFY === 'true' && envNode !== 'development'
 						? $.htmlmin({
 								collapseWhitespace: true,
-								removeComments: true,
+								removeComments: true
 						  })
 						: $.htmlmin()
 				)
@@ -129,8 +129,8 @@ function compilerHtmlTask(cb) {
 						suffix: {
 							'1x': '',
 							'2x': '@2x',
-							'480w': '@2x',
-						},
+							'480w': '@2x'
+						}
 					})
 				)
 				.pipe(gulp.dest(jdev.dist.base + item.url))

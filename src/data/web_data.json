@@ -1,15 +1,15 @@
 {
-  "globaVersion": "0.0.1",
-  "site": {
-    "url": "/",
-    "charset": "UTF-8",
-    "language_attributes": "en",
-    "title": "Starter Frontend TWIG",
-    "description": "justDev Starter Frontend TWIG"
-  },
-  "options": {
-    "favicon": {
-      "themecolor": "#ffff"
-    }
-  }
+	"version": "0.0.1",
+	"site": {
+		"url": "/",
+		"charset": "UTF-8",
+		"language_attributes": "en",
+		"title": "Starter Frontend TWIG",
+		"description": "justDev Starter Frontend TWIG"
+	},
+	"options": {
+		"favicon": {
+			"themecolor": "#ffff"
+		}
+	}
 }
