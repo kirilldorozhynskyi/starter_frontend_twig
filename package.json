@@ -1,6 +1,6 @@
 {
 	"name": "starter_frontend_twig",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "twig front end",
 	"keywords": [
 		"boilerplate",
@@ -40,6 +40,7 @@
 		"prettify": "prettier prettier --loglevel=warn --write \"{webpack,src}/**/*.{js,scss}\"",
 		"subtask:buildgulp": "gulp buildTask --env=production",
 		"subtask:bundlewebpack": "cross-env NODE_ENV=production webpack --config=webpack/webpack.prod.babel.js -p --colors --mode=production",
+		"subtask:upload": "gulp uploadArchive --env=init",
 		"uiimages": "gulp rebuildImagesTask --env=init",
 		"webpack:analyze": "webpack-bundle-analyzer webpack/stats.json dist/assets/"
 	},
@@ -86,6 +87,7 @@
 		"gulp-bump": "^3.2.0",
 		"gulp-changed": "^4.0.2",
 		"gulp-cheerio": "^1.0.0",
+		"gulp-exec": "^5.0.0",
 		"gulp-favicons": "^3.0.0",
 		"gulp-html-beautify": "^1.0.1",
 		"gulp-html-prettify": "^0.0.1",
