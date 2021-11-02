@@ -20,7 +20,8 @@
 		"vectors": "dist/assets/img/svgfiles/",
 		"contentimage": "dist/images/",
 		"webpackassets": "assets/",
-		"webpackpublic": "dist/"
+		"webpackpublic": "dist/",
+		"wptheme": "../"
 	},
 	"minify": {
 		"images": {
