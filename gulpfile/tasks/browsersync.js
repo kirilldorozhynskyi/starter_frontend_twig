@@ -1,11 +1,11 @@
 /*
  * File: /gulpfile/tasks/browsersync.js
  * Project: starter_frontend_twig
- * Version: 1.0.0
+ * Version: 1.1.0
  * Created Date: Sunday, May 30th 2021, 22:46:47
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Tuesday, October 12th 2021 20:15:33
+ * Last Modified: Monday, October 18th 2021 23:49:12
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
@@ -102,7 +102,8 @@ function browserSyncTask(cb) {
 			`${jdev.dist.contentimage}**/*.{jpg,gif,png,svg}`,
 			`${jdev.dist.base}**/assets/img/system/**`,
 			`${jdev.dist.fonts}**/**`,
-			`${jdev.dist.wptheme}**/**/**.{php,html,twig}`
+			`${jdev.dist.wptheme}**/**/**.{php,html,twig}`,
+			`${jdev.dist.wptheme}**/**/**.{scss}`
 		]
 	})
 	cb()
