@@ -1,11 +1,11 @@
 /*
  * File: /gulpfile/tasks/version-bump.js
  * Project: starter_frontend_twig
- * Version: 1.1.0
+ * Version: 1.0.0
  * Created Date: Sunday, October 17th 2021, 12:27:09
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Monday, October 18th 2021 23:35:12
+ * Last Modified: Wednesday, November 10th 2021 7:50:32
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
@@ -58,6 +58,21 @@ function getData(cd) {
 			const newstr = fileContent.replace(version, newVer)
 			fs.writeFileSync(workspace, newstr, 'utf8')
 		}
+	} else {
+		const files = [
+			{
+				file: 'src/data/web_data.json',
+				dist: './src/data/'
+			}
+		]
+
+		const type = process.env.NODE_ENV
+		files.forEach((item) => {
+			return gulp
+				.src(item.file)
+				.pipe(bump({ type: type }))
+				.pipe(gulp.dest(item.dist))
+		})
 	}
 
 	cd()
