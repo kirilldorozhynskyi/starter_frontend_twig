@@ -5,7 +5,7 @@
  # Created Date: Friday, November 20th 2020, 17:41:38
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Sunday, June 6th 2021 21:04:56
+ # Last Modified: Monday, November 15th 2021 18:28:27
  # Modified By: Kirill Dorozhynskyi
  # -----
  # Copyright (c) 2021 justDev
@@ -16,55 +16,73 @@
 
 <!DOCTYPE html>
 <html lang="{{ site.language_attributes }}">
-    <head>
-        {% include '/partials/_site-head.twig' %}
-    </head>
+	<head>
+		{% include '/partials/_site-head.twig' %}
+	</head>
 
-    <body {% if body_class is defined and body_class is not empty %} class="{{ body_class }}" {% endif %} data-env="{{ environment }}">
+	<body class="{{ body_class ? body_class }}" data-env="{{ environment }}">
+		{# Header #}
+		{% set header_menu_links = [] %}
+		{% set header_menu = [] %}
+		{% for item in dataPages %}
+			{% if item.menu %}
+				{% if item.url == page.url %}
+					{% set current_item = true %}
+				{% else %}
+					{% set current_item = false %}
+				{% endif %}
 
-        {# Header #}
-        {% set header_menu = [] %}
-        {% for item in dataPages %}
-            {% if item.menu %}
-                {% if item.url == page.url %}
-                    {% set current_item = true %}
-                {% else %}
-                    {% set current_item = false %}
-                {% endif %}
+				{% set header_menu =
+					header_menu|merge(
+						[
+							{
+								title: item.title,
+								url: item.url,
+								current: current_item
+							}
+						]
+					)
+				%}
+			{% endif %}
+		{% endfor %}
+		{% include '/partials/header/_header.twig' with {
+			header: {},
+			menu: {
+				items: header_menu|merge(header_menu_links)
+			}
+		} %}
 
-                {% set header_menu = header_menu|merge([{ title: item.title, url: item.url, current: current_item }]) %}
-                
-            {% endif %}
-        {% endfor %}
-        {% include "/partials/header/_header.twig" with {
-            header: {},
-            menu: {
-                items: header_menu
-            }
-        } %}
-        
-        {# Content #}
-        <main class="wrapper-content">
-            {% block page %}
-            
-            {% endblock %}
-        </main>
-        
-        {# Footer #}
-        {% set footer_menu = [] %}
-        {% for item in dataPages %}
-            {% if item.footer_menu %}
-                {% set footer_menu = footer_menu|merge([{ title: item.title, url: item.url }]) %}
-            {% endif %}
-        {% endfor %}
-        {% include "/partials/footer/_footer.twig" with {
-            footer: {
-                copyright: site.description,
-            },
-            menu: {
-                items: footer_menu
-            }
-        } %}
-        {% include '/partials/_site-scripts.twig' %}
-    </body>
+		{# Content #}
+		<main class="wrapper-content">
+			{% block page %}
+
+			{% endblock %}
+		</main>
+
+		{# Footer #}
+		{% set footer_menu = [] %}
+		{% for item in dataPages %}
+			{% if item.footer_menu %}
+				{% set footer_menu =
+					footer_menu|merge(
+						[
+							{
+								title: item.title,
+								url: item.url
+							}
+						]
+					)
+				%}
+			{% endif %}
+		{% endfor %}
+		{% include '/partials/footer/_footer.twig' with {
+			footer: {
+				copyright: site.description
+			},
+			menu: {
+				items: footer_menu
+			}
+		} %}
+		{% include '/partials/_site-scripts.twig' %}
+	</body>
 </html>

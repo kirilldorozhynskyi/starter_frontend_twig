@@ -134,7 +134,7 @@
 		"node-sass": "^6.0.0",
 		"optimize-css-assets-webpack-plugin": "^5.0.4",
 		"postcss-animation.css-data": "^1.1.0",
-		"postcss-animations": "^7.0.1",
+		"postcss-animations": "^6.0.1",
 		"postcss-aspect-ratio": "^1.0.2",
 		"postcss-assets": "^5.0.0",
 		"postcss-calc": "^7.0.5",
