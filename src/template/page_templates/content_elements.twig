@@ -1,0 +1,127 @@
+{#
+ # File: /src/template/page_templates/content_elements.twig
+ # Project: starter_frontend_twig
+ # Version: 1.1.0
+ # Created Date: Thursday, January 27th 2022, 17:02:57
+ # Author: Kirill Dorozhynskyi - kirilldy@justdev.org
+ # -----
+ # Last Modified: Thursday, January 27th 2022 19:59:29
+ # Modified By: Kirill Dorozhynskyi
+ # -----
+ # Copyright (c) 2022 justDev
+ #
+ # content_elements
+ #
+ #}
+
+{% extends '../_layout.twig' %}
+{% set body_class = 'content-elements-page' %}
+{% set elements = '../elements/' %}
+
+{% block page %}
+	<section class="content-elements mb-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>
+						Typography
+					</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="content-elements mb-5">
+		<div class="container">
+			<h2>
+				Headline
+			</h2>
+			{% for i in 0..5 %}
+				<div class="row d-flex align-items-center">
+					<div class="col-md-4">
+						<span class="h4 text-secondary">H{{ i + 1 }}</span>
+					</div>
+					<div class="col-md-8">
+						<p class="h{{ i + 1 }}">
+							Headline {{ i + 1 }}
+						</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+	<section class="content-elements mb-5">
+		<div class="container">
+			<h2>
+				Paragraph
+			</h2>
+			<div class="row d-flex align-items-center">
+				<div class="col-md-4">
+					<span class="h4 text-secondary">Paragraph Lead</span>
+				</div>
+				<div class="col-md-8">
+					<p class="lead">
+						Fermentum tellus leo egestas faucibus mauris tristique sed amet. Donec aliquam quisque
+						tortor, et diam vitae magna. Sem ut venenatis amet, turpis elementum massa blandit
+						elit. Semper in augue hac egestas aenean quam viverra aliquam.
+					</p>
+				</div>
+			</div>
+			<div class="row d-flex align-items-center">
+				<div class="col-md-4">
+					<span class="h4 text-secondary">Paragraph</span>
+				</div>
+				<div class="col-md-8">
+					<p>
+						Fermentum tellus leo egestas faucibus mauris tristique sed amet. Donec aliquam quisque
+						tortor, et diam vitae magna. Sem ut venenatis amet, turpis elementum massa blandit
+						elit. Semper in augue hac egestas aenean quam viverra aliquam.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="content-elements mb-5">
+		<div class="container">
+			<h2>
+				More
+			</h2>
+			<div class="row d-flex align-items-center">
+				<div class="col-md-4">
+					<span class="h4 text-secondary">Tag</span>
+				</div>
+				<div class="col-md-8">
+					<p class="tag">
+						Platea eu mattis porttitor ipsum.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="content-elements mb-5">
+		<div class="container">
+			<h2>
+				Buttons
+			</h2>
+			<div class="row d-flex align-items-center">
+				<div class="col-md-4">
+					<span class="h4 text-secondary">Button 1</span>
+				</div>
+				<div class="col-md-8">
+					<p class="tag">
+						{% include '../components/_buttons.twig' with {
+							button: {
+								title: 'Viac informácií',
+								url: '#',
+								target: ''
+							},
+							class: 'btn-black btn-decor'
+						} only %}
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
