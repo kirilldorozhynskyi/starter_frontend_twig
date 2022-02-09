@@ -1,11 +1,11 @@
 /*
  * Project: starter_frontend_twig
  * File: /gulpfile/tasks/compile-css.js
- * Version: 1.0.0
+ * Version: 1.1.4
  * Created Date: Monday, February 15th 2021, 9:46:48
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Sunday, June 6th 2021 22:49:16
+ * Last Modified: Wednesday, February 9th 2022 22:29:19
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
@@ -32,20 +32,19 @@ const compilerCssTask = (cb) => {
 	gulp
 		.src([jdev.src.style + '**/*.scss', jdev.src.style + '**/*.sass'])
 		.pipe(envNode === 'development' ? $.sourcemaps.init() : gutil.noop())
-
 		.pipe(sassGlob())
 		.pipe($.sass({}).on('error', errorHandler))
 		.pipe($.postcss(jdev))
 		.pipe(
 			envNode === 'development'
 				? $.size({
-						title: '>>> CSS File Size: ',
+						title: '>>> CSS File Size: '
 				  })
 				: gutil.noop()
 		)
 		.pipe(
 			browserSync.reload({
-				stream: true,
+				stream: true
 			})
 		)
 		.pipe(envNode === 'development' ? $.sourcemaps.write('.') : gutil.noop())

@@ -1,11 +1,11 @@
 /*
  * File: /gulpfile/tasks/compile-html.js
  * Project: starter_frontend_twig
- * Version: 1.0.0
+ * Version: 1.1.4
  * Created Date: Sunday, May 30th 2021, 22:46:47
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Sunday, October 17th 2021 12:50:11
+ * Last Modified: Wednesday, February 9th 2022 22:29:33
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
@@ -92,7 +92,7 @@ function compilerHtmlTask(cb) {
 							{
 								name: 'sprite',
 								func: function (icon, format) {
-									return "<svg class='" + format + "'><use xlink:href='/assets/img/symbol-sprite.svg#" + icon + "'></use></svg>"
+									return "<svg class='sprite-icon " + format + "'><use xlink:href='/assets/img/symbol-sprite.svg#" + icon + "'></use></svg>"
 								}
 							}
 						]
