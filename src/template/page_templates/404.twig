@@ -1,22 +1,44 @@
 {#
  # File: /src/template/page_templates/404.twig
  # Project: starter_frontend_twig
- # Version: 1.0.0
+ # Version: 1.1.4
  # Created Date: Monday, February 15th 2021, 9:46:48
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Sunday, June 6th 2021 21:04:41
+ # Last Modified: Wednesday, February 9th 2022 22:38:12
  # Modified By: Kirill Dorozhynskyi
  # -----
  # Copyright (c) 2021 justDev
- # 
+ #
  # Page template: 404
- # 
+ #
  #}
 
 {% extends '../_layout.twig' %}
 {% set body_class = '404' %}
 
 {% block page %}
+	<section class="content404">
+		<div class="container h-100">
+			<div class="row align-items-center h-100">
+				<div class="col-md-7 col-lg-5">
+					<h1 class="content404__title">
+						404
+					</h1>
+					<h3>
+						Sorry, this page does not appear to exist.
+					</h3>
 
+					{% include '../components/_buttons.twig' with {
+						button: {
+							title: 'Home',
+							url: '/',
+							target: ''
+						},
+						class: ''
+					} only %}
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}

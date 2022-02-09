@@ -1,20 +1,29 @@
 [
-  {
-    "title": "404",
-    "seotitle": "Page not found",
-    "description": "",
-    "url": "/",
-    "template": "404",
-    "menu": false,
-    "footer_menu": false
-  },
-  {
-    "title": "Home",
-    "seotitle": "Home",
-    "description": "Home page",
-    "url": "/",
-    "template": "homepage",
-    "menu": true,
-    "footer_menu": true
-  }
+	{
+		"title": "404",
+		"seotitle": "Page not found",
+		"description": "",
+		"url": "/",
+		"template": "404",
+		"menu": false,
+		"footer_menu": false
+	},
+	{
+		"title": "Home",
+		"seotitle": "Home",
+		"description": "Home page",
+		"url": "/",
+		"template": "homepage",
+		"menu": true,
+		"footer_menu": true
+	},
+	{
+		"title": "Content elements",
+		"seotitle": "Content elements",
+		"description": "Content elements",
+		"url": "/content-elements",
+		"template": "content_elements",
+		"menu": false,
+		"footer_menu": false
+	}
 ]

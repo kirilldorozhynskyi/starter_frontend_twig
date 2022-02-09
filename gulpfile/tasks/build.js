@@ -1,11 +1,11 @@
 /*
  * File: /gulpfile/tasks/build.js
  * Project: starter_frontend_twig
- * Version: 1.0.0
+ * Version: 1.1.4
  * Created Date: Monday, February 15th 2021, 9:46:48
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Sunday, June 6th 2021 22:49:16
+ * Last Modified: Wednesday, February 9th 2022 22:29:05
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
@@ -41,7 +41,7 @@ const buildTask = gulp.series(
 		cb()
 	},
 	compilerCssTask,
-	compilerHtmlTask,
+
 	gulp.parallel(
 		copyLaunchTask,
 		copyFontsTask,
@@ -54,7 +54,8 @@ const buildTask = gulp.series(
 		buildFaviconTask,
 		copyJsTask
 	),
-	gulp.series(minifyContentimagesTask, minifyInlineimagesTask, minifyCssTask, minifyJsTask, copyCSS)
+	gulp.series(minifyContentimagesTask, minifyInlineimagesTask),
+	gulp.series(minifyCssTask, minifyJsTask, copyCSS, compilerHtmlTask)
 )
 
 export default buildTask
