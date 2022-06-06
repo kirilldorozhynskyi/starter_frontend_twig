@@ -25,5 +25,14 @@
 		"template": "content_elements",
 		"menu": false,
 		"footer_menu": false
+	},
+	{
+		"title": "Cookies",
+		"seotitle": "Cookies",
+		"description": "Cookies",
+		"url": "/cookies",
+		"template": "gdpr",
+		"menu": false,
+		"footer_menu": true
 	}
 ]
