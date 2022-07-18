@@ -1,11 +1,11 @@
 /*
  * File: /gulpfile/tasks/compile-html.js
  * Project: starter_frontend_twig
- * Version: 1.1.4
+ * Version: 1.1.6-0
  * Created Date: Sunday, May 30th 2021, 22:46:47
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Wednesday, February 9th 2022 22:29:33
+ * Last Modified: Monday, July 18th 2022 17:37:15
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
@@ -41,7 +41,9 @@ var cms = process.env.CMS || false
 
 if (envProxy === false) {
 	var htmlCompiler = true
-} else if (envCompiler === false && envNode === 'development') {
+} else if (envCompiler === 'false' && envNode === 'development') {
+	var htmlCompiler = true
+} else if (envCompiler === 'true') {
 	var htmlCompiler = true
 } else {
 	var htmlCompiler = false
