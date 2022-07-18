@@ -1,11 +1,11 @@
 /*
- * File: /gulpfile/tasks/browsersync.js
+ * File: /gulpfile/tasks/robots.js
  * Project: starter_frontend_twig
- * Version: 1.0.0
+ * Version: 1.1.6-0
  * Created Date: Monday, February 15th 2021, 9:46:48
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Sunday, June 6th 2021 22:49:16
+ * Last Modified: Monday, July 18th 2022 17:35:43
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
@@ -21,11 +21,13 @@ var rename = require('gulp-rename')
 const $ = gulpLoadPlugins()
 var envNode = process.env.NODE_ENV || 'development'
 var compiler = process.env.HTML_COMPILER || 'true'
+var envSiteUrl = process.env.SITE_URL
 
 function launchRobots() {
 	console.log()
 	const data = {
 		environment: envNode,
+		siteURL: envSiteUrl
 	}
 
 	if (compiler === 'true') {
@@ -33,7 +35,7 @@ function launchRobots() {
 			.src('./src/.system/robots.twig')
 			.pipe(
 				$.twig({
-					data: data,
+					data: data
 				})
 			)
 			.pipe(
