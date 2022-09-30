@@ -1,11 +1,11 @@
 /*
  * File: /src/style/default/_mixin.scss
  * Project: starter_frontend_twig
- * Version: 1.0.0
+ * Version: 1.1.6-0
  * Created Date: Sunday, June 6th 2021, 17:46:00
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Wednesday, October 13th 2021 21:50:45
+ * Last Modified: Tuesday, July 19th 2022 16:04:35
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2021 justDev
@@ -34,4 +34,15 @@
 @function rem($value) {
 	$remValue: ($value / 16) + rem;
 	@return $remValue;
+}
+
+@mixin retina {
+	@media only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (min--moz-device-pixel-ratio: 2),
+		only screen and (min-device-pixel-ratio: 2),
+		only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (min-resolution: 192dpi),
+		only screen and (min-resolution: 2dppx) {
+		@content;
+	}
 }
