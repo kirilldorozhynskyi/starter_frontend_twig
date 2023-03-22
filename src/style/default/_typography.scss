@@ -1,0 +1,38 @@
+/*
+ * File: /src/style/default/_typography.scss
+ * Project: starter_frontend_twig
+ * Version: 1.1.6-3
+ * Created Date: Friday, March 3rd 2023, 16:53:32
+ * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ * -----
+ * Last Modified: Saturday, March 4th 2023 10:02:33
+ * Modified By: Kirill Dorozhynskyi
+ * -----
+ * Copyright (c) 2023 justDev
+ *
+ * Information
+ */
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
+p {
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.sprite-icon {
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+}
