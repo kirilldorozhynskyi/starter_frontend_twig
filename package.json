@@ -1,6 +1,7 @@
 {
+	"title": "Starter Frontend TWIG",
 	"name": "starter_frontend_twig",
-	"version": "1.1.6-2",
+	"version": "1.1.6-3",
 	"description": "twig front end",
 	"keywords": [
 		"boilerplate",
@@ -178,5 +179,8 @@
 	"engines": {
 		"node": ">=10.0.0"
 	},
-	"title": "Starter Frontend TWIG"
+	"dependencies": {
+		"aos": "^2.3.4",
+		"vanilla-lazyload": "^17.8.3"
+	}
 }
