@@ -1,6 +1,7 @@
 {
+	"title": "Starter Frontend TWIG",
 	"name": "starter_frontend_twig",
-	"version": "1.1.4",
+	"version": "1.1.6-3",
 	"description": "twig front end",
 	"keywords": [
 		"boilerplate",
@@ -97,7 +98,6 @@
 		"gulp-exec": "^5.0.0",
 		"gulp-favicons": "^3.0.0",
 		"gulp-html-beautify": "^1.0.1",
-		"gulp-html-prettify": "^0.0.1",
 		"gulp-htmlmin": "^5.0.1",
 		"gulp-hub": "^4.2.0",
 		"gulp-if": "^3.0.0",
@@ -179,5 +179,8 @@
 	"engines": {
 		"node": ">=10.0.0"
 	},
-	"title": "Starter Frontend TWIG"
+	"dependencies": {
+		"aos": "^2.3.4",
+		"vanilla-lazyload": "^17.8.3"
+	}
 }
