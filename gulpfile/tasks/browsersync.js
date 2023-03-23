@@ -1,14 +1,14 @@
 /*
  * File: /gulpfile/tasks/browsersync.js
  * Project: starter_frontend_twig
- * Version: 1.1.0
+ * Version: 1.1.6
  * Created Date: Sunday, May 30th 2021, 22:46:47
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Monday, October 18th 2021 23:49:12
+ * Last Modified: Thursday, March 23rd 2023 17:52:49
  * Modified By: Kirill Dorozhynskyi
  * -----
- * Copyright (c) 2021 justDev
+ * Copyright (c) 2023 justDev
  * ------------------------------------
  * Browser Sync
  * @description Refresh the Browser after File Change.
@@ -52,19 +52,20 @@ function browserSyncTask(cb) {
 		debugInfo: true,
 		watchTask: true,
 		proxy: bsProxy,
-		middleware: [
-			webpackDevMiddleware(bundler, {
-				quiet: true,
-				logLevel: 'warn',
-				publicPath: webpackSettings.output.publicPath,
-				stats: {
-					colors: true
-				}
-			}),
-			webpackHotMiddleware(bundler, {
-				log: () => {}
-			})
-		],
+		// BUG: Webpack 5
+		// middleware: [
+		// 	webpackDevMiddleware(bundler, {
+		// 		quiet: true,
+		// 		logLevel: 'warn',
+		// 		publicPath: webpackSettings.output.publicPath,
+		// 		stats: {
+		// 			colors: true
+		// 		}
+		// 	}),
+		// 	webpackHotMiddleware(bundler, {
+		// 		log: () => {}
+		// 	})
+		// ],
 
 		ghostMode: {
 			clicks: true,

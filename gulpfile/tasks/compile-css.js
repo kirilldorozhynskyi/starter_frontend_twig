@@ -1,14 +1,14 @@
 /*
  * Project: starter_frontend_twig
  * File: /gulpfile/tasks/compile-css.js
- * Version: 1.1.4
+ * Version: 1.1.6
  * Created Date: Monday, February 15th 2021, 9:46:48
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Wednesday, February 9th 2022 22:29:19
+ * Last Modified: Thursday, March 23rd 2023 16:26:26
  * Modified By: Kirill Dorozhynskyi
  * -----
- * Copyright (c) 2021 justDev
+ * Copyright (c) 2023 justDev
  * ------------------------------------
  * CSS Compiler Task
  */
@@ -22,6 +22,7 @@ import errorHandler from '../lib/errorHandler'
 import yargs from 'yargs'
 import api from 'stylelint'
 import sassGlob from 'gulp-sass-glob'
+const sass = require('gulp-sass')(require('sass'))
 
 const args = yargs.argv
 const $ = gulpLoadPlugins()
@@ -33,7 +34,7 @@ const compilerCssTask = (cb) => {
 		.src([jdev.src.style + '**/*.scss', jdev.src.style + '**/*.sass'])
 		.pipe(envNode === 'development' ? $.sourcemaps.init() : gutil.noop())
 		.pipe(sassGlob())
-		.pipe($.sass({}).on('error', errorHandler))
+		.pipe(sass({}).on('error', errorHandler))
 		.pipe($.postcss(jdev))
 		.pipe(
 			envNode === 'development'
