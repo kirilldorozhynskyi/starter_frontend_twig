@@ -5,7 +5,7 @@
  * Created Date: Sunday, May 30th 2021, 22:46:47
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Thursday, March 23rd 2023 17:52:49
+ * Last Modified: Thursday, March 23rd 2023 19:12:15
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2023 justDev
@@ -18,11 +18,11 @@ import jdev from '../../config.json'
 import gulp from 'gulp'
 import browserSync from 'browser-sync'
 import webpack from 'webpack'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
-import webpackSettings from '../../webpack/webpack.dev.babel'
+// import webpackDevMiddleware from 'webpack-dev-middleware'
+// import webpackHotMiddleware from 'webpack-hot-middleware'
+// import webpackSettings from '../../webpack/webpack.dev.babel'
 
-const bundler = webpack(webpackSettings)
+// const bundler = webpack(webpackSettings)
 
 if (process.env.BS_PROXY !== 'false') {
 	var envBrowserSyncProxy = process.env.BS_PROXY
