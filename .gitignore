@@ -4,4 +4,5 @@ package-lock.json
 stats.json
 .env
 *.code-workspace
+!starter_frontend.code-workspace
 build
