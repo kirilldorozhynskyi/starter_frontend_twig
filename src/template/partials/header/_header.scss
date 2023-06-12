@@ -1,0 +1,120 @@
+/*
+ * File: /src/template/partials/header/_header.scss
+ * Project: starter_frontend_twig
+ * Version: 1.1.7
+ * Created Date: Monday, June 12th 2023, 11:47:08
+ * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ * -----
+ * Last Modified: Monday, June 12th 2023 11:51:02
+ * Modified By: Kirill Dorozhynskyi
+ * -----
+ * Copyright (c) 2023 justDev
+ */
+
+.menu {
+	cursor: pointer;
+	width: 3rem;
+	height: 3rem;
+	margin-left: 1.5rem;
+	position: relative;
+
+	.nav-link {
+		color: $primary;
+		width: fit-content;
+	}
+	.nav-top {
+		padding: 0;
+		user-select: none;
+		@include transition(0.5, 0);
+		z-index: 103;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		&::before {
+			content: '';
+			background-color: $primary;
+			border-radius: 50%;
+			width: 3rem;
+			height: 3rem;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			@include transition(0.5, 0);
+		}
+
+		& > span {
+			&:not(.wpml-ls-native):not(.wpml-ls-display) {
+				top: 0;
+				display: flex;
+				width: 1.5rem;
+				height: 0.125rem;
+				margin: auto;
+				margin-bottom: 0.5rem;
+				margin-top: 0.5rem;
+				position: relative;
+				background-color: $white;
+				z-index: 1;
+				transform-origin: 0.3125rem 0rem;
+				@include transition(0.5, 0);
+				border-radius: 1rem;
+
+				&:first-child {
+					transform-origin: 50% 50%;
+				}
+
+				&:last-child {
+					transform-origin: 50% 50%;
+				}
+			}
+		}
+	}
+
+	.nav-drill {
+		position: fixed;
+		z-index: 100;
+		top: 0;
+		right: 0;
+		width: 80vw;
+		max-width: 450px;
+		height: 100vh;
+		background-color: $white;
+		overflow-y: auto;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		transition: 0.45s;
+		transform: translateX(100%);
+		padding: 6.25rem 0 3rem;
+		font-size: 1rem;
+		z-index: 100;
+	}
+
+	&.nav-is-toggled {
+		.nav-drill {
+			transform: translateX(0%);
+		}
+		.nav-top {
+			& > span {
+				&:not(.wpml-ls-native):not(.wpml-ls-display) {
+					opacity: 0;
+					@include transition(0.5, 0);
+					background-color: $white !important;
+
+					&:first-child {
+						opacity: 1;
+						top: 4.5px;
+						transform: rotate(45deg);
+					}
+
+					&:last-child {
+						opacity: 1;
+						top: -4.5px;
+						transform: rotate(-45deg);
+					}
+				}
+			}
+		}
+	}
+}
