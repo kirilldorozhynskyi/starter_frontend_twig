@@ -5,7 +5,7 @@
  # Created Date: Thursday, April 15th 2021, 20:55:42
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Monday, June 12th 2023 11:54:17
+ # Last Modified: Monday, June 12th 2023 12:05:25
  # Modified By: Kirill Dorozhynskyi
  # -----
  # Copyright (c) 2023 justDev
@@ -32,24 +32,26 @@
 			{% endfor %}
 		</ul>
 
-		<div class="menu" id="ham">
-			<div class="nav-top">
-				<span></span>
-				<span></span>
+		<div class="ms-auto d-md-none">
+			<div class="menu" id="ham">
+				<div class="nav-top">
+					<span></span>
+					<span></span>
+				</div>
+				<nav class="nav-drill px-4 px-md-5">
+					<ul class="navbar-nav__top navbar-nav flex-column mb-4">
+						{% for item in menu.items %}
+							<li class="nav-item">
+								<a class="nav-link p-2{{ item.current ? ' active' }}"
+									href="{{ item.url }}"
+									title="{{ item.title }}">
+									{{ item.title }}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</nav>
 			</div>
-			<nav class="nav-drill px-4 px-md-5">
-				<ul class="navbar-nav__top navbar-nav flex-column mb-4">
-					{% for item in menu.items %}
-						<li class="nav-item">
-							<a class="nav-link p-2{{ item.current ? ' active' }}"
-								href="{{ item.url }}"
-								title="{{ item.title }}">
-								{{ item.title }}
-							</a>
-						</li>
-					{% endfor %}
-				</ul>
-			</nav>
 		</div>
 	</div>
 </header>

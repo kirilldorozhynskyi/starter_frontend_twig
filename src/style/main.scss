@@ -1,11 +1,11 @@
 /*
  * File: /src/style/main.scss
  * Project: starter_frontend_twig
- * Version: 1.1.6-3
+ * Version: 1.1.10
  * Created Date: Monday, February 15th 2021, 9:46:48
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Friday, March 3rd 2023 16:44:47
+ * Last Modified: Tuesday, June 13th 2023 17:16:38
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2023 justDev
@@ -26,4 +26,6 @@
 @import 'components/*.scss'; // Web Components
 
 @import '../template/**/**/**/**/*.scss'; // Modules
-@import '../../../templates/**/**/*.scss'; // WP Modules
+
+// NOTE: Add only for WP
+// @import '../../../templates/**/**/*.scss'; // WP Modules
