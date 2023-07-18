@@ -1,17 +1,17 @@
 {#
  # File: /src/template/elements/hero/_hero.twig
  # Project: starter_frontend_twig
- # Version: 1.0.0
+ # Version: 1.1.10
  # Created Date: Saturday, June 5th 2021, 19:47:53
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Sunday, June 6th 2021 21:05:25
+ # Last Modified: Monday, June 12th 2023 12:05:08
  # Modified By: Kirill Dorozhynskyi
  # -----
- # Copyright (c) 2021 justDev
- # 
+ # Copyright (c) 2023 justDev
+ #
  # CE: Hero
- # 
+ #
  #}
 
 <section>
@@ -31,7 +31,7 @@
 			</div>
 			{% if ce.image %}
 				<div class="col-md-6">
-					<img src="{{ Image(ce.image) }}" class="w-100 h-auto" />
+					<img data-src="{{ Image(ce.image) }}" class="w-100 h-auto lazy" />
 				</div>
 			{% endif %}
 		</div>
