@@ -19,26 +19,43 @@
 	"endOfLine": "lf",
 	"overrides": [
 		{
-			"files": "*.json",
+			"files": ["*.json", "*.yml"],
 			"options": {
-				"tabWidth": 2,
-				"useTabs": false
+				"tabWidth": 2
 			}
 		},
 		{
-			"files": "*.js",
+			"files": ["*.js", "*.vue", "*.gql"],
 			"options": {
 				"tabWidth": 2,
-				"useTabs": true
+				"semi": false,
+				"vueIndentScriptAndStyle": false,
+				"trailingComma": "none"
+			}
+		},
+		{
+			"files": ["*.css", "*.scss"],
+			"options": {
+				"semi": true,
+				"trailingComma": "none"
+			}
+		},
+		{
+			"files": ["*.php"],
+			"options": {
+				"singleQuote": true,
+				"semi": true,
+				"phpVersion": "8.0",
+				"trailingCommaPHP": false
 			}
 		},
 		{
 			"files": "*.twig",
 			"options": {
 				"tabWidth": 4,
-				"useTabs": true,
-				"twigPrintWidth": 190,
-				"twigAlwaysBreakObjects": true
+				"twigAlwaysBreakObjects": true,
+				"jsxBracketSameLine": false,
+				"twigPrintWidth": 110
 			}
 		}
 	]
