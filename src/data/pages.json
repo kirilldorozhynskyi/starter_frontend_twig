@@ -18,6 +18,15 @@
 		"footer_menu": true
 	},
 	{
+		"title": "Navigation",
+		"seotitle": "Navigation",
+		"description": "Navigation",
+		"url": "/navigation",
+		"template": "navigation",
+		"menu": false,
+		"footer_menu": false
+	},
+	{
 		"title": "Content elements",
 		"seotitle": "Content elements",
 		"description": "Content elements",
