@@ -1,14 +1,14 @@
 /*
- * File: /gulpfile/tasks/browsersync.js
+ * File: /gulpfile/lib/minifyImage.js
  * Project: starter_frontend_twig
- * Version: 1.0.0
+ * Version: 1.1.10
  * Created Date: Monday, February 15th 2021, 9:46:48
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Sunday, June 6th 2021 22:49:16
+ * Last Modified: Tuesday, September 5th 2023 19:44:49
  * Modified By: Kirill Dorozhynskyi
  * -----
- * Copyright (c) 2021 justDev
+ * Copyright (c) 2023 justDev
  * ------------------------------------
  * Combined Image Minify Function
  */
@@ -16,7 +16,6 @@
 import jdev from '../../config.json'
 import gulp from 'gulp'
 import gulpLoadPlugins from 'gulp-load-plugins'
-import pngquant from 'imagemin-pngquant'
 import svgo from 'imagemin-svgo'
 import jpegCompress from 'imagemin-jpeg-recompress'
 
@@ -29,11 +28,11 @@ const minifyImages = (srcfiles, distfiles) => {
 			$.imagemin([
 				$.imagemin.gifsicle({ interlaced: jdev.minify.images.interlaced }),
 				$.imagemin.optipng({
-					optimizationLevel: jdev.minify.images.optimizationLevel,
+					optimizationLevel: jdev.minify.images.optimizationLevel
 				}),
 				$.imagemin.svgo({
-					plugins: jdev.minify.images.svgoPlugins,
-				}),
+					plugins: jdev.minify.images.svgoPlugins
+				})
 			])
 		)
 		.pipe(gulp.dest(distfiles))
