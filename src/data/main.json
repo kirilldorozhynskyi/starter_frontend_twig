@@ -3,5 +3,8 @@
 	"title": "justDev Twig Starter",
 	"site_title": "justDev Twig Starter",
 	"description": "justDev Twig Starter",
-	"template": "templates/page.twig"
+	"background_color": "#fff",
+	"theme_color": "#fff",
+	"template": "templates/page.twig",
+	"scrollToTop": true
 }

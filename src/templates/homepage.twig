@@ -5,7 +5,7 @@
  # Created Date: Thursday, September 28th 2023, 14:11:08
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Thursday, September 28th 2023 14:27:49
+ # Last Modified: Thursday, September 28th 2023 22:24:58
  # Modified By: Kirill Dorozhynskyi
  # -----
  # Copyright (c) 2023 justDev
@@ -13,7 +13,11 @@
 {% extends '../layouts/main.twig' %}
 
 {% block page %}
-	<div class="container">
-		{{ content }}
-	</div>
+	{% if flexible %}
+		{% for item in flexible %}
+			{% include '../components/flexible/' ~ item.name ~ '/_' ~ item.name ~ '.twig' with {
+				ce: item
+			} %}
+		{% endfor %}
+	{% endif %}
 {% endblock %}

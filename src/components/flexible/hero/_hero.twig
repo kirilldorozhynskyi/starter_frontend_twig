@@ -1,0 +1,37 @@
+{#
+ # File: /src/components/flexible/hero/_hero.twig
+ # Project: starter_frontend_twig
+ # Version: 2.0.0
+ # Created Date: Thursday, September 28th 2023, 22:11:10
+ # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ # -----
+ # Last Modified: Thursday, September 28th 2023 22:38:40
+ # Modified By: Kirill Dorozhynskyi
+ # -----
+ # Copyright (c) 2023 justDev
+ #}
+
+<section class="hero">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-md-6">
+				{% if ce.title %}
+					<h1>
+						{{ ce.title }}
+					</h1>
+				{% endif %}
+				{% if ce.text %}
+					<p>
+						{{ ce.text }}
+					</p>
+				{% endif %}
+			</div>
+
+			{% if ce.image %}
+				<div class="col-md-6">
+					{{ image(ce.image) }}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</section>

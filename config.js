@@ -5,7 +5,7 @@
  * Created Date: Thursday, September 28th 2023, 14:36:16
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Thursday, September 28th 2023 18:02:33
+ * Last Modified: Thursday, September 28th 2023 20:58:30
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2023 justDev
@@ -15,14 +15,14 @@ const config = {
 	rootDir: 'src',
 	buildDir: 'dist',
 	purgecss: {
-		enable: true,
+		enable: false,
 		safeList: []
 	},
 	critical: {
-		enable: true
+		enable: false
 	},
 	htmlMinify: {
-		enable: true,
+		enable: false,
 		options: {
 			collapseWhitespace: true,
 			removeAttributeQuotes: false,
@@ -34,7 +34,7 @@ const config = {
 	htmlBeautify: {
 		inDir: 'dist',
 		html: {
-			enabled: false
+			enabled: true
 		},
 		js: {
 			enabled: false

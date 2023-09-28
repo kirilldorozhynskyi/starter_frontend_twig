@@ -5,14 +5,14 @@
  * Created Date: Thursday, September 28th 2023, 17:20:01
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Thursday, September 28th 2023 18:00:06
+ * Last Modified: Thursday, September 28th 2023 22:30:28
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2023 justDev
  */
 
 const twigFunctionsImage = (img) => {
-	const path = '/images/'
+	const path = '/assets/images/'
 
 	const pictureClass = img.pictureClass ?? 'picture'
 	const image = img.image

@@ -1,4 +1,5 @@
 import path, { dirname } from 'path'
+import vue from '@vitejs/plugin-vue'
 
 import vituum from 'vituum'
 import twig from '@vituum/vite-plugin-twig'
@@ -19,11 +20,32 @@ import twigFunctionsImage from './scripts/twig/image.js'
 
 const { rootDir, buildDir, server, imagemin, htmlBeautify } = config
 
+
+import main from `./src/data/main.json`;
+
+
 export default {
 	publicDir: 'src/public',
+	build: {
+		rollupOptions: {
+			output: {
+				entryFileNames: `assets/build/[name].js`,
+				chunkFileNames: `assets/build/[name].js`,
+				assetFileNames: `assets/build/[name].[ext]`
+			}
+		}
+	},
+	resolve: {
+		alias: {
+			'~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+			vue: 'vue/dist/vue.esm-bundler.js'
+		}
+	},
+
 	plugins: [
 		vituum(),
 		sassGlobImports(),
+		vue(),
 		twig({
 			root: `${rootDir}`,
 			functions: {
@@ -36,7 +58,17 @@ export default {
 			}
 		}),
 		viteImagemin(imagemin),
-		vitePluginFaviconsInject(`${rootDir}/public/assets/favicon.svg`),
+
+		vitePluginFaviconsInject(`${rootDir}/public/assets/favicon.svg`, {
+			path: "/favicons",
+			appName: main.title,
+			appDescription: main.description,
+			background_color: main.background_color,
+			theme_color: main.theme_color,
+			icons: {
+				yandex: false,
+			  }
+		}),
 		createSvgIconsPlugin({
 			iconDirs: [path.resolve(process.cwd(), `${rootDir}/public/assets/icons`)],
 			symbolId: 'icon-[dir]-[name]',

@@ -5,38 +5,44 @@
  # Created Date: Thursday, September 28th 2023, 14:28:46
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Thursday, September 28th 2023 19:25:51
+ # Last Modified: Thursday, September 28th 2023 21:41:28
  # Modified By: Kirill Dorozhynskyi
  # -----
  # Copyright (c) 2023 justDev
  #}
 
-<header class="header">
-	<div class="container d-flex align-items-center gap-2">
-		<a href="{{ site.url }}" rel="home" title="{{ site.title }}">{% include '../../../public/assets/images/brand/logo.svg' %}</a>
+<header is="vue:page-header" class="header">
+	<template v-slot:default="slotProps">
+		<div class="header-wrapper">
+			<div class="container-fluid">
+				<div class="row align-items-center justify-content-between">
+					<div class="col-auto">
+						{# Site logo #}
+						<a class="header-logo" href="/" aria-label="home" title="{{ site.title }}">
+							{% include '../../../public/assets/images/brand/logo.svg' %}
+						</a>
+					</div>
 
-		<ul class="navbar-nav flex-row flex-wrap bd-navbar-nav py-md-0 gap-2">
-			{% for item in header_menu %}
-				<li class="nav-item"><a class="nav-link{{ item.current ? ' active' }}" href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a></li>
-			{% endfor %}
-		</ul>
+					<div class="col-auto d-none d-lg-flex">
+						{% include 'main_navigation.twig' %}
+					</div>
 
-		<div class="ms-auto d-md-none">
-			<div class="menu" id="ham">
-				<div class="nav-top">
-					<span></span>
-					<span></span>
+					<div class="col-auto ms-auto order-lg-last d-lg-none">
+						{# Mobile nv toggle button #}
+						<button class="header-btn mobile-nav-toggle" v-on:click="slotProps.toggleMobileNav">
+							<div class="icon-menu">
+								<span></span>
+								<span></span>
+							</div>
+							<span class="visually-hidden">Toggle mobile navigation</span>
+						</button>
+
+						<div class="mobile-nav">
+							{% include 'main_navigation.twig' %}
+						</div>
+					</div>
 				</div>
-				<nav class="nav-drill px-4 px-md-5">
-					<ul class="navbar-nav__top navbar-nav flex-column mb-4">
-						{% for item in header_menu %}
-							<li class="nav-item">
-								<a class="nav-link {{ item.current ? ' active' }}" href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a>
-							</li>
-						{% endfor %}
-					</ul>
-				</nav>
 			</div>
 		</div>
-	</div>
+	</template>
 </header>
