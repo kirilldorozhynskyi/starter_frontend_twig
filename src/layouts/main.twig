@@ -1,0 +1,51 @@
+{#
+ # File: /src/layouts/main.twig
+ # Project: starter_frontend_twig
+ # Version: 2.0.0
+ # Created Date: Wednesday, June 28th 2023, 2:51:40
+ # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ # -----
+ # Last Modified: Thursday, September 28th 2023 19:36:38
+ # Modified By: Kirill Dorozhynskyi
+ # -----
+ # Copyright (c) 2023 justDev
+ #}
+
+<html lang="{{ lang }}">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0,user-scalable=0" />
+		<title>
+			{{ title }} | {{ site_title }}
+		</title>
+		<meta name="description" content="{{ description }}" />
+
+		<meta property="og:description" content="{{ description }}" />
+		<meta property="og:title" content="{{ title }} | {{ site_title }}" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="{{ siteURL }}{{ page.url }}" />
+		<meta property="og:image" content="/assets/system/facebook-og-image.jpg" />
+		<meta name="twitter:description" content="{{ description }}" />
+		<meta name="twitter:title" content="{{ title }} | {{ site_title }}" />
+		<meta name="twitter:image:src" content="/assets/system/twitter-og-image.jpg" />
+		<meta name="twitter:card" content="summary_large_image" />
+
+		<link rel="stylesheet" href="/src/styles/main.scss" />
+	</head>
+	<body>
+		<div id="page">
+			{# Header #}
+			{% include '../components/page/header/_header.twig' %}
+			{# Content #}
+			<main class="wrapper-content">
+				{% block page %}
+
+				{% endblock %}
+			</main>
+			{# Footer #}
+			{% include '../components/page/footer/_footer.twig' %}
+		</div>
+
+		<script type="module" src="/src/scripts/main.js"></script>
+	</body>
+</html>

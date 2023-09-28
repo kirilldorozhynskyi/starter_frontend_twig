@@ -1,0 +1,16 @@
+/*
+ * File: /wp-content/themes/template/resources/Private/Scss/base/_colorScema.scss
+ * Project: wordpress-starter
+ * Version: 1.0.0
+ * Created Date: Wednesday, September 27th 2023, 11:21:37
+ * Author: Kirill Dorozhynskyi - kirilldy@justdev.org
+ * -----
+ * Last Modified: Wednesday, September 27th 2023 11:21:37
+ * Modified By: Kirill Dorozhynskyi
+ * -----
+ * Copyright (c) 2023 justDev
+ */
+
+@mixin dev($atribute, $value) {
+	#{$atribute}: var(--#{$prefix}#{$value});
+}

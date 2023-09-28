@@ -15,7 +15,7 @@ end_of_line = lf
 max_line_length=160
 
 # 4 space indentation
-indent_size = 2
+indent_size = 4
 indent_style = tab
 
 # remove any whitespace characters preceding newline characters
@@ -36,7 +36,16 @@ trim_trailing_whitespace = false
 indent_size = 4
 indent_style = tab
 
+### custom for style
+[*.vue]
+indent_size = 2
+indent_style = tab
+[*.ts]
+indent_size = 2
+indent_style = tab
+
 ### custom for cascade
 [{*.twig, *.html, *.php}]
 indent_size = 4
 indent_style = tab
+insert_final_newline = true

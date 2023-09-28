@@ -1,0 +1,42 @@
+{#
+ # File: /src/components/page/header/_header.twig
+ # Project: starter_frontend_twig
+ # Version: 2.0.0
+ # Created Date: Thursday, September 28th 2023, 14:28:46
+ # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ # -----
+ # Last Modified: Thursday, September 28th 2023 19:25:51
+ # Modified By: Kirill Dorozhynskyi
+ # -----
+ # Copyright (c) 2023 justDev
+ #}
+
+<header class="header">
+	<div class="container d-flex align-items-center gap-2">
+		<a href="{{ site.url }}" rel="home" title="{{ site.title }}">{% include '../../../public/assets/images/brand/logo.svg' %}</a>
+
+		<ul class="navbar-nav flex-row flex-wrap bd-navbar-nav py-md-0 gap-2">
+			{% for item in header_menu %}
+				<li class="nav-item"><a class="nav-link{{ item.current ? ' active' }}" href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a></li>
+			{% endfor %}
+		</ul>
+
+		<div class="ms-auto d-md-none">
+			<div class="menu" id="ham">
+				<div class="nav-top">
+					<span></span>
+					<span></span>
+				</div>
+				<nav class="nav-drill px-4 px-md-5">
+					<ul class="navbar-nav__top navbar-nav flex-column mb-4">
+						{% for item in header_menu %}
+							<li class="nav-item">
+								<a class="nav-link {{ item.current ? ' active' }}" href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>

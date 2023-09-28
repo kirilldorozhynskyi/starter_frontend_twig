@@ -1,0 +1,22 @@
+{
+	"header_menu": [
+		{
+			"url": "/",
+			"title": "Home"
+		},
+		{
+			"url": "/gdpr",
+			"title": "Cookies"
+		}
+	],
+	"footer_menu": [
+		{
+			"url": "/",
+			"title": "Home"
+		},
+		{
+			"url": "/gdpr",
+			"title": "Cookies"
+		}
+	]
+}
