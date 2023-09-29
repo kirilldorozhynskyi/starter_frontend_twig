@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"psi-header.variables": [
+			["projectname", "int_starter_frontend_twig"],
+			["projectversion", "1.0.0"],
+			["authoremail", "kyrylo.dorozhynskyi@justdev.org"]
+		],
+		"files.exclude": {}
+	}
+}

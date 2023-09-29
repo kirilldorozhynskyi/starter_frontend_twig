@@ -1,0 +1,40 @@
+/*
+ * File: /src/styles/main.scss
+ * Project: starter_frontend_twig
+ * Version: 2.0.0
+ * Created Date: Wednesday, June 28th 2023, 2:51:40
+ * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ * -----
+ * Last Modified: Friday, September 29th 2023 12:52:30
+ * Modified By: Kirill Dorozhynskyi
+ * -----
+ * Copyright (c) 2023 justDev
+ */
+
+// Functions & Variables
+@import '~bootstrap/scss/functions';
+@import 'base/functions';
+
+@import 'base/fonts';
+
+@import '_variables/variablesGlobal';
+@import '~bootstrap/scss/bootstrap.scss';
+
+@import 'base/mixins/colorScema';
+@import 'base/mixins/alignment';
+@import 'base/mixins/rfs';
+
+@import 'base/typograph';
+
+// Mixins
+@import '~bootstrap/scss/maps';
+
+// Vendor
+// @import 'aos/dist/aos';
+// @import 'swiper/css/bundle';
+
+// Page
+@import 'page/**/*.scss';
+@import 'global/**/*.scss';
+
+@import '../views/components/**/**/*.scss';

@@ -1,0 +1,42 @@
+{#
+ # File: /src/pages/404.twig
+ # Project: starter_frontend_twig
+ # Version: 2.0.0
+ # Created Date: Thursday, September 28th 2023, 21:53:26
+ # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ # -----
+ # Last Modified: Friday, September 29th 2023 13:19:37
+ # Modified By: Kirill Dorozhynskyi
+ # -----
+ # Copyright (c) 2023 justDev
+ #}
+
+{% extends 'views/layouts/main.twig' %}
+
+{% block page %}
+	<section class="content404">
+		<div class="container h-100">
+			<div class="row align-items-center h-100">
+				<div class="col-md-7 col-lg-5">
+					<h1 class="content404__title">
+						404
+					</h1>
+					<h3>
+						Sorry, this page does not appear to exist.
+					</h3>
+
+					{% include 'views/components/utils/_button.twig' with {
+						button: {
+							class: 'btn-primary',
+							btn: {
+								title: 'Home',
+								url: '/',
+								target: ''
+							}
+						}
+					} only %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

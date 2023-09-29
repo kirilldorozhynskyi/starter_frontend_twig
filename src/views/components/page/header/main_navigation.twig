@@ -1,0 +1,26 @@
+{#
+ # File: /src/views/components/page/header/main_navigation.twig
+ # Project: starter_frontend_twig
+ # Version: 2.0.0
+ # Created Date: Thursday, September 28th 2023, 20:33:39
+ # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ # -----
+ # Last Modified: Friday, September 29th 2023 13:22:44
+ # Modified By: Kirill Dorozhynskyi
+ # -----
+ # Copyright (c) 2023 justDev
+ #}
+
+<nav class="main-nav">
+	<ul class="list-unstyled main-nav-list gap-1 d-flex flex-column flex-lg-row align-items-center mb-0">
+		{% for item in header_menu %}
+			<li class="d-inline-block main-nav-item {{ item.children ? 'sub' }}">
+				<a class="main-nav-link {{ item.current or item.current_item_parent ? 'active' }}"
+					href="{{ item.url }}"
+					target="{{ item.target ? '_blank' : '_self' }}">
+					{{ item.title }}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+</nav>

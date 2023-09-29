@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{THE_REQUEST} \ /+([^\ \?]+)\.html
+	RewriteRule ^ /%1 [L,R]
+	RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+	RewriteRule ^(.+)$ /$1.html [L]
+</IfModule>

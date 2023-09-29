@@ -1,0 +1,108 @@
+/*
+ * File: /src/styles/base/_typograph.scss
+ * Project: starter_frontend_twig
+ * Version: 2.0.0
+ * Created Date: Monday, September 25th 2023, 19:59:19
+ * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ * -----
+ * Last Modified: Thursday, September 28th 2023 18:15:09
+ * Modified By: Kirill Dorozhynskyi
+ * -----
+ * Copyright (c) 2023 justDev
+ */
+
+.ff-secondary {
+	font-family: $font-family-secondary;
+}
+
+.ff-primary {
+	font-family: $font-family-primary;
+}
+
+.sprite-icon {
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+	line-height: 1;
+}
+
+.link-hover-underlined {
+	position: relative;
+	&::after {
+		content: '';
+		position: absolute;
+		width: 0;
+		height: 1px;
+		background-color: currentColor;
+		bottom: -0.25rem;
+		left: 50%;
+		transition: width 0.3s ease 0s, left 0.3s ease 0s;
+	}
+
+	&:hover::after {
+		width: 100%;
+		left: 0;
+	}
+}
+
+.link-underlined {
+	position: relative;
+	&::after {
+		content: '';
+		position: absolute;
+		width: 0;
+		height: 1px;
+		background-color: currentColor;
+		bottom: 0;
+		left: 50%;
+		transition: opacity 0.3s ease 0s, left 0.3s ease 0s;
+		width: 100%;
+		left: 0;
+	}
+
+	&:hover::after {
+		opacity: 0;
+	}
+}
+
+%heading {
+	font-family: $font-family-secondary;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+p {
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+h1,
+.h1 {
+	@include font-size($h1-font-size, $h1-font-size-mobile);
+}
+h2,
+.h2 {
+	@include font-size($h2-font-size, $h2-font-size-mobile);
+}
+h3,
+.h3 {
+	@include font-size($h3-font-size, $h3-font-size-mobile);
+}
+h4,
+.h4 {
+	@include font-size($h4-font-size, $h4-font-size-mobile);
+}
+h5,
+.h5 {
+	@include font-size($h5-font-size, $h5-font-size-mobile);
+}
+h6,
+.h6 {
+	@include font-size($h6-font-size, $h6-font-size-mobile);
+}
+
+.lead {
+	@include font-size($lead-font-size, $lead-font-size-mobile);
+}

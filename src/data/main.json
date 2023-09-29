@@ -1,0 +1,18 @@
+{
+	"lang": "en",
+	"title": "justDev Twig Starter",
+	"site_title": "justDev Twig Starter",
+	"description": "justDev Twig Starter",
+	"background_color": "#fff",
+	"theme_color": "#fff",
+	"template": "views/templates/page.twig",
+	"body_class": "page",
+	"scrollToTop": true,
+	"layouts": {
+		"default": "../layouts/main.twig"
+	},
+	"paths": {
+		"components": "../components",
+		"btn_ex": "../../utils/_button.twig"
+	}
+}

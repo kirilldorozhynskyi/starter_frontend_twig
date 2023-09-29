@@ -1,0 +1,48 @@
+{#
+ # File: /src/views/components/page/header/_header.twig
+ # Project: starter_frontend_twig
+ # Version: 2.0.0
+ # Created Date: Thursday, September 28th 2023, 14:28:46
+ # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ # -----
+ # Last Modified: Friday, September 29th 2023 13:27:02
+ # Modified By: Kirill Dorozhynskyi
+ # -----
+ # Copyright (c) 2023 justDev
+ #}
+
+<header is="vue:page-header" class="header">
+	<template v-slot:default="slotProps">
+		<div class="header-wrapper">
+			<div class="container-fluid">
+				<div class="row align-items-center justify-content-between">
+					<div class="col-auto">
+						{# Site logo #}
+						<a class="header-logo" href="/" aria-label="home" title="{{ site.title }}">
+							{{ source(rootDir ~ '/public/assets/images/brand/logo.svg')|raw }}
+						</a>
+					</div>
+
+					<div class="col-auto d-none d-lg-flex align-items-center gap-2">
+						{% include 'main_navigation.twig' %}
+					</div>
+
+					<div class="col-auto ms-auto order-lg-last d-lg-none">
+						{# Mobile nv toggle button #}
+						<button class="header-btn mobile-nav-toggle" v-on:click="slotProps.toggleMobileNav">
+							<div class="icon-menu">
+								<span></span>
+								<span></span>
+							</div>
+							<span class="visually-hidden">Toggle mobile navigation</span>
+						</button>
+
+						<div class="mobile-nav">
+							{% include 'main_navigation.twig' %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+</header>
