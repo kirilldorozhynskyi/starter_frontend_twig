@@ -19,10 +19,7 @@ if [[ $name != "" ]]; then
 	fi
 
 	#  Remove composer vedor
-	if [[ -f vendor/ ]]
-	then
-		rm -rf vendor/
-	fi
+	rm -rf vendor/
 
 	if [[ -f install.sh ]]
 	then
