@@ -14,15 +14,14 @@ import config from './config.js'
 import htmlMinifierPlugin from './scripts/htmlMinifier.js'
 import purgeCSSPlugin from './scripts/purgecss.js'
 import criticalPlugin from './scripts/critical.js'
+import fixCSSPlugin from './scripts/fixCss.js'
 
 import twigFunctionsSprite from './scripts/twig/sprite.js'
 import twigFunctionsImage from './scripts/twig/image.js'
 
-const { rootDir, buildDir, server, imagemin, htmlBeautify } = config
+const { rootDir, buildDir, assetsDir, imagemin, htmlBeautify, fonts } = config
 
-
-import main from `./src/data/main.json`;
-
+import main from './src/data/main.json'
 
 export default {
 	publicDir: 'src/public',
@@ -38,7 +37,8 @@ export default {
 	resolve: {
 		alias: {
 			'~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
-			vue: 'vue/dist/vue.esm-bundler.js'
+			vue: 'vue/dist/vue.esm-bundler.js',
+			'~fonts': path.resolve(__dirname, fonts.dev)
 		}
 	},
 
@@ -58,26 +58,27 @@ export default {
 			}
 		}),
 		viteImagemin(imagemin),
-
-		vitePluginFaviconsInject(`${rootDir}/public/assets/favicon.svg`, {
-			path: "/favicons",
-			appName: main.title,
-			appDescription: main.description,
-			background_color: main.background_color,
-			theme_color: main.theme_color,
-			icons: {
-				yandex: false,
-			  }
-		}),
 		createSvgIconsPlugin({
-			iconDirs: [path.resolve(process.cwd(), `${rootDir}/public/assets/icons`)],
+			iconDirs: [path.resolve(process.cwd(), `${assetsDir}/icons`)],
 			symbolId: 'icon-[dir]-[name]',
 			customDomId: '__svg__icons__dom__'
 		}),
 
-		beautify(htmlBeautify),
+		fixCSSPlugin(),
 		purgeCSSPlugin(),
 		criticalPlugin(),
+		process.env.NODE_ENV == 'production'
+			? vitePluginFaviconsInject(`${assetsDir}/favicon.svg`, {
+					appName: main.title,
+					appDescription: main.description,
+					background_color: main.background_color,
+					theme_color: main.theme_color,
+					icons: {
+						yandex: false
+					}
+			  })
+			: false,
+		beautify(htmlBeautify),
 		htmlMinifierPlugin()
 	]
 }

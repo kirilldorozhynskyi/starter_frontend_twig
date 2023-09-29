@@ -5,7 +5,7 @@
  * Created Date: Thursday, September 28th 2023, 14:36:16
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Thursday, September 28th 2023 20:58:30
+ * Last Modified: Friday, September 29th 2023 11:54:05
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2023 justDev
@@ -14,6 +14,12 @@
 const config = {
 	rootDir: 'src',
 	buildDir: 'dist',
+	assetsDir: 'src/public/assets',
+	fonts: {
+		dev: 'src/resources/fonts',
+		fix: '/assets/build/',
+		prod: './'
+	},
 	purgecss: {
 		enable: false,
 		safeList: []

@@ -5,20 +5,20 @@
  * Created Date: Wednesday, June 28th 2023, 2:51:40
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Thursday, September 28th 2023 18:16:41
+ * Last Modified: Friday, September 29th 2023 12:04:37
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2023 justDev
  */
 
 // Functions & Variables
-@import 'node_modules/bootstrap/scss/functions';
+@import '~bootstrap/scss/functions';
 @import 'base/functions';
 
 @import 'base/fonts';
 
 @import '_variables/variablesGlobal';
-@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import '~bootstrap/scss/bootstrap.scss';
 
 @import 'base/mixins/colorScema';
 @import 'base/mixins/alignment';
@@ -27,7 +27,7 @@
 @import 'base/typograph';
 
 // Mixins
-@import 'node_modules/bootstrap/scss/maps';
+@import '~bootstrap/scss/maps';
 
 // Vendor
 // @import 'aos/dist/aos';
