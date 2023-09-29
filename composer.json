@@ -29,7 +29,8 @@
 		],
 		"install": [
 			"bash install.sh",
-			"git init"
+			"git init",
+			"npm i"
 		]
 	}
 }
