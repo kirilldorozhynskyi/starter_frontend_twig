@@ -11,6 +11,12 @@ It also includes some great performance enhancement tools : Purge & Critical CSS
 
 ## Installation
 
+You can install with composer 
+```sh
+$ composer create-project justdev/starter_frontend_twig "name"
+```
+
+Or standart from project folder
 ```sh
 $ yarn install
 ```
