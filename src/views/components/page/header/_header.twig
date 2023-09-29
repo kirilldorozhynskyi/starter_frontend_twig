@@ -1,11 +1,11 @@
 {#
- # File: /src/components/page/header/_header.twig
+ # File: /src/views/components/page/header/_header.twig
  # Project: starter_frontend_twig
  # Version: 2.0.0
  # Created Date: Thursday, September 28th 2023, 14:28:46
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Thursday, September 28th 2023 21:41:28
+ # Last Modified: Friday, September 29th 2023 13:27:02
  # Modified By: Kirill Dorozhynskyi
  # -----
  # Copyright (c) 2023 justDev
@@ -19,11 +19,11 @@
 					<div class="col-auto">
 						{# Site logo #}
 						<a class="header-logo" href="/" aria-label="home" title="{{ site.title }}">
-							{% include '../../../public/assets/images/brand/logo.svg' %}
+							{{ source(rootDir ~ '/public/assets/images/brand/logo.svg')|raw }}
 						</a>
 					</div>
 
-					<div class="col-auto d-none d-lg-flex">
+					<div class="col-auto d-none d-lg-flex align-items-center gap-2">
 						{% include 'main_navigation.twig' %}
 					</div>
 

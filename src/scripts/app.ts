@@ -5,7 +5,7 @@
  * Created Date: Sunday, September 24th 2023, 12:07:59
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Thursday, September 28th 2023 21:08:12
+ * Last Modified: Friday, September 29th 2023 12:20:49
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2023 justDev
@@ -15,12 +15,9 @@
 // @ts-nocheck
 import '../styles/main.scss'
 import AOS from 'aos'
-
 import 'virtual:svg-icons-register'
 
-import { merge } from 'lodash'
 import LazyLoad from 'vanilla-lazyload'
-import type { App } from 'vue'
 import { createApp, defineAsyncComponent, ref } from 'vue'
 import type { Component } from '@vue/runtime-core'
 import VueScrollTo from 'vue-scrollto'

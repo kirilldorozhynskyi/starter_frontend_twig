@@ -5,6 +5,14 @@
 	"description": "justDev Twig Starter",
 	"background_color": "#fff",
 	"theme_color": "#fff",
-	"template": "templates/page.twig",
-	"scrollToTop": true
+	"template": "views/templates/page.twig",
+	"body_class": "page",
+	"scrollToTop": true,
+	"layouts": {
+		"default": "../layouts/main.twig"
+	},
+	"paths": {
+		"components": "../components",
+		"btn_ex": "../../utils/_button.twig"
+	}
 }

@@ -1,13 +1,13 @@
 {
 	"compilerOptions": {
 		"target": "esnext",
-		"lib": ["es2016"],
+		"lib": ["es2018", "DOM"],
 		"outDir": "bin",
 		"module": "esnext",
 		"removeComments": true,
 		"moduleResolution": "node",
 		"strictNullChecks": true,
-		"typeRoots": ["node_modules/@types/"],
+		"typeRoots": ["./node_modules/@types/", "./types", "./node_modules"],
 		"types": ["vite/client"]
 	},
 	"formatterOptions": {

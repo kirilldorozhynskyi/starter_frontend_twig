@@ -1,11 +1,11 @@
 {#
- # File: /src/layouts/main.twig
+ # File: /src/views/layouts/main.twig
  # Project: starter_frontend_twig
  # Version: 2.0.0
  # Created Date: Wednesday, June 28th 2023, 2:51:40
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Thursday, September 28th 2023 21:44:59
+ # Last Modified: Friday, September 29th 2023 12:42:18
  # Modified By: Kirill Dorozhynskyi
  # -----
  # Copyright (c) 2023 justDev
@@ -32,16 +32,18 @@
 		<meta name="twitter:image:src" content="/assets/system/twitter-og-image.jpg" />
 		<meta name="twitter:card" content="summary_large_image" />
 	</head>
-	<body>
+	<body class="{{ body_class }}">
 		<div id="page">
 			{# Header #}
 			{% include '../components/page/header/_header.twig' %}
+
 			{# Content #}
 			<main class="wrapper-content">
 				{% block page %}
 
 				{% endblock %}
 			</main>
+
 			{# Footer #}
 			{% include '../components/page/footer/_footer.twig' %}
 

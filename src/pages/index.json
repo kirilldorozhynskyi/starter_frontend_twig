@@ -1,5 +1,6 @@
 {
-	"template": "templates/homepage.twig",
+	"template": "views/templates/homepage.twig",
+	"body_class": "home-page",
 	"flexible": [
 		{
 			"name": "hero",
@@ -14,6 +15,14 @@
 					"ext": "png",
 					"webp": true,
 					"alt": "Hero logo"
+				}
+			},
+			"button": {
+				"class": "btn-primary",
+				"btn": {
+					"title": "Home",
+					"url": "/",
+					"target": ""
 				}
 			}
 		}

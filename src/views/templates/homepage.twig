@@ -1,21 +1,22 @@
 {#
- # File: /src/templates/homepage.twig
+ # File: /src/views/templates/homepage.twig
  # Project: starter_frontend_twig
  # Version: 2.0.0
  # Created Date: Thursday, September 28th 2023, 14:11:08
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Thursday, September 28th 2023 22:24:58
+ # Last Modified: Friday, September 29th 2023 13:07:49
  # Modified By: Kirill Dorozhynskyi
  # -----
  # Copyright (c) 2023 justDev
  #}
-{% extends '../layouts/main.twig' %}
+
+{% extends layouts.default %}
 
 {% block page %}
 	{% if flexible %}
 		{% for item in flexible %}
-			{% include '../components/flexible/' ~ item.name ~ '/_' ~ item.name ~ '.twig' with {
+			{% include paths.components ~ '/flexible/' ~ item.name ~ '/_' ~ item.name ~ '.twig' with {
 				ce: item
 			} %}
 		{% endfor %}

@@ -6,12 +6,10 @@
 	],
 	"settings": {
 		"psi-header.variables": [
-			["projectname", "starter_frontend_twig"],
+			["projectname", "int_starter_frontend_twig"],
 			["projectversion", "1.0.0"],
 			["authoremail", "kyrylo.dorozhynskyi@justdev.org"]
 		],
-		"npm.exclude": "**/plugins/**",
-		"files.exclude": {},
-		"sassVariablesHelper.route": "/src/style/theme/_theme_variables.scss"
+		"files.exclude": {}
 	}
 }

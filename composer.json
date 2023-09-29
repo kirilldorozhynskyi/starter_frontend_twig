@@ -1,0 +1,35 @@
+{
+	"name": "justdev/starter_frontend_twig",
+	"type": "project",
+	"license": "MIT",
+	"description": "Vite front-end twig boilerplate",
+	"homepage": "https://github.com/kirilldorozhynskyi/starter_frontend_twig",
+	"authors": [
+		{
+			"name": "Kirill Dorozhynskyi",
+			"email": "kyrylo.dorozhynskyi@justdev.org",
+			"homepage": "https://github.com/kirilldorozhynskyi"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/kirilldorozhynskyi/starter_frontend_twig/issues"
+	},
+	"require": {
+		"php": ">=7.3",
+		"composer/installers": "^1.11"
+	},
+	"autoload": {
+		"psr-0": {
+			"Roots\\Installer": "scripts"
+		}
+	},
+	"scripts": {
+		"post-create-project-cmd": [
+			"@install"
+		],
+		"install": [
+			"bash install.sh",
+			"git init"
+		]
+	}
+}
