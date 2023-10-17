@@ -1,0 +1,63 @@
+{#
+ # File: /src/pages/contact.twig
+ # Project: starter_frontend_twig
+ # Version: 2.0.3
+ # Created Date: Tuesday, October 3rd 2023, 17:29:11
+ # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ # -----
+ # Last Modified: Tuesday, October 17th 2023 19:17:22
+ # Modified By: Kirill Dorozhynskyi
+ # -----
+ # Copyright (c) 2023 justDev
+ #}
+
+{% extends 'views/layouts/main.twig' %}
+
+{% block page %}
+	{% set ce = {
+		form: {
+			fields: [
+				{
+					placeholder: 'Vaše meno',
+					type: 'text'
+				},
+				{
+					placeholder: 'Váš email',
+					type: 'email'
+				},
+				{
+					placeholder: 'Vaša správa',
+					type: 'textarea'
+				}
+			],
+			gdpr: 'Cookies',
+			submit: 'Odoslať'
+		}
+	} %}
+
+	<section>
+		<div class="container h-100">
+			<div class="row align-items-center h-100">
+				<div class="col-md-6">
+					<form action="">
+						<div class="contact__fields-wrapper">
+							{% for index, item in ce.form.fields %}
+								{% include 'views/components/utils/forms/_input.twig' with {
+									item: item,
+									index: index
+								} only %}
+							{% endfor %}
+						</div>
+						<div class="d-flex flex-wrap justify-content-between">
+							{% include 'views/components/utils/forms/_checkbox.twig' with {
+								id: 'gdpr',
+								label: ce.form.gdpr
+							} %}
+							<button type="submit" class="btn btn-primary">{{ ce.form.submit }}</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

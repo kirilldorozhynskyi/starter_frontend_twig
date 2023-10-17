@@ -1,0 +1,68 @@
+{#
+ # File: /src/views/components/utils/forms/_input.twig
+ # Project: starter_frontend_twig
+ # Version: 2.0.3
+ # Created Date: Tuesday, October 3rd 2023, 17:33:38
+ # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ # -----
+ # Last Modified: Tuesday, October 17th 2023 19:17:09
+ # Modified By: Kirill Dorozhynskyi
+ # -----
+ # Copyright (c) 2023 justDev
+ #}
+
+<div class="{{ item.class ? ' ' ~ item.class : '' }}">
+	<div class="form-group{{ item.error ? ' error' }}">
+		{% if item.label and item.type != 'checkbox' %}
+			<label class="form-label" for="{{ item.type ~ index }}">{{ item.label }}</label>
+		{% endif %}
+		{% if item.text %}
+			{{ item.text }}
+		{% endif %}
+
+		{% if item.type %}
+			{% if item.type == 'textarea' %}
+				<textarea type="{{ item.type }}"
+					class="form-control"
+					name=""
+					id="{{ item.type ~ index }}"
+					aria-describedby="emailHelpId"
+					placeholder="{{ item.placeholder }}"></textarea>
+			{% elseif item.type == 'checkbox' %}
+				{% include '_checkbox.twig' with {
+					label: item.label,
+					id: loop.index
+				} %}
+			{% elseif item.type == 'select' %}
+				<select class="form-select" aria-label="{{ item.placeholder }}">
+					{% if item.placeholder %}
+						<option data-placeholder="true">
+							{{ item.placeholder }}
+						</option>
+					{% endif %}
+					{% for option in item.options %}
+						<option value="{{ option.value }}">
+							{{ option.title }}
+						</option>
+					{% endfor %}
+				</select>
+			{% else %}
+				<input type="{{ item.type }}"
+					class="form-control"
+					name=""
+					value="{{ item.value }}"
+					id="{{ item.type ~ index }}"
+					aria-describedby="emailHelpId"
+					placeholder="{{ item.placeholder }}" />
+			{% endif %}
+		{% endif %}
+		{% if item.help %}
+			<small id="{{ item.type ~ 'Help' ~ index }}" class="form-text text-muted">{{ item.help }}</small>
+		{% endif %}
+		{% if item.error %}
+			<div class="error text-danger">
+				{{ item.error }}
+			</div>
+		{% endif %}
+	</div>
+</div>
