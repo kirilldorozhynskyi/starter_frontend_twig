@@ -1,11 +1,11 @@
 /*
  * File: /scripts/twig/image.js
  * Project: starter_frontend_twig
- * Version: 2.0.0
+ * Version: 2.0.3
  * Created Date: Thursday, September 28th 2023, 17:20:01
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Thursday, September 28th 2023 22:30:28
+ * Last Modified: Tuesday, October 17th 2023 19:17:02
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2023 justDev
@@ -30,7 +30,9 @@ const twigFunctionsImage = (img) => {
 		lazy
 		class="${image.class ? image.class : ''}"
 		src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mM8IQkAAa8A48opxD0AAAAASUVORK5CYII="
-		data-srcset="${path}${image.src}.${image.ext} 1x, ${path}${image.src_2x ?? image.src}.${image.ext} 2x" />
+		data-srcset="${path}${image.src}.${image.ext} 1x, ${path}${image.src_2x ?? image.src}.${image.ext} 2x" width="${image.width ?? ''}" height="${
+		image.height ?? ''
+	}" />
 	</picture>`
 }
 
