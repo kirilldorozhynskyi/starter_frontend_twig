@@ -1,11 +1,11 @@
 /*
  * File: /scripts/twig/image.js
  * Project: starter_frontend_twig
- * Version: 2.0.2
+ * Version: 2.0.3
  * Created Date: Thursday, September 28th 2023, 17:20:01
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Wednesday, October 4th 2023 18:32:03
+ * Last Modified: Tuesday, October 17th 2023 19:17:02
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2023 justDev
