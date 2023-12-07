@@ -1,11 +1,11 @@
 /*
  * File: /src/scripts/app.ts
  * Project: starter_frontend_twig
- * Version: 2.0.0
+ * Version: 2.0.4
  * Created Date: Sunday, September 24th 2023, 12:07:59
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Friday, September 29th 2023 12:20:49
+ * Last Modified: Thursday, December 7th 2023 11:08:01
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2023 justDev
@@ -28,7 +28,6 @@ const PREVENT_UNLOAD_CLASSES = [
 	'.ajax',
 	'.download',
 	'#scroll-to-top',
-	// '[data-photoswipe]',
 	'[download]',
 	'[href^=\\#]',
 	'[href*=ajax]',
