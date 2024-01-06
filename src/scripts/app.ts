@@ -5,10 +5,10 @@
  * Created Date: Sunday, September 24th 2023, 12:07:59
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Thursday, December 7th 2023 11:08:01
+ * Last Modified: Saturday, January 6th 2024 15:25:20
  * Modified By: Kirill Dorozhynskyi
  * -----
- * Copyright (c) 2023 justDev
+ * Copyright (c) 2024 justDev
  */
 
 /* eslint-disable */
@@ -23,6 +23,8 @@ import type { Component } from '@vue/runtime-core'
 import VueScrollTo from 'vue-scrollto'
 
 import PageHeader from './components/PageHeader.vue'
+
+const SimpleGallery = defineAsyncComponent(() => import('./components/SimpleGallery.vue'))
 
 const PREVENT_UNLOAD_CLASSES = [
 	'.ajax',
@@ -44,6 +46,7 @@ export const rootComponent: Component = {
 	/* == GLOBAL COMPONENTS == */
 	components: {
 		PageHeader,
+		SimpleGallery,
 		// CustomScript,
 	},
 

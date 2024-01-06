@@ -1,14 +1,14 @@
 /*
  * File: /scripts/twig/image.js
  * Project: starter_frontend_twig
- * Version: 2.0.3
+ * Version: 2.1.0
  * Created Date: Thursday, September 28th 2023, 17:20:01
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Tuesday, October 17th 2023 19:17:02
+ * Last Modified: Saturday, January 6th 2024 15:49:34
  * Modified By: Kirill Dorozhynskyi
  * -----
- * Copyright (c) 2023 justDev
+ * Copyright (c) 2024 justDev
  */
 
 const twigFunctionsImage = (img) => {
@@ -20,7 +20,10 @@ const twigFunctionsImage = (img) => {
 	// TODO: breakpoints
 	// const breakpoints = img.breakpoints
 
-	const webpImage = image.webp ? `<source data-srcset="${path}${image.src}.webp 1x,  ${path}${image.src_2x ?? image.src}.webp 2x" />` : ''
+	const webpImage =
+		image.webp && process.env.NODE_ENV != 'development'
+			? `<source data-srcset="${path}${image.src}.webp 1x,  ${path}${image.src_2x ?? image.src}.webp 2x" />`
+			: ''
 	const defaultImage = image.webp ? `<source data-srcset="${path}${image.src}.${image.ext} 1x, ${path}${image.src_2x ?? image.src}.${image.ext} 2x" />` : ''
 
 	return `<picture class="${pictureClass}">

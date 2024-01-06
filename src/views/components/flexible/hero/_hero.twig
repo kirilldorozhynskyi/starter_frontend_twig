@@ -1,14 +1,14 @@
 {#
  # File: /src/views/components/flexible/hero/_hero.twig
  # Project: starter_frontend_twig
- # Version: 2.0.0
- # Created Date: Thursday, September 28th 2023, 22:11:10
+ # Version: 2.1.0
+ # Created Date: Friday, September 29th 2023, 14:27:10
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Friday, September 29th 2023 13:31:04
+ # Last Modified: Saturday, January 6th 2024 15:52:28
  # Modified By: Kirill Dorozhynskyi
  # -----
- # Copyright (c) 2023 justDev
+ # Copyright (c) 2024 justDev
  #}
 
 <section class="hero">
@@ -35,7 +35,16 @@
 
 			{% if ce.image %}
 				<div class="col-md-6">
-					{{ image(ce.image) }}
+					<div is="vue:simple-gallery" id="store-header-carousel">
+						<template v-slot:default>
+							<a class=""
+								data-pswp-width="{{ ce.image.image.width }}"
+								data-pswp-height="{{ ce.image.image.height }}"
+								href="/assets/images/{{ ce.image.image.src ~ '.' ~ ce.image.image.ext }}">
+								{{ image(ce.image) }}
+							</a>
+						</template>
+					</div>
 				</div>
 			{% endif %}
 		</div>
