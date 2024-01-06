@@ -1,0 +1,25 @@
+{#
+ # File: /src/pages/navigation.twig
+ # Project: starter_frontend_twig
+ # Version: 2.1.0
+ # Created Date: Friday, January 5th 2024, 18:03:36
+ # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ # -----
+ # Last Modified: Saturday, January 6th 2024 15:52:18
+ # Modified By: Kirill Dorozhynskyi
+ # -----
+ # Copyright (c) 2024 justDev
+ #}
+
+{% extends 'views/layouts/main.twig' %}
+
+{% block page %}
+	{{ env }}
+	<div class="container">
+		<nav class="nav flex-column">
+			{% for item in navigation %}
+				<a class="nav-link" href="{{ item }}" target="_blank">{{ item }}</a>
+			{% endfor %}
+		</nav>
+	</div>
+{% endblock %}

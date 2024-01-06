@@ -14,7 +14,9 @@
 					"src_2x": "bootstrap-icons@2x",
 					"ext": "png",
 					"webp": true,
-					"alt": "Hero logo"
+					"alt": "Hero logo",
+					"width": 642,
+					"height": 390
 				}
 			},
 			"button": {

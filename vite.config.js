@@ -17,6 +17,8 @@ import purgeCSSPlugin from './scripts/purgecss.js'
 import criticalPlugin from './scripts/critical.js'
 import fixCSSPlugin from './scripts/fixCss.js'
 
+import navigation from './scripts/navigation.js'
+
 // TWIG Custom functions
 import twigFunctionsSprite from './scripts/twig/sprite.js'
 import twigFunctionsImage from './scripts/twig/image.js'
@@ -50,6 +52,8 @@ export default {
 		twig({
 			root: `${rootDir}`,
 			globals: {
+				navigation: navigation,
+				env: process.env.NODE_ENV,
 				rootDir: path.resolve(__dirname, `${rootDir}`)
 			},
 			functions: {
