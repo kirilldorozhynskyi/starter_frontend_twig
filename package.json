@@ -1,7 +1,7 @@
 {
 	"title": "Vite front-end twig boilerplate",
 	"name": "starter_frontend_twig",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"type": "module",
 	"private": true,
 	"keywords": [
@@ -29,12 +29,12 @@
 		"webp": "node scripts/webp.js"
 	},
 	"devDependencies": {
-		"@vitejs/plugin-vue": "^5.0.2",
+		"@vitejs/plugin-vue": "^5.0.3",
 		"@vituum/vite-plugin-twig": "^1.1.0",
-		"@vue/runtime-core": "^3.4.5",
+		"@vue/runtime-core": "^3.4.14",
 		"@vue/tsconfig": "^0.5.1",
-		"autoprefixer": "^10.4.16",
-		"critical": "^6.0.4",
+		"autoprefixer": "^10.4.17",
+		"critical": "^6.0.5",
 		"html-minifier-terser": "^7.2.0",
 		"imagemin": "^8.0.1",
 		"imagemin-webp": "^8.0.0",
@@ -49,7 +49,7 @@
 		"vite-plugin-sass-glob-import": "^3.0.2",
 		"vite-plugin-svg-icons": "^2.0.1",
 		"vituum": "^1.1.0",
-		"vue": "^3.4.5",
+		"vue": "^3.4.14",
 		"vue-scrollto": "^2.20.0"
 	},
 	"dependencies": {
