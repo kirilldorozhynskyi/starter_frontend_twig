@@ -53,12 +53,11 @@ export default {
 			root: `${rootDir}`,
 			globals: {
 				navigation: navigation,
-				env: process.env.NODE_ENV,
 				rootDir: path.resolve(__dirname, `${rootDir}`)
 			},
 			functions: {
-				sprite($id) {
-					return twigFunctionsSprite($id)
+				sprite($id, $secondArgument) {
+					return twigFunctionsSprite($id, $secondArgument)
 				},
 				image($image) {
 					return twigFunctionsImage($image)
