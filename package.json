@@ -1,7 +1,7 @@
 {
 	"title": "Vite front-end twig boilerplate",
 	"name": "starter_frontend_twig",
-	"version": "2.1.1",
+	"version": "2.2.0",
 	"type": "module",
 	"private": true,
 	"keywords": [
@@ -29,33 +29,33 @@
 		"webp": "node scripts/webp.js"
 	},
 	"devDependencies": {
-		"@vitejs/plugin-vue": "^5.0.3",
+		"@spiriit/vite-plugin-svg-spritemap": "^2.2.4",
+		"@vitejs/plugin-vue": "^5.0.4",
 		"@vituum/vite-plugin-twig": "^1.1.0",
-		"@vue/runtime-core": "^3.4.14",
+		"@vue/runtime-core": "^3.4.20",
 		"@vue/tsconfig": "^0.5.1",
 		"autoprefixer": "^10.4.17",
-		"critical": "^6.0.5",
+		"critical": "^7.1.0",
 		"html-minifier-terser": "^7.2.0",
 		"imagemin": "^8.0.1",
 		"imagemin-webp": "^8.0.0",
-		"postcss": "^8.4.33",
+		"postcss": "^8.4.35",
 		"purgecss": "^5.0.0",
-		"sass": "^1.69.7",
+		"sass": "^1.71.1",
 		"typescript": "^5.3.3",
-		"vanilla-lazyload": "^17.8.5",
+		"vanilla-lazyload": "^17.8.8",
 		"vite-plugin-beautify": "^1.0.0",
 		"vite-plugin-favicons-inject": "^2.2.0",
 		"vite-plugin-imagemin": "^0.6.1",
 		"vite-plugin-sass-glob-import": "^3.0.2",
-		"vite-plugin-svg-icons": "^2.0.1",
 		"vituum": "^1.1.0",
-		"vue": "^3.4.14",
+		"vue": "^3.4.20",
 		"vue-scrollto": "^2.20.0"
 	},
 	"dependencies": {
 		"aos": "^3.0.0-beta.6",
-		"bootstrap": "^5.3.2",
+		"bootstrap": "^5.3.3",
 		"photoswipe": "^5.4.3",
-		"swiper": "^11.0.5"
+		"swiper": "^11.0.7"
 	}
 }

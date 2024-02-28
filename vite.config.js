@@ -5,7 +5,8 @@ import twig from '@vituum/vite-plugin-twig'
 import sassGlobImports from 'vite-plugin-sass-glob-import'
 import beautify from 'vite-plugin-beautify'
 import viteImagemin from 'vite-plugin-imagemin'
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import VitePluginSvgSpritemap from '@spiriit/vite-plugin-svg-spritemap'
+
 import vitePluginFaviconsInject from 'vite-plugin-favicons-inject'
 
 // Config
@@ -23,7 +24,7 @@ import navigation from './scripts/navigation.js'
 import twigFunctionsSprite from './scripts/twig/sprite.js'
 import twigFunctionsImage from './scripts/twig/image.js'
 
-const { rootDir, assetsDir, imagemin, htmlBeautify, fonts } = config
+const { rootDir, assetsDir, imagemin, htmlBeautify, fonts, SvgSpritemap } = config
 
 import main from './src/data/main.json'
 
@@ -65,12 +66,7 @@ export default {
 			}
 		}),
 		viteImagemin(imagemin),
-		createSvgIconsPlugin({
-			iconDirs: [path.resolve(process.cwd(), `${assetsDir}/icons`)],
-			symbolId: 'icon-[dir]-[name]',
-			customDomId: '__svg__icons__dom__'
-		}),
-
+		VitePluginSvgSpritemap(path.resolve(process.cwd(), `${assetsDir}/icons/*.svg`), SvgSpritemap),
 		fixCSSPlugin(),
 		purgeCSSPlugin(),
 		criticalPlugin(),
