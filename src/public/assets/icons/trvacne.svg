@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>trvacne</title>
+    <g id="trvacne" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-10" transform="translate(2, 2)" fill="#C9CFCB" fill-rule="nonzero">
+            <polygon id="Path" points="22.02 18.91998 24.02 18.91998 24.02 42.93998 20.02 42.93998 20.018 22.91998 0 22.91998 0 18.91998"></polygon>
+            <polygon id="Path" points="40.94 0 42.94 2.22044605e-16 42.94 42.93998 38.94 42.93998 38.94 4 0 4 0 0"></polygon>
+            <polygon id="Path" points="33.42 9.51954 33.42 42.93958 29.42 42.93958 29.42 13.51954 0 13.51954 0 9.51954"></polygon>
+        </g>
+    </g>
+</svg>

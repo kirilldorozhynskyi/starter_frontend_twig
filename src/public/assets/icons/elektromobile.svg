@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>elektromobile</title>
+    <g id="elektromobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M40.760782,17.05992 L37.720782,3.91992 L10.880782,3.91992 L7.841182,17.05992 L3.621182,18.49992 L3.621182,45.48 L7.621182,45.48 L7.621182,39.54 L40.980782,39.54 L40.980782,45.48 L44.980782,45.48 L44.980782,18.49992 L40.760782,17.05992 Z M7.621182,21.36 L11.240782,20.11992 L14.060782,7.91992 L34.540782,7.91992 L37.360782,20.11992 L40.980782,21.36 L40.980782,35.54 L7.621182,35.54 L7.621182,21.36 Z" id="Shape" fill="#3C433E" fill-rule="nonzero"></path>
+        <polygon id="Path" fill="#3C433E" fill-rule="nonzero" points="28.280782 14.37994 24.780782 12.43994 18.660782 23.5 23.240782 23.5 20.300782 29.12 23.840782 30.98 29.840782 19.49994 25.460782 19.49994"></polygon>
+    </g>
+</svg>

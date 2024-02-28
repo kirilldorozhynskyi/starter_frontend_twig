@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>mestsky</title>
+    <g id="mestsky" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-9" transform="translate(2, 2)" fill="#C9CFCB" fill-rule="nonzero">
+            <polygon id="Path" points="32.8948302 12.9970681 34.0132251 13.8504448 43.2132251 20.8703848 44 21.4707231 44 43.46038 2 43.46038 2 39.46038 40 39.45844 40 23.44844 32.706 17.88244 24.7663421 23.0196241 22.5936579 19.6611359 31.7136579 13.7611959"></polygon>
+            <path d="M25.68,0 L25.68,43.45998 L0,43.45998 L0,0 L2,0 L25.68,0 Z M21.68,4 L4,4 L4,39.458 L21.68,39.458 L21.68,4 Z" id="Path"></path>
+        </g>
+    </g>
+</svg>

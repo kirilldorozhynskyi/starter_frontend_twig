@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>nbs</title>
+    <g id="nbs" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(16, 6.5455)" fill="#60635E" fill-rule="nonzero">
+            <polygon id="Path" points="12.1258182 17.0736 12.1258182 16.3810909 12.1258182 1.63770182 12.1258182 1.45418909 2.744 1.45418909 2.744 29.3482182 10.1207273 29.3482182 10.1207273 34.9090182 12.1258182 34.9090182"></polygon>
+            <polygon id="Path" points="2.74472727 34.9091636 9.38181818 34.9091636 9.38181818 30.0408727 0 30.0408727 0 34.9091636"></polygon>
+            <polygon id="Path" points="16 17.0735273 12.8661818 17.0735273 12.8661818 34.9089455 16 34.9089455"></polygon>
+            <polygon id="Path" points="16 2.33025455 12.8661818 2.33025455 12.8661818 16.3811636 16 16.3811636"></polygon>
+            <polygon id="Path" points="13.8029091 0.761752727 13.8029091 0 3.05963636 0 3.05963636 0.761752727 12.8669091 0.761752727"></polygon>
+        </g>
+    </g>
+</svg>

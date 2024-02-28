@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>trip</title>
+    <g id="trip" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-4" transform="translate(1, 2)" fill="#3C433E" fill-rule="nonzero">
+            <polygon id="Path" points="2.31917031 44 42.6808297 44 42.6808297 39.9835746 2.31917031 39.9835746"></polygon>
+            <path d="M45,8.87638036 L42.3805474,12.1382712 L24.0765348,34.931465 L22.5,36.8946556 L20.9234652,34.931465 L2.61945262,12.1382712 L0,8.87638036 L45,8.87638036 Z M36.6064,12.8928057 L8.39158196,12.8928057 L22.4979819,30.458642 L36.6064,12.8928057 Z" id="Path"></path>
+            <path d="M33.8416263,0 L33.8416263,12.8927254 L10.9969271,12.8927254 L10.9969271,0 L33.8416263,0 Z M29.8054603,4.01642535 L15.033093,4.01642535 L15.033093,8.87630003 L29.8054603,8.87630003 L29.8054603,4.01642535 Z" id="Path"></path>
+        </g>
+    </g>
+</svg>
