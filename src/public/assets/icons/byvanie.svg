@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>byvanie</title>
+    <g id="byvanie" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-12" transform="translate(4, 2)" fill="#C9CFCB" fill-rule="nonzero">
+            <polygon id="Path" points="3.1 43.824 37.1 43.824 37.1 39.824 3.1 39.824"></polygon>
+            <polygon id="Path" points="0 12.342 40 12.342 40 8.342 0 8.342"></polygon>
+            <polygon id="Path" points="3.02 4 36.96 4 36.96 0 3.02 0"></polygon>
+            <polygon id="Path" points="0 32.302 40 32.302 40 28.302 0 28.302"></polygon>
+            <polygon id="Path" points="3.02 23.982 36.96 23.982 36.96 19.982 3.02 19.982"></polygon>
+        </g>
+    </g>
+</svg>

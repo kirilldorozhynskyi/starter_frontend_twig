@@ -1,11 +1,11 @@
 /*
  * File: /src/scripts/app.ts
  * Project: starter_frontend_twig
- * Version: 2.0.4
+ * Version: 2.2.0
  * Created Date: Sunday, September 24th 2023, 12:07:59
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Saturday, January 6th 2024 15:25:20
+ * Last Modified: Wednesday, February 28th 2024 21:06:32
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2024 justDev
@@ -13,14 +13,17 @@
 
 /* eslint-disable */
 // @ts-nocheck
-import '../styles/main.scss'
-import AOS from 'aos'
-import 'virtual:svg-icons-register'
+import '../styles/app.scss'
+
+// NOTE: Include if needed
+// import AOS from 'aos'
 
 import LazyLoad from 'vanilla-lazyload'
 import { createApp, defineAsyncComponent, ref } from 'vue'
 import type { Component } from '@vue/runtime-core'
-import VueScrollTo from 'vue-scrollto'
+
+// NOTE: Include if needed
+// import VueScrollTo from 'vue-scrollto'
 
 import PageHeader from './components/PageHeader.vue'
 
@@ -40,7 +43,7 @@ const PREVENT_UNLOAD_CLASSES = [
 	'[target^=_blank]',
 ]
 const SCROLL_OFFSET = 64
-const DESKTOP_BREAKPOINT = 768
+// const DESKTOP_BREAKPOINT = 768
 
 export const rootComponent: Component = {
 	/* == GLOBAL COMPONENTS == */
@@ -55,7 +58,7 @@ export const rootComponent: Component = {
 
 	/* ======= DIRECTIVES ======= */
 	directives: {
-		'scroll-to': VueScrollTo,
+		// 'scroll-to': VueScrollTo,  //NOTE: Include if needed
 	},
 
 	computed: {
@@ -102,10 +105,10 @@ export const rootComponent: Component = {
 		this.createdHook()
 	},
 	mounted() {
-		AOS.init({
-			duration: 900,
-			once: true,
-		})
+		// AOS.init({
+		// 	duration: 900,
+		// 	once: true,
+		// })
 
 		this.lazyLoad.update()
 		document.body.classList.add('loaded')
