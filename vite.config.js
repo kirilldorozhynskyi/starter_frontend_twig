@@ -6,6 +6,7 @@ import sassGlobImports from 'vite-plugin-sass-glob-import'
 import beautify from 'vite-plugin-beautify'
 import viteImagemin from 'vite-plugin-imagemin'
 import VitePluginSvgSpritemap from '@spiriit/vite-plugin-svg-spritemap'
+import legacy from '@vitejs/plugin-legacy'
 
 import vitePluginFaviconsInject from 'vite-plugin-favicons-inject'
 
@@ -29,6 +30,7 @@ const { rootDir, assetsDir, imagemin, htmlBeautify, fonts, SvgSpritemap } = conf
 import main from './src/data/main.json'
 
 export default {
+	base: './',
 	publicDir: 'src/public',
 	build: {
 		rollupOptions: {
