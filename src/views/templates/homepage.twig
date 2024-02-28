@@ -1,20 +1,19 @@
 {#
  # File: /src/views/templates/homepage.twig
  # Project: starter_frontend_twig
- # Version: 2.0.3
+ # Version: 2.2.0
  # Created Date: Thursday, September 28th 2023, 14:11:08
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Tuesday, October 17th 2023 19:17:15
+ # Last Modified: Tuesday, February 13th 2024 20:50:06
  # Modified By: Kirill Dorozhynskyi
  # -----
- # Copyright (c) 2023 justDev
+ # Copyright (c) 2024 justDev
  #}
 
 {% extends layouts.default %}
 
 {% block page %}
-	<div class="d-flex"></div>
 	{% if flexible %}
 		{% for item in flexible %}
 			{% include paths.components ~ '/flexible/' ~ item.name ~ '/_' ~ item.name ~ '.twig' with {

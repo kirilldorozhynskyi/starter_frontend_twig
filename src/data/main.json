@@ -14,5 +14,25 @@
 	"paths": {
 		"components": "../components",
 		"btn_ex": "../../utils/_button.twig"
-	}
+	},
+	"social": [
+		{
+			"title": "Instagram",
+			"icon": "instagram",
+			"url": "#",
+			"header": true
+		},
+		{
+			"title": "Facebook",
+			"icon": "facebook",
+			"url": "#",
+			"header": true
+		},
+		{
+			"title": "YouTube",
+			"icon": "youtube",
+			"url": "#",
+			"header": false
+		}
+	]
 }

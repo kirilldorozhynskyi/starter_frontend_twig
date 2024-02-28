@@ -1,11 +1,11 @@
 /*
  * File: /src/scripts/app.ts
  * Project: starter_frontend_twig
- * Version: 2.0.4
+ * Version: 2.2.0
  * Created Date: Sunday, September 24th 2023, 12:07:59
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Saturday, January 6th 2024 15:25:20
+ * Last Modified: Wednesday, February 28th 2024 20:00:51
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2024 justDev
@@ -13,10 +13,9 @@
 
 /* eslint-disable */
 // @ts-nocheck
-import '../styles/main.scss'
+import '../styles/app.scss'
 import AOS from 'aos'
-import 'virtual:svg-icons-register'
-
+// import 'virtual:svg-icons-register'
 import LazyLoad from 'vanilla-lazyload'
 import { createApp, defineAsyncComponent, ref } from 'vue'
 import type { Component } from '@vue/runtime-core'
@@ -25,6 +24,7 @@ import VueScrollTo from 'vue-scrollto'
 import PageHeader from './components/PageHeader.vue'
 
 const SimpleGallery = defineAsyncComponent(() => import('./components/SimpleGallery.vue'))
+const Range = defineAsyncComponent(() => import('./components/Range.vue'))
 
 const PREVENT_UNLOAD_CLASSES = [
 	'.ajax',
@@ -47,6 +47,7 @@ export const rootComponent: Component = {
 	components: {
 		PageHeader,
 		SimpleGallery,
+		Range,
 		// CustomScript,
 	},
 
