@@ -34,6 +34,7 @@
 		"@vituum/vite-plugin-twig": "^1.1.0",
 		"@vue/runtime-core": "^3.4.21",
 		"@vue/tsconfig": "^0.5.1",
+		"@vueuse/core": "^10.9.0",
 		"autoprefixer": "^10.4.17",
 		"critical": "^7.1.0",
 		"html-minifier-terser": "^7.2.0",

@@ -1,14 +1,14 @@
 /*
  * File: /src/styles/global/_header.scss
  * Project: starter_frontend_twig
- * Version: 2.0.0
+ * Version: 2.2.0
  * Created Date: Sunday, September 24th 2023, 12:44:16
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Thursday, September 28th 2023 18:18:26
+ * Last Modified: Thursday, March 14th 2024 15:32:32
  * Modified By: Kirill Dorozhynskyi
  * -----
- * Copyright (c) 2023 justDev
+ * Copyright (c) 2024 justDev
  */
 
 //
@@ -48,6 +48,8 @@
 	}
 
 	&-toggle {
+		position: relative;
+		z-index: 10;
 		@if $mobile-nav-breakpoint {
 			@include media-breakpoint-up($mobile-nav-breakpoint) {
 				display: none;
