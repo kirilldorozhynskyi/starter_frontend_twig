@@ -1,49 +1,36 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-import { Component, CreateAppFunction } from '@vue/runtime-core';
-import type { ILazyLoadInstance } from 'vanilla-lazyload';
-import VueScrollTo from 'vue-scrollto';
+/*
+ * File: /src/scripts/types/app.d.ts
+ * Project: starter_frontend_twig
+ * Version: 2.2.0
+ * Created Date: Friday, September 29th 2023, 14:27:10
+ * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ * -----
+ * Last Modified: Friday, April 12th 2024 15:45:51
+ * Modified By: Kirill Dorozhynskyi
+ * -----
+ * Copyright (c) 2024 justDev
+ */
 
-export declare const rootComponent: Component;
+import { Component, CreateAppFunction } from '@vue/runtime-core'
+import type { ILazyLoadInstance } from 'vanilla-lazyload'
+import VueScrollTo from 'vue-scrollto'
 
-declare const createApp: CreateAppFunction<Element>;
+export declare const rootComponent: Component
 
-export default createApp;
+declare const createApp: CreateAppFunction<Element>
 
-export * from '../plugins';
-
-interface domSliderOptions {
-  element: HTMLElement | null,
-  slideSpeed?: number, // speed in milliseconds
-  easing?: string, // CSS transition timing function,
-  delay?: number, // delay in milliseconds,
-  // eslint-disable-next-line max-len
-  visibleDisplayValue?: string // the CSS display value when the element is visible; the default value is "block"
-}
+export default createApp
 
 declare global {
-  interface Window {
-    domSlider: {
-      slideDown: (_ref: domSliderOptions) => Promise<HTMLElement>,
-      slideUp: (_ref: domSliderOptions) => Promise<HTMLElement>,
-      slideToggle: (_ref: domSliderOptions) => Promise<HTMLElement>
-    };
-  }
+	interface Window {}
 
-  export type Dictionary<T> = Record<string, T>
+	export type Dictionary<T> = Record<string, T>
 }
 
 declare module '@vue/runtime-core' {
-  interface ComponentCustomProperties {
-    lazyLoad: ILazyLoadInstance;
-    scrollOffset: number;
-    $scrollTo: typeof VueScrollTo.scrollTo;
-  }
-}
-
-declare module '*.svg' {
-  import type { DefineComponent } from 'vue';
-
-  const component: DefineComponent;
-  export default component;
+	interface ComponentCustomProperties {
+		lazyLoad: ILazyLoadInstance
+		scrollOffset: number
+		$scrollTo: typeof VueScrollTo.scrollTo
+	}
 }
