@@ -29,7 +29,9 @@
 		],
 		"install": [
 			"bash install.sh",
-			"git init",
+			"git init -b master",
+			"git add .",
+			"git commit -m'[INT] Intial'",
 			"npm i"
 		]
 	}
