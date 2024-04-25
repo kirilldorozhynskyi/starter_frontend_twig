@@ -28,6 +28,9 @@ const { rootDir, assetsDir, imagemin, htmlBeautify, fonts, SvgSpritemap } = conf
 import main from './src/data/main.json'
 
 export default {
+	esbuild: {
+		drop: ['console', 'debugger']
+	},
 	base: './',
 	publicDir: 'src/public',
 	build: {
