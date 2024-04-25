@@ -1,7 +1,7 @@
 {
 	"title": "Vite front-end twig boilerplate",
 	"name": "starter_frontend_twig",
-	"version": "2.2.3",
+	"version": "2.2.4",
 	"type": "module",
 	"private": true,
 	"keywords": [
@@ -32,11 +32,11 @@
 		"@spiriit/vite-plugin-svg-spritemap": "^2.2.4",
 		"@vitejs/plugin-vue": "^5.0.4",
 		"@vituum/vite-plugin-twig": "^1.1.0",
-		"@vue/runtime-core": "^3.4.22",
+		"@vue/runtime-core": "^3.4.25",
 		"@vue/tsconfig": "^0.5.1",
 		"@vueuse/core": "^10.9.0",
 		"autoprefixer": "^10.4.19",
-		"critical": "^7.1.1",
+		"critical": "^7.1.2",
 		"html-minifier-terser": "^7.2.0",
 		"imagemin": "^8.0.1",
 		"imagemin-webp": "^8.0.0",
@@ -50,7 +50,7 @@
 		"vite-plugin-imagemin": "^0.6.1",
 		"vite-plugin-sass-glob-import": "^3.0.2",
 		"vituum": "^1.1.0",
-		"vue": "^3.4.22",
+		"vue": "^3.4.25",
 		"vue-scrollto": "^2.20.0"
 	},
 	"dependencies": {
