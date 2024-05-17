@@ -1,14 +1,14 @@
 /*
- * File: /src/components/page/header/_header.scss
+ * File: /src/views/components/page/header/_header.scss
  * Project: starter_frontend_twig
- * Version: 2.0.0
+ * Version: 2.2.5
  * Created Date: Thursday, September 28th 2023, 14:31:48
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Thursday, September 28th 2023 21:14:48
+ * Last Modified: Thursday, May 16th 2024 18:08:14
  * Modified By: Kirill Dorozhynskyi
  * -----
- * Copyright (c) 2023 justDev
+ * Copyright (c) 2024 justDev
  */
 
 .header {
@@ -16,6 +16,9 @@
 	top: 0;
 	left: 0;
 	right: 0;
+	&-logo {
+		display: flex;
+	}
 }
 
 .mobile-nav-toggle {

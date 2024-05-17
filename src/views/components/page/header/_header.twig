@@ -1,11 +1,11 @@
 {#
  # File: /src/views/components/page/header/_header.twig
  # Project: starter_frontend_twig
- # Version: 2.2.0
+ # Version: 2.2.5
  # Created Date: Thursday, September 28th 2023, 14:28:46
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Friday, April 12th 2024 15:44:17
+ # Last Modified: Thursday, May 16th 2024 18:08:17
  # Modified By: Kirill Dorozhynskyi
  # -----
  # Copyright (c) 2024 justDev
@@ -19,7 +19,13 @@
 					<div class="col-auto">
 						{# Site logo #}
 						<a class="header-logo" href="/" aria-label="home" title="{{ site.title }}">
-							{{ source(rootDir ~ '/public/assets/images/brand/logo.svg')|raw }}
+							<a class="header-logo" href="/" aria-label="home" title="{{ site.title }}">
+								{% if logoRaw %}
+									{{ source(rootDir ~ '/public/assets/images/brand/logo.svg')|raw }}
+								{% else %}
+									<object lazy type="image/svg+xml" data-src="/assets/images/brand/logo.svg"></object>
+								{% endif %}
+							</a>
 						</a>
 					</div>
 
