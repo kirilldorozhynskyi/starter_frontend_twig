@@ -8,12 +8,14 @@
 	"template": "views/templates/page.twig",
 	"body_class": "page",
 	"scrollToTop": true,
+	"logoRaw": true,
 	"layouts": {
 		"default": "../layouts/main.twig"
 	},
 	"paths": {
 		"components": "../components",
-		"btn_ex": "../../utils/_button.twig"
+		"btn_ex": "../../utils/_button.twig",
+		"forms": "../../utils/forms/"
 	},
 	"social": [
 		{
@@ -34,5 +36,9 @@
 			"url": "#",
 			"header": false
 		}
-	]
+	],
+	"footer": {
+		"copyright": "justDev Twig Starter. Developed by <a href=https://justdev.org target=_blank>justDev</a>"
+	},
+	"header": {}
 }
