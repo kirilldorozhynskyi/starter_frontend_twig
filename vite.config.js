@@ -22,6 +22,7 @@ import navigation from './scripts/navigation.js'
 // TWIG Custom functions
 import twigFunctionsSprite from './scripts/twig/sprite.js'
 import twigFunctionsImage from './scripts/twig/image.js'
+import twigFunctionsSvg from './scripts/twig/svg.js'
 
 const { rootDir, assetsDir, imagemin, htmlBeautify, fonts, SvgSpritemap } = config
 
@@ -34,13 +35,7 @@ export default {
 	base: './',
 	publicDir: 'src/public',
 	build: {
-		rollupOptions: {
-			output: {
-				entryFileNames: `assets/build/[name].js`,
-				chunkFileNames: `assets/build/[name].js`,
-				assetFileNames: `assets/build/[name].[ext]`
-			}
-		}
+		manifest: 'assets/manifest.json'
 	},
 	resolve: {
 		alias: {
@@ -60,11 +55,14 @@ export default {
 				rootDir: path.resolve(__dirname, `${rootDir}`)
 			},
 			functions: {
-				sprite($id, $secondArgument) {
-					return twigFunctionsSprite($id, $secondArgument)
+				sprite($id, $classes) {
+					return twigFunctionsSprite($id, $classes)
 				},
 				image($image) {
 					return twigFunctionsImage($image)
+				},
+				svg($image, $classes) {
+					return twigFunctionsSvg($image, $classes)
 				}
 			}
 		}),
@@ -75,6 +73,7 @@ export default {
 		criticalPlugin(),
 		process.env.NODE_ENV == 'production'
 			? vitePluginFaviconsInject(`${assetsDir}/favicon.svg`, {
+					path: 'favicons/',
 					appName: main.title,
 					appDescription: main.description,
 					background_color: main.background_color,
