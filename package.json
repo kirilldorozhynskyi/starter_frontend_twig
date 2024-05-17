@@ -1,7 +1,7 @@
 {
 	"title": "Vite front-end twig boilerplate",
 	"name": "starter_frontend_twig",
-	"version": "2.2.6",
+	"version": "2.2.7",
 	"type": "module",
 	"private": true,
 	"keywords": [
@@ -29,7 +29,7 @@
 		"webp": "node scripts/webp.js"
 	},
 	"devDependencies": {
-		"@darkobits/vite-plugin-favicons": "^0.3.2",
+		"@spiriit/vite-plugin-svg-spritemap": "^2.2.4",
 		"@vitejs/plugin-vue": "^5.0.4",
 		"@vituum/vite-plugin-twig": "^1.1.0",
 		"@vue/runtime-core": "^3.4.27",
