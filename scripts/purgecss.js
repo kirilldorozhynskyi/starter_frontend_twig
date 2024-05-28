@@ -1,14 +1,14 @@
 /*
  * File: /scripts/purgecss.js
  * Project: starter_frontend_twig
- * Version: 2.0.0
+ * Version: 2.2.7
  * Created Date: Tuesday, July 19th 2022, 3:27:02
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Friday, September 29th 2023 12:16:59
+ * Last Modified: Friday, May 17th 2024 15:29:43
  * Modified By: Kirill Dorozhynskyi
  * -----
- * Copyright (c) 2023 justDev
+ * Copyright (c) 2024 justDev
  */
 
 import { PurgeCSS } from 'purgecss'
@@ -32,7 +32,7 @@ const purgeCSSPlugin = () => {
 			if (!cssFiles) return
 			for (const file of cssFiles) {
 				const purged = await new PurgeCSS().purge({
-					content: [{ raw: _html, extension: 'html' }],
+					content: [{ raw: _html, extension: 'html' }, '**/*.js', '**/*.vue'],
 					css: [{ raw: bundle[file].source }],
 					safelist: safeList
 				})

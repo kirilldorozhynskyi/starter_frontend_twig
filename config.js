@@ -1,17 +1,18 @@
 /*
  * File: /config.js
  * Project: starter_frontend_twig
- * Version: 2.2.0
+ * Version: 2.2.7
  * Created Date: Thursday, September 28th 2023, 14:36:16
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Wednesday, February 28th 2024 13:57:42
+ * Last Modified: Friday, May 17th 2024 15:30:09
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2024 justDev
  */
 
 const config = {
+	base: './',
 	rootDir: 'src',
 	buildDir: 'dist',
 	assetsDir: 'src/public/assets',
@@ -21,14 +22,34 @@ const config = {
 		prod: './'
 	},
 	purgecss: {
-		enable: false,
-		safeList: []
+		enable: true,
+		safeList: [
+			'container',
+			'row',
+			'spacer',
+			'aos-animate',
+			'col',
+			'[type=button]',
+			'v-application p',
+			'/^v-.*/',
+			'/^col-.*/',
+			'/^theme-.*/',
+			'/^rounded-.*/',
+			'/^data-aos-.*/',
+			'/^(red|grey)--text$/',
+			'/^text--darken-[1-4]$/',
+			'/^text--lighten-[1-4]$/',
+			'/^post-content/',
+			'/^v-input/',
+			'/^swiper-.*/',
+			'/^pswp.*/'
+		]
 	},
 	critical: {
-		enable: false
+		enable: true
 	},
 	htmlMinify: {
-		enable: false,
+		enable: true,
 		options: {
 			collapseWhitespace: true,
 			removeAttributeQuotes: false,
@@ -40,7 +61,7 @@ const config = {
 	htmlBeautify: {
 		inDir: 'dist',
 		html: {
-			enabled: true
+			enabled: false
 		},
 		js: {
 			enabled: false
