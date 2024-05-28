@@ -1,11 +1,11 @@
 /*
  * File: /src/scripts/app.ts
  * Project: starter_frontend_twig
- * Version: 2.2.0
+ * Version: 2.2.7
  * Created Date: Sunday, September 24th 2023, 12:07:59
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Wednesday, February 28th 2024 21:06:32
+ * Last Modified: Friday, May 17th 2024 14:23:19
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2024 justDev
@@ -183,4 +183,5 @@ export const rootComponent: Component = {
 }
 
 const app = createApp(rootComponent)
+app.config.compilerOptions.isCustomElement = (tag) => tag === 'nobr'
 app.mount('#page')
