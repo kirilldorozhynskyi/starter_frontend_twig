@@ -24,7 +24,7 @@ import twigFunctionsSprite from './scripts/twig/sprite.js'
 import twigFunctionsImage from './scripts/twig/image.js'
 import twigFunctionsSvg from './scripts/twig/svg.js'
 
-const { rootDir, assetsDir, imagemin, htmlBeautify, fonts, SvgSpritemap } = config
+const { base, rootDir, assetsDir, imagemin, htmlBeautify, fonts, SvgSpritemap } = config
 
 import main from './src/data/main.json'
 
@@ -32,10 +32,19 @@ export default {
 	esbuild: {
 		drop: ['console', 'debugger']
 	},
-	base: './',
+	base: base,
 	publicDir: 'src/public',
 	build: {
-		manifest: 'assets/manifest.json'
+		manifest: 'assets/manifest.json',
+		rollupOptions: {
+			output: {
+				manualChunks(id) {
+					if (id.includes('node_modules')) {
+						return id.toString().split('node_modules/')[1].split('/')[0].toString()
+					}
+				}
+			}
+		}
 	},
 	resolve: {
 		alias: {
