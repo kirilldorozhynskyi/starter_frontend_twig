@@ -1,12 +1,12 @@
 <?php
 /**
- * File: /doc/wordpress_vite.php
+ * File: /doc/wp_vite_enqueue.php
  * Project: starter_frontend_twig
- * Version: 2.2.5
+ * Version: 2.2.8
  * Created Date: Friday, May 17th 2024, 12:21:56
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Friday, May 17th 2024 12:26:17
+ * Last Modified: Tuesday, May 28th 2024 9:51:39
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2024 justDev
@@ -110,7 +110,6 @@ class Base
 		$styles_with_crossorigin = ['custom-stylesheet'];
 
 		if (in_array($handle, $styles_with_crossorigin)) {
-			// Добавить атрибут crossorigin
 			$html = str_replace("rel='stylesheet'", "rel='stylesheet' crossorigin", $html);
 		}
 
