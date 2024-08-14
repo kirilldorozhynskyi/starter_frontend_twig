@@ -1,7 +1,7 @@
 {
 	"title": "Vite front-end twig boilerplate",
 	"name": "starter_frontend_twig",
-	"version": "2.2.8",
+	"version": "2.2.9",
 	"type": "module",
 	"private": true,
 	"keywords": [
