@@ -1,11 +1,11 @@
 /*
  * File: /src/styles/page/_page.scss
  * Project: starter_frontend_twig
- * Version: 2.2.0
+ * Version: 2.2.8
  * Created Date: Sunday, September 24th 2023, 12:44:16
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Tuesday, February 13th 2024 20:14:23
+ * Last Modified: Wednesday, August 14th 2024 16:37:08
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2024 justDev
@@ -149,23 +149,6 @@ body.mobile-nav-opened {
 	@include media-breakpoint-down($mobile-breakpoint) {
 		overflow: hidden;
 	}
-}
-
-//
-// Debuggers
-//
-.xdebug-var-dump {
-	position: relative;
-	z-index: $z-index-debugger;
-	max-width: calc(100vw - 2rem);
-	max-height: calc(100vh - 2rem);
-	margin: 1rem;
-	background: white;
-	border: solid 2px red;
-}
-
-.extbase-debugger-floating {
-	z-index: $z-index-debugger;
 }
 
 //

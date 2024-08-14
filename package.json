@@ -1,7 +1,7 @@
 {
 	"title": "Vite front-end twig boilerplate",
 	"name": "starter_frontend_twig",
-	"version": "2.2.8",
+	"version": "2.2.9",
 	"type": "module",
 	"private": true,
 	"keywords": [
@@ -36,7 +36,6 @@
 		"@vue/tsconfig": "^0.5.1",
 		"@vueuse/core": "^10.9.0",
 		"autoprefixer": "^10.4.19",
-		"critical": "^7.1.2",
 		"html-minifier-terser": "^7.2.0",
 		"imagemin": "^9.0.0",
 		"imagemin-webp": "^8.0.0",
@@ -51,6 +50,7 @@
 		"vite-plugin-sass-glob-import": "^3.0.2",
 		"vituum": "^1.1.0",
 		"vue": "^3.4.27",
+		"vue-i18n": "^9.13.1",
 		"vue-scrollto": "^2.20.0"
 	},
 	"dependencies": {

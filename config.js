@@ -1,11 +1,11 @@
 /*
  * File: /config.js
  * Project: starter_frontend_twig
- * Version: 2.2.7
+ * Version: 2.2.8
  * Created Date: Thursday, September 28th 2023, 14:36:16
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Friday, May 17th 2024 15:30:09
+ * Last Modified: Wednesday, August 14th 2024 19:06:07
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2024 justDev
@@ -45,9 +45,7 @@ const config = {
 			'/^pswp.*/'
 		]
 	},
-	critical: {
-		enable: true
-	},
+
 	htmlMinify: {
 		enable: true,
 		options: {

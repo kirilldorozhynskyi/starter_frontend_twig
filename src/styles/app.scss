@@ -1,14 +1,17 @@
 /*
- * File: /src/styles/main.scss
+ * File: /src/styles/app.scss
  * Project: starter_frontend_twig
- * Version: 2.2.0
+ * Version: 2.2.8
  * Created Date: Wednesday, June 28th 2023, 2:51:40
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Wednesday, February 28th 2024 19:06:44
+ * Last Modified: Wednesday, August 14th 2024 16:38:57
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2024 justDev
+ */
+/*!
+ * Main Styles by justDev (https://justdev.org)
  */
 
 // Functions & Variables
@@ -17,9 +20,9 @@
 
 @import 'base/fonts';
 
-@import '_variables/variablesCustom';
 @import '_variables/variablesGlobal';
 @import '_variables/variablesContent';
+@import '_variables/variablesCustom';
 
 @import '~bootstrap/scss/bootstrap.scss';
 

@@ -8,7 +8,6 @@
 import { defineComponent, onMounted, inject } from 'vue'
 
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
-import 'photoswipe/style.css'
 
 export default defineComponent({
 	props: {

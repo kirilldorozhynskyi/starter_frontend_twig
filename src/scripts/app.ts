@@ -1,11 +1,11 @@
 /*
  * File: /src/scripts/app.ts
  * Project: starter_frontend_twig
- * Version: 2.2.7
+ * Version: 2.2.8
  * Created Date: Sunday, September 24th 2023, 12:07:59
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Friday, May 17th 2024 14:23:19
+ * Last Modified: Wednesday, August 14th 2024 16:27:52
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2024 justDev
@@ -21,13 +21,22 @@ import '../styles/app.scss'
 import LazyLoad from 'vanilla-lazyload'
 import { createApp, defineAsyncComponent, ref } from 'vue'
 import type { Component } from '@vue/runtime-core'
+import { createI18n } from 'vue-i18n'
 
 // NOTE: Include if needed
 // import VueScrollTo from 'vue-scrollto'
 
+// Directives
+import PhotoSwipeDirective from './directives/photoswipe'
+// import TooltipDirective from './directives/tooltip'
+// import CopyClipboard from './directives/clipboard'
+
 import PageHeader from './components/PageHeader.vue'
 
 const SimpleGallery = defineAsyncComponent(() => import('./components/SimpleGallery.vue'))
+
+import i18nConfig from './util/i18n.ts'
+const i18n = createI18n(i18nConfig)
 
 const PREVENT_UNLOAD_CLASSES = [
 	'.ajax',
@@ -58,6 +67,7 @@ export const rootComponent: Component = {
 
 	/* ======= DIRECTIVES ======= */
 	directives: {
+		photoswipe: PhotoSwipeDirective,
 		// 'scroll-to': VueScrollTo,  //NOTE: Include if needed
 	},
 
@@ -184,4 +194,5 @@ export const rootComponent: Component = {
 
 const app = createApp(rootComponent)
 app.config.compilerOptions.isCustomElement = (tag) => tag === 'nobr'
+app.use(i18n)
 app.mount('#page')
