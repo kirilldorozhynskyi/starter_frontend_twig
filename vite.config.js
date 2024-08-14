@@ -14,7 +14,7 @@ import config from './config.js'
 // Custom plugins
 import htmlMinifierPlugin from './scripts/htmlMinifier.js'
 import purgeCSSPlugin from './scripts/purgecss.js'
-import criticalPlugin from './scripts/critical.js'
+
 import fixCSSPlugin from './scripts/fixCss.js'
 
 import navigation from './scripts/navigation.js'
@@ -79,7 +79,6 @@ export default {
 		VitePluginSvgSpritemap(path.resolve(process.cwd(), `${assetsDir}/icons/*.svg`), SvgSpritemap),
 		fixCSSPlugin(),
 		purgeCSSPlugin(),
-		criticalPlugin(),
 		process.env.NODE_ENV == 'production'
 			? vitePluginFaviconsInject(`${assetsDir}/favicon.svg`, {
 					path: 'favicons/',

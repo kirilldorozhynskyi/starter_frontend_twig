@@ -9,6 +9,12 @@
 	"body_class": "page",
 	"scrollToTop": true,
 	"logoRaw": true,
+	"logo": {
+		"title": "justDev Twig Starter",
+		"width": "40",
+		"height": "32",
+		"src": "/brand/logo.svg"
+	},
 	"layouts": {
 		"default": "../layouts/main.twig"
 	},

@@ -1,11 +1,11 @@
 {#
  # File: /src/views/components/page/footer/_footer.twig
  # Project: starter_frontend_twig
- # Version: 2.2.5
+ # Version: 2.2.8
  # Created Date: Thursday, September 28th 2023, 14:29:21
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Thursday, May 16th 2024 18:08:12
+ # Last Modified: Wednesday, May 29th 2024 21:50:31
  # Modified By: Kirill Dorozhynskyi
  # -----
  # Copyright (c) 2024 justDev
@@ -15,11 +15,11 @@
 	<div class="container py-5">
 		<div class="row">
 			<div class="col-lg-2 mb-3">
-				<a class="header-logo" href="/" aria-label="home" title="{{ site.title }}">
+				<a class="header-logo" href="/" aria-label="{{ site_title }}">
 					{% if logoRaw %}
 						{{ source(rootDir ~ '/public/assets/images/brand/logo.svg')|raw }}
 					{% else %}
-						<object lazy type="image/svg+xml" data-src="/assets/images/brand/logo.svg"></object>
+						{{ svg(logo) }}
 					{% endif %}
 				</a>
 			</div>
