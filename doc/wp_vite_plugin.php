@@ -4,7 +4,7 @@
  * Plugin Name:       justDev Vite Front-End Integration
  * Plugin URI:        justdev.org
  * Description:       Plugin for connect Vite front-end.
- * Version:           1.0.0
+ * Version: 3.0.0
  * Author:            justDev
  * Author URI:        justdev.org
  * License:           GPL-2.0+
@@ -121,6 +121,16 @@ class Base
 	public function loadBodyThemeAssets()
 	{
 		wp_enqueue_script('app', get_template_directory_uri() . '/' . $this->viteManifest['src/scripts/app.ts']['file'], [], false, true);
+	}
+
+	/**
+	 * Gets the assembly version
+	 *
+	 * @return string
+	 */
+	private function getBuildVersion(): string
+	{
+		return file_exists(VITE_MANIFEST_PATH) ? (string) filemtime(VITE_MANIFEST_PATH) : (string) time();
 	}
 }
 

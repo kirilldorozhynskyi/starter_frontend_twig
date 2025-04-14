@@ -5,7 +5,7 @@
  * Created Date: Wednesday, June 28th 2023, 2:51:40
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Friday, April 11th 2025 14:36:51
+ * Last Modified: Monday, April 14th 2025 11:09:32
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2025 justDev
@@ -23,7 +23,7 @@
 @source '../views/**/**/**/**/**/*.twig';
 @source "./safelist.txt";
 
-@import './base/_typograph.scss';
+@use './base/_typograph.scss';
 
 @utility container {
 	margin-inline: auto;

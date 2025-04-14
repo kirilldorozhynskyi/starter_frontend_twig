@@ -47,7 +47,6 @@
 		"vite-plugin-beautify": "^1.0.0",
 		"vite-plugin-favicons-inject": "^2.2.0",
 		"vite-plugin-imagemin": "^0.6.1",
-		"vite-plugin-sass-glob-import": "^5.0.0",
 		"vituum": "^1.2.0",
 		"vue": "^3.5.13",
 		"vue-i18n": "^11.1.3",

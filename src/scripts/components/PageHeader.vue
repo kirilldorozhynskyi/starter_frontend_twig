@@ -1,5 +1,7 @@
 <template>
-	<slot :toggle-menu="toggleMenu" :menu-opened="menuOpened" />
+	<header>
+		<slot :toggle-menu="toggleMenu" :menu-opened="menuOpened" />
+	</header>
 </template>
 
 <script setup>

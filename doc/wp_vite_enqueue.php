@@ -6,7 +6,7 @@
  * Created Date: Friday, May 17th 2024, 12:21:56
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Friday, April 11th 2025 14:16:08
+ * Last Modified: Monday, April 14th 2025 10:30:31
  * Modified By: Kirill Dorozhynskyi
  * -----
  * Copyright (c) 2025 justDev
@@ -124,8 +124,7 @@ class Base
 		wp_enqueue_script('app', get_template_directory_uri() . '/' . $this->viteManifest['src/scripts/app.ts']['file'], [], false, true);
 	}
 
-
-		/**
+	/**
 	 * Gets the assembly version
 	 *
 	 * @return string
