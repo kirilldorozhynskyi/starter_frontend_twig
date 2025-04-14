@@ -17,6 +17,8 @@
 	"useTabs": true,
 	"vueIndentScriptAndStyle": true,
 	"endOfLine": "lf",
+	"plugins": ["prettier-plugin-tailwindcss", "@zackad/prettier-plugin-twig"],
+
 	"overrides": [
 		{
 			"files": ["*.json", "*.yml"],

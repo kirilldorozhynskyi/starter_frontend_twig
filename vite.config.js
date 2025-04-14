@@ -1,8 +1,8 @@
 import path, { dirname } from 'path'
 import vue from '@vitejs/plugin-vue'
 import vituum from 'vituum'
+import tailwindcss from '@tailwindcss/vite'
 import twig from '@vituum/vite-plugin-twig'
-import sassGlobImports from 'vite-plugin-sass-glob-import'
 import beautify from 'vite-plugin-beautify'
 import viteImagemin from 'vite-plugin-imagemin'
 import VitePluginSvgSpritemap from '@spiriit/vite-plugin-svg-spritemap'
@@ -13,7 +13,6 @@ import config from './config.js'
 
 // Custom plugins
 import htmlMinifierPlugin from './scripts/htmlMinifier.js'
-import purgeCSSPlugin from './scripts/purgecss.js'
 
 import fixCSSPlugin from './scripts/fixCss.js'
 
@@ -55,7 +54,6 @@ export default {
 	},
 	plugins: [
 		vituum(),
-		sassGlobImports(),
 		vue(),
 		twig({
 			root: `${rootDir}`,
@@ -78,7 +76,7 @@ export default {
 		viteImagemin(imagemin),
 		VitePluginSvgSpritemap(path.resolve(process.cwd(), `${assetsDir}/icons/*.svg`), SvgSpritemap),
 		fixCSSPlugin(),
-		purgeCSSPlugin(),
+		tailwindcss(),
 		process.env.NODE_ENV == 'production'
 			? vitePluginFaviconsInject(`${assetsDir}/favicon.svg`, {
 					path: 'favicons/',
@@ -89,7 +87,7 @@ export default {
 					icons: {
 						yandex: false
 					}
-			  })
+				})
 			: false,
 		beautify(htmlBeautify),
 		htmlMinifierPlugin()
