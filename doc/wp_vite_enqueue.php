@@ -2,14 +2,14 @@
 /**
  * File: /doc/wp_vite_enqueue.php
  * Project: starter_frontend_twig
- * Version: 2.2.8
+ * Version: 3.0.0
  * Created Date: Friday, May 17th 2024, 12:21:56
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Tuesday, May 28th 2024 9:51:39
+ * Last Modified: Friday, April 11th 2025 14:16:08
  * Modified By: Kirill Dorozhynskyi
  * -----
- * Copyright (c) 2024 justDev
+ * Copyright (c) 2025 justDev
  */
 
 namespace JDEV;
@@ -122,5 +122,16 @@ class Base
 	public function loadBodyThemeAssets()
 	{
 		wp_enqueue_script('app', get_template_directory_uri() . '/' . $this->viteManifest['src/scripts/app.ts']['file'], [], false, true);
+	}
+
+
+		/**
+	 * Gets the assembly version
+	 *
+	 * @return string
+	 */
+	private function getBuildVersion(): string
+	{
+		return file_exists(VITE_MANIFEST_PATH) ? (string) filemtime(VITE_MANIFEST_PATH) : (string) time();
 	}
 }

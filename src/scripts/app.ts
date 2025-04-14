@@ -1,19 +1,19 @@
 /*
  * File: /src/scripts/app.ts
  * Project: starter_frontend_twig
- * Version: 2.2.8
+ * Version: 3.0.0
  * Created Date: Sunday, September 24th 2023, 12:07:59
  * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  * -----
- * Last Modified: Wednesday, August 14th 2024 16:27:52
+ * Last Modified: Friday, April 11th 2025 13:37:50
  * Modified By: Kirill Dorozhynskyi
  * -----
- * Copyright (c) 2024 justDev
+ * Copyright (c) 2025 justDev
  */
 
 /* eslint-disable */
 // @ts-nocheck
-import '../styles/app.scss'
+import '../styles/app.css'
 
 // NOTE: Include if needed
 // import AOS from 'aos'

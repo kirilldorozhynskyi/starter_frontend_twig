@@ -1,56 +1,32 @@
 <template>
-	<header ref="root" :class="{ 'header--hidden': isHidden }">
-		<slot :toggle-mobile-nav="toggleMobileNav" />
-	</header>
+	<slot :toggle-menu="toggleMenu" :menu-opened="menuOpened" />
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, onMounted } from 'vue'
-import Dropdown from 'bootstrap/js/dist/dropdown'
+<script setup>
+import { ref, onMounted } from 'vue'
 
-const SCROLL_DELTA = 50
+const menuOpened = ref(false)
 
-export default defineComponent({
-	data() {
-		return {
-			isSearchOpened: false
-		}
-	},
-	setup() {
-		let isHidden = ref(false)
-		let lastScrollPosition = window.scrollY
-		const root = ref<HTMLElement>()
+const isSticky = ref(false)
 
-		window.addEventListener('scroll', () => {
-			if (window.scrollY >= 0) {
-				if (Math.abs(window.scrollY - lastScrollPosition) >= SCROLL_DELTA) {
-					isHidden.value = window.scrollY >= lastScrollPosition
-					lastScrollPosition = window.scrollY
-				}
-			}
-		})
+const toggleMenu = () => {
+	menuOpened.value = !menuOpened.value
 
-		function toggleMobileNav() {
-			let mobileNav = document.querySelector('.mobile-nav')
-			if (mobileNav) {
-				document.body.classList.toggle('mobile-nav-opened')
-			}
-		}
+	document.querySelector('body').classList.toggle('overflow-hidden')
+}
 
-		onMounted(() => {
-			let dropdownElements = root.value ? Array.from(root.value.querySelectorAll('[data-bs-toggle="dropdown"]')) : []
-			if (dropdownElements.length) {
-				dropdownElements.map((item: any) => {
-					return new Dropdown(item)
-				})
-			}
-		})
+// const stickyMenu = () => {
+// 	window.addEventListener('scroll', () => {
+// 		let scrollY = window.scrollY
+// 		if (scrollY >= 80 && !isSticky.value) {
+// 			isSticky.value = true
+// 		} else if (scrollY <= 80) {
+// 			isSticky.value = false
+// 		}
+// 	})
+// }
 
-		return {
-			isHidden,
-			toggleMobileNav,
-			root
-		}
-	}
+onMounted(() => {
+	// stickyMenu()
 })
 </script>
