@@ -1,0 +1,35 @@
+/*
+ * File: /src/styles/app.css
+ * Project: starter_frontend_twig
+ * Version: 3.0.0
+ * Created Date: Wednesday, June 28th 2023, 2:51:40
+ * Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
+ * -----
+ * Last Modified: Monday, April 14th 2025 11:09:32
+ * Modified By: Kirill Dorozhynskyi
+ * -----
+ * Copyright (c) 2025 justDev
+ */
+/*!
+ * Main Styles by justDev (https://justdev.org)
+ */
+
+@import 'tailwindcss';
+
+@plugin "@tailwindcss/typography";
+
+@source '../scripts/**/**/**/**/**/*.vue';
+@source '../scripts/directives/**/*.js';
+@source '../views/**/**/**/**/**/*.twig';
+@source "./safelist.txt";
+
+@use './base/_typograph.scss';
+
+@utility container {
+	margin-inline: auto;
+	@apply px-6 lg:px-12;
+}
+
+@utility transit {
+	@apply transition-all duration-300 ease-in-out;
+}
