@@ -44,7 +44,7 @@
 
 				<div class="social-media d-flex gap-1 order-md-1">
 					{% for item in social %}
-						<a class="social-media-link fs-hd lh-1 d-flex" href="{{ item.url }}" aria-label="{{ item.title }}" target="_blank">
+						<a class="social-media-link fs-hd lh-1 d-flex" href="{{ item.url }}" aria-label="{{ item.title }}" target="_blank" rel="noopener noreferrer">
 							{{ sprite(item.icon) }}
 						</a>
 					{% endfor %}

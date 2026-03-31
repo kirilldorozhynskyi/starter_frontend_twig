@@ -27,88 +27,139 @@ class Base
 	 */
 	protected array $viteManifest = [];
 
+	/**
+	 * Globally available sprite URL after Vite initialization.
+	 */
+	protected static string $spriteUrl = '';
+
 	public function __construct()
 	{
+		$this->loadViteManifest();
+
+		add_action('wp_head', [$this, 'preloadAssetsVite']);
 		add_action('wp_enqueue_scripts', [$this, 'loadHeadThemeAssets']);
-		add_filter('script_loader_tag', [$this, 'addModuleTypeToViteScript'], 10, 3);
-		add_filter('style_loader_tag', [$this, 'addСrossorigin'], 10, 2);
-		add_filter('script_loader_tag', [$this, 'addModuleTypeToViteSprite'], 10, 3);
 		add_action('wp_footer', [$this, 'loadBodyThemeAssets']);
 
-		// load Vite manifest
-		$this->loadViteManifest();
+		add_filter('script_loader_tag', [$this, 'addModuleTypeToViteScript'], 10, 3);
+		add_filter('script_loader_tag', [$this, 'addModuleTypeToViteSprite'], 10, 3);
+		add_filter('style_loader_tag', [$this, 'addCrossorigin'], 10, 2);
 	}
 
 	/**
 	 * Load Vite manifest
 	 */
-	protected function loadViteManifest($manifestPath = '')
+	protected function loadViteManifest($manifestPath = ''): void
 	{
-		if (empty($manifestPath)) {
-			$manifestPath = get_template_directory() . self::VITE_MANIFEST_PATH;
+		if (!file_exists(ABSPATH . 'hot')) {
+			$manifestPath = $manifestPath ?: get_template_directory() . self::VITE_MANIFEST_PATH;
+
+			if (!file_exists($manifestPath)) {
+				return;
+			}
+
+			$manifestContent = file_get_contents($manifestPath);
+
+			if ($manifestContent === false) {
+				throw new \Exception(sprintf('[Vite] Failed to read manifest: %s.', $manifestPath));
+			}
+
+			$decodedManifest = json_decode($manifestContent, true);
+
+			if (json_last_error() !== JSON_ERROR_NONE) {
+				throw new \Exception(sprintf('[Vite] Invalid JSON in manifest: %s.', $manifestPath));
+			}
+
+			$this->viteManifest = $decodedManifest;
 		}
 
-		$manifestContent = file_get_contents($manifestPath);
+		self::$spriteUrl = '';
 
-		if (!$manifestContent) {
-			throw new \Exception(sprintf('[Vite] Failed to read manifest %s.', $manifestPath));
+		if (
+			!file_exists(ABSPATH . 'hot')
+			&& !empty($this->viteManifest['spritemap.svg']['file'])
+		) {
+			self::$spriteUrl = get_template_directory_uri() .
+				'/' .
+				$this->viteManifest['spritemap.svg']['file'] .
+				'?v=' .
+				$this->getBuildVersion();
+		}
+	}
+
+	/**
+	 * Preload fonts and main CSS dynamically from Vite manifest.json
+	 */
+	public function preloadAssetsVite(): void
+	{
+		if (empty($this->viteManifest)) {
+			return;
 		}
 
-		$this->viteManifest = json_decode($manifestContent, true);
+		$templateUrl = trailingslashit(get_template_directory_uri());
+		$preloadedCss = [];
 
-		if (json_last_error()) {
-			throw new \Exception(sprintf('[Vite] Manifest %s contains invalid data.', $manifestPath));
+		foreach ($this->viteManifest as $asset) {
+			if (!isset($asset['file']) || !preg_match('/\.woff2$/', $asset['file'])) {
+				continue;
+			}
+
+			echo '<link rel="preload" href="' . esc_url($templateUrl . $asset['file']) . '" as="font" type="font/woff2" crossorigin="anonymous">' . PHP_EOL;
+		}
+
+		if (empty($this->viteManifest['src/scripts/app.ts']['css'])) {
+			return;
+		}
+
+		foreach ($this->viteManifest['src/scripts/app.ts']['css'] as $css) {
+			if (in_array($css, $preloadedCss, true)) {
+				continue;
+			}
+
+			echo '<link rel="preload" href="' . esc_url($templateUrl . $css) . '" as="style">' . PHP_EOL;
+			$preloadedCss[] = $css;
 		}
 	}
 
 	/**
 	 * Add Vite module
 	 */
-	public function addModuleTypeToViteScript($tag, $handle, $src)
+	public function addModuleTypeToViteScript($tag, $handle, $src): string
 	{
-		if ('app' !== $handle) {
-			return $tag;
-		}
-
-		// remove version from src & change the script tag by adding type="module" and return it.
-		$src = remove_query_arg('ver', $src);
-		$tag = '<script type="module" src="' . esc_url($src) . '"></script>';
-		return $tag;
-	}
-
-	/**
-	 * Add Vite module
-	 */
-	public function addModuleTypeToViteSprite($tag, $handle, $src)
-	{
-		if ('app_theme_sprite' === $handle || 'vite_client' === $handle) {
+		if (file_exists(ABSPATH . 'hot') && ($handle === 'app_theme' || $handle === 'vite_client')) {
+			$tag = '<script type="module" src="' . esc_url($src) . '"></script>';
+		} elseif ($handle === 'app') {
+			$src = remove_query_arg('ver', $src);
 			$tag = '<script type="module" src="' . esc_url($src) . '"></script>';
 		}
+
 		return $tag;
 	}
 
 	/**
 	 * Load theme styles
 	 */
-	public function loadHeadThemeAssets()
+	public function loadHeadThemeAssets(): void
 	{
 		if (empty($this->viteManifest['src/scripts/app.ts']['css'])) {
 			return;
 		}
 
-		foreach ($this->viteManifest['src/scripts/app.ts']['css'] as $css) {
-			wp_enqueue_style('custom-stylesheet', get_template_directory_uri() . '/' . $css, [], null);
+		foreach ($this->viteManifest['src/scripts/app.ts']['css'] as $index => $css) {
+			wp_enqueue_style(
+				'custom-stylesheet-' . $index,
+				get_template_directory_uri() . '/' . $css,
+				[],
+				$this->getBuildVersion()
+			);
 		}
 	}
 
 	/**
 	 * Add Crossorigin to css
 	 */
-	public function addСrossorigin($html, $handle)
+	public function addCrossorigin($html, $handle): string
 	{
-		$styles_with_crossorigin = ['custom-stylesheet'];
-
-		if (in_array($handle, $styles_with_crossorigin)) {
+		if (strpos($handle, 'custom-stylesheet-') === 0) {
 			$html = str_replace("rel='stylesheet'", "rel='stylesheet' crossorigin", $html);
 		}
 
@@ -118,9 +169,61 @@ class Base
 	/**
 	 * Load theme scripts
 	 */
-	public function loadBodyThemeAssets()
+	public function loadBodyThemeAssets(): void
 	{
-		wp_enqueue_script('app', get_template_directory_uri() . '/' . $this->viteManifest['src/scripts/app.ts']['file'], [], false, true);
+		if (file_exists(ABSPATH . 'hot')) {
+			$url = rtrim((string) file_get_contents(ABSPATH . 'hot'));
+
+			if ($url === '') {
+				return;
+			}
+
+			wp_enqueue_script('vite_client', $url . '/@vite/client', [], null, false);
+			wp_enqueue_script('app_theme_sprite', $url . '/@vite-plugin-svg-spritemap/client', [], null, false);
+			wp_enqueue_script('app_theme', $url . '/src/scripts/app.ts', [], time(), true);
+
+			return;
+		}
+
+		if (empty($this->viteManifest['src/scripts/app.ts']['file'])) {
+			return;
+		}
+
+		wp_enqueue_script(
+			'app',
+			get_template_directory_uri() . '/' . $this->viteManifest['src/scripts/app.ts']['file'],
+			[],
+			$this->getBuildVersion(),
+			true
+		);
+	}
+
+	/**
+	 * Add Vite module
+	 */
+	public function addModuleTypeToViteSprite($tag, $handle, $src): string
+	{
+		if (file_exists(ABSPATH . 'hot') && ($handle === 'app_theme_sprite' || $handle === 'vite_client')) {
+			$tag = '<script type="module" src="' . esc_url($src) . '"></script>';
+		}
+
+		return $tag;
+	}
+
+	/**
+	 * Public method to get the viteManifest array
+	 */
+	public function getViteManifest(): array
+	{
+		return $this->viteManifest;
+	}
+
+	/**
+	 * Static getter for sprite URL access outside the class.
+	 */
+	public static function getSpriteUrl(): string
+	{
+		return self::$spriteUrl;
 	}
 
 	/**
@@ -130,7 +233,9 @@ class Base
 	 */
 	private function getBuildVersion(): string
 	{
-		return file_exists(VITE_MANIFEST_PATH) ? (string) filemtime(VITE_MANIFEST_PATH) : (string) time();
+		$manifestPath = get_template_directory() . self::VITE_MANIFEST_PATH;
+
+		return file_exists($manifestPath) ? (string) filemtime($manifestPath) : (string) time();
 	}
 }
 

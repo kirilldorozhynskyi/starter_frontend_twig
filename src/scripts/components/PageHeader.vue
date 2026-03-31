@@ -5,30 +5,19 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onBeforeUnmount, ref, watch } from 'vue'
 
 const menuOpened = ref(false)
 
-const isSticky = ref(false)
-
 const toggleMenu = () => {
 	menuOpened.value = !menuOpened.value
-
-	document.querySelector('body').classList.toggle('overflow-hidden')
 }
 
-// const stickyMenu = () => {
-// 	window.addEventListener('scroll', () => {
-// 		let scrollY = window.scrollY
-// 		if (scrollY >= 80 && !isSticky.value) {
-// 			isSticky.value = true
-// 		} else if (scrollY <= 80) {
-// 			isSticky.value = false
-// 		}
-// 	})
-// }
+watch(menuOpened, (isOpened) => {
+	document.body.classList.toggle('overflow-hidden', isOpened)
+})
 
-onMounted(() => {
-	// stickyMenu()
+onBeforeUnmount(() => {
+	document.body.classList.remove('overflow-hidden')
 })
 </script>

@@ -28,11 +28,14 @@ export default {
 					pswpModule: () => import('photoswipe')
 				})
 
-				lightbox.addFilter('itemData', (itemData, index) => {
-					const iframeUrl = itemData.element.dataset.iframeUrl
+				lightbox.addFilter('itemData', (itemData) => {
+					const element = itemData.element
+					const iframeUrl = element instanceof HTMLElement ? element.dataset.iframeUrl : null
+
 					if (iframeUrl) {
 						itemData.iframeUrl = iframeUrl
 					}
+
 					const videoUrl = itemData.src
 					if (videoUrl) {
 						itemData.videoUrl = videoUrl
@@ -44,7 +47,7 @@ export default {
 				lightbox.on('contentLoad', (e) => {
 					const { content } = e
 
-					if (content.type === 'iframe') {
+					if (content.type === 'iframe' && content.data.iframeUrl) {
 						e.preventDefault()
 
 						content.element = document.createElement('div')
@@ -54,7 +57,7 @@ export default {
 						iframe.setAttribute('allowfullscreen', '')
 						iframe.src = content.data.iframeUrl
 						content.element.appendChild(iframe)
-					} else if (content.type === 'video') {
+					} else if (content.type === 'video' && content.data.videoUrl) {
 						e.preventDefault()
 
 						content.element = document.createElement('div')

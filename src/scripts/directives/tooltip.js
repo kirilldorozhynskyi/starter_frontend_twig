@@ -11,23 +11,17 @@
  * Copyright (c) 2024 justDev
  */
 
-import Tooltip from 'bootstrap/js/dist/tooltip'
-
 const tooltipDirective = {
 	mounted(el) {
-		const options = {
-			title: el.getAttribute('data-bs-title') || '',
-			placement: el.getAttribute('data-bs-placement') || 'top',
-			customClass: el.getAttribute('data-bs-custom-class') || '',
-			trigger: el.getAttribute('data-bs-trigger') || 'hover focus'
-		}
-
-		el.tooltipInstance = new Tooltip(el, options)
+		createTooltip(el)
 	},
 	updated(el) {
 		if (el.tooltipInstance) {
-			el.tooltipInstance.update()
+			el.tooltipInstance.dispose()
+			el.tooltipInstance = null
 		}
+
+		createTooltip(el)
 	},
 	unmounted(el) {
 		if (el.tooltipInstance) {
@@ -35,6 +29,21 @@ const tooltipDirective = {
 			el.tooltipInstance = null
 		}
 	}
+}
+
+function createTooltip(el) {
+	const Tooltip = window.bootstrap?.Tooltip
+
+	if (!Tooltip) {
+		return
+	}
+
+	el.tooltipInstance = new Tooltip(el, {
+		title: el.getAttribute('data-bs-title') || '',
+		placement: el.getAttribute('data-bs-placement') || 'top',
+		customClass: el.getAttribute('data-bs-custom-class') || '',
+		trigger: el.getAttribute('data-bs-trigger') || 'hover focus'
+	})
 }
 
 export default tooltipDirective

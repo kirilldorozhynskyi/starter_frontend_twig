@@ -15,7 +15,7 @@
 	<ul class="flex flex-col items-start justify-center gap-8 lg:flex-row lg:items-center xl:gap-8">
 		{% for item in header_menu %}
 			<li class="d-inline-block main-nav-item {{ item.children ? 'sub' }}">
-				<a href="{{ item.url }}" target="{{ item.target ? '_blank' : '_self' }}">{{ item.title }}</a>
+				<a href="{{ item.url }}" target="{{ item.target ? item.target : '_self' }}" {{ item.target == '_blank' ? 'rel="noopener noreferrer"' }}>{{ item.title }}</a>
 			</li>
 		{% endfor %}
 	</ul>

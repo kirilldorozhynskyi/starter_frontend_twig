@@ -1,21 +1,24 @@
 {
 	"compilerOptions": {
+		"target": "ES2020",
 		"importHelpers": true,
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"experimentalDecorators": true,
 		"allowSyntheticDefaultImports": true,
 		"allowJs": true,
 		"checkJs": false,
 		"esModuleInterop": true,
 		"sourceMap": true,
-		"baseUrl": ".",
-		"lib": ["es2015", "dom"], // Add this line
-		"paths": {
-			"@jd_template/*": ["src/scripts/*"]
-		},
+		"lib": ["ES2020", "DOM"],
 		"resolveJsonModule": true,
-		"module": "CommonJS"
+		"module": "ESNext",
+		"noEmit": true,
+		"allowImportingTsExtensions": true,
+		"skipLibCheck": true,
+		"verbatimModuleSyntax": true,
+		"ignoreDeprecations": "6.0",
+		"types": ["vite/client"]
 	},
-	"include": ["src/scripts/**/*.ts", "src/scripts/**/*.vue"],
-	"exclude": ["node_modules"]
+	"include": ["src/scripts/**/*.ts", "src/scripts/**/*.d.ts"],
+	"exclude": ["node_modules", "dist"]
 }

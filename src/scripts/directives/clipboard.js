@@ -13,27 +13,57 @@
 
 const clipboardDirective = {
 	mounted(el) {
-		el.addEventListener('click', () => {
-			const url = el.__v_clipboard.url
-			const text = el.__v_clipboard.text
-			const time = el.__v_clipboard.time ?? 3000
+		el.__v_clipboard_handler = async () => {
+			const options = el.__v_clipboard
 
-			navigator.clipboard
-				.writeText(url)
-				.then(() => {
-					showNotification(text, time)
-				})
-				.catch((err) => {
-					console.error('Error copying URL to clipboard: ', err)
-				})
-		})
+			if (!options?.url) {
+				return
+			}
+
+			try {
+				await copyToClipboard(options.url)
+
+				if (options.text) {
+					showNotification(options.text, options.time ?? 3000)
+				}
+			} catch (error) {
+				console.error('Error copying URL to clipboard: ', error)
+			}
+		}
+
+		el.addEventListener('click', el.__v_clipboard_handler)
 	},
 	beforeMount(el, binding) {
 		el.__v_clipboard = binding.value
 	},
+	updated(el, binding) {
+		el.__v_clipboard = binding.value
+	},
 	beforeUnmount(el) {
+		if (el.__v_clipboard_handler) {
+			el.removeEventListener('click', el.__v_clipboard_handler)
+		}
+
 		delete el.__v_clipboard
+		delete el.__v_clipboard_handler
 	}
+}
+
+async function copyToClipboard(text) {
+	if (navigator.clipboard?.writeText) {
+		await navigator.clipboard.writeText(text)
+		return
+	}
+
+	const textarea = document.createElement('textarea')
+	textarea.value = text
+	textarea.setAttribute('readonly', '')
+	textarea.style.position = 'absolute'
+	textarea.style.left = '-9999px'
+	document.body.appendChild(textarea)
+	textarea.select()
+	document.execCommand('copy')
+	document.body.removeChild(textarea)
 }
 
 function showNotification(message, time) {

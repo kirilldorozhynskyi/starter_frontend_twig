@@ -13,6 +13,14 @@
 
 import en from './lang/en.json'
 import sk from './lang/sk.json'
+import type { I18nOptions } from 'vue-i18n'
+
+const supportedLocales = ['en', 'sk'] as const
+const documentLocale = document.documentElement.lang.trim().toLowerCase()
+const normalizedLocale = documentLocale.split('-')[0]
+const activeLocale = supportedLocales.includes(normalizedLocale as (typeof supportedLocales)[number])
+	? normalizedLocale
+	: 'en'
 
 const translate = {
 	legacy: false,
@@ -20,12 +28,12 @@ const translate = {
 		en: en.datetimeFormats,
 		sk: sk.datetimeFormats,
 	},
-	locale: document.documentElement.lang || 'en',
+	locale: activeLocale,
 	messages: {
 		en: en,
 		sk: sk,
 	},
-}
+} as I18nOptions
 
 const i18nConfig = translate
 
