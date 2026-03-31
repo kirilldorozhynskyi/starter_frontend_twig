@@ -1,32 +1,40 @@
 <template>
-  <div/>
+	<div ref="container" />
 </template>
 
-<script>
-/* eslint-disable */
-import postscribe from 'postscribe';
+<script setup lang="ts">
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 
-export default {
-  props: {
-    async: {
-      type: Boolean,
-      default: false,
-    },
-    defer: {
-      type: Boolean,
-      default: false,
-    },
-    src: {
-      type: String,
-      required: true,
-    },
-  },
-  mounted() {
-    let script = `<script src="${this.src}"`;
-    if (this.async) script += ' async';
-    if (this.defer) script += ' defer';
-    script += '><\/script>';
-    postscribe(this.$el, script);
-  },
-};
+const props = withDefaults(
+	defineProps<{
+		async?: boolean
+		defer?: boolean
+		src: string
+	}>(),
+	{
+		async: false,
+		defer: false,
+	},
+)
+
+const container = ref<HTMLElement | null>(null)
+let scriptElement: HTMLScriptElement | null = null
+
+onMounted(() => {
+	if (!container.value || scriptElement) {
+		return
+	}
+
+	scriptElement = document.createElement('script')
+	scriptElement.src = props.src
+	scriptElement.async = props.async
+	scriptElement.defer = props.defer
+
+	container.value.appendChild(scriptElement)
+})
+
+onBeforeUnmount(() => {
+	scriptElement?.remove()
+	scriptElement = null
+})
 </script>

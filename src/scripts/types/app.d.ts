@@ -11,18 +11,21 @@
  * Copyright (c) 2024 justDev
  */
 
-import { Component, CreateAppFunction } from '@vue/runtime-core'
+import type { ComputedRef } from 'vue'
 import type { ILazyLoadInstance } from 'vanilla-lazyload'
-import VueScrollTo from 'vue-scrollto'
-
-export declare const rootComponent: Component
-
-declare const createApp: CreateAppFunction<Element>
-
-export default createApp
 
 declare global {
-	interface Window {}
+	interface Window {
+		bootstrap?: {
+			Tooltip?: new (
+				element: Element,
+				options?: Record<string, unknown>
+			) => {
+				dispose: () => void
+				update: () => void
+			}
+		}
+	}
 
 	export type Dictionary<T> = Record<string, T>
 }
@@ -30,7 +33,6 @@ declare global {
 declare module '@vue/runtime-core' {
 	interface ComponentCustomProperties {
 		lazyLoad: ILazyLoadInstance
-		scrollOffset: number
-		$scrollTo: typeof VueScrollTo.scrollTo
+		scrollOffset: number | ComputedRef<number>
 	}
 }

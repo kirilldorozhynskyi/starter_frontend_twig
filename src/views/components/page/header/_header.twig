@@ -24,6 +24,7 @@
 				</a>
 
 				<div
+					id="primary-navigation"
 					class="max-lg:bg-white fixed top-0 right-0 z-1 h-dvh pt-24 transition-transform duration-200 ease-in-out max-lg:px-6 lg:relative lg:h-auto lg:translate-x-0 lg:bg-transparent lg:pt-0 lg:transition-none"
 					:class="menuOpened ? 'w-full max-w-100 translate-x-0' : 'translate-x-full'"
 				>
@@ -34,7 +35,9 @@
 					<button
 						type="button"
 						class="flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-1 hover:bg-transparent"
-						aria-label="Open menu"
+						:aria-controls="'primary-navigation'"
+						:aria-expanded="menuOpened ? 'true' : 'false'"
+						:aria-label="menuOpened ? 'Close menu' : 'Open menu'"
 						@click="toggleMenu()"
 					>
 						<span class="h-0.5 w-6 origin-center transition bg-black" :class="menuOpened ? 'translate-y-[2.5px] rotate-45' : ''"></span>

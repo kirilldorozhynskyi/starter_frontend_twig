@@ -88,7 +88,7 @@ const config = {
 					name: 'removeStyleElement'
 				},
 				{
-					name: 'cleanupIds'
+					name: 'cleanupIDs'
 				},
 				{
 					name: 'removeTitle'

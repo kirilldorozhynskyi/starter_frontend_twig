@@ -11,16 +11,13 @@
  * Copyright (c) 2025 justDev
  */
 
-/* eslint-disable */
-// @ts-nocheck
 import '../styles/app.css'
 
 // NOTE: Include if needed
 // import AOS from 'aos'
 
 import LazyLoad from 'vanilla-lazyload'
-import { createApp, defineAsyncComponent, ref } from 'vue'
-import type { Component } from '@vue/runtime-core'
+import { computed, createApp, defineAsyncComponent, defineComponent, onBeforeUnmount, onMounted, provide } from 'vue'
 import { createI18n } from 'vue-i18n'
 
 // NOTE: Include if needed
@@ -32,13 +29,12 @@ import PhotoSwipeDirective from './directives/photoswipe'
 // import CopyClipboard from './directives/clipboard'
 
 import PageHeader from './components/PageHeader.vue'
+import i18nConfig from './util/i18n.ts'
 
 const SimpleGallery = defineAsyncComponent(() => import('./components/SimpleGallery.vue'))
-
-import i18nConfig from './util/i18n.ts'
 const i18n = createI18n(i18nConfig)
 
-const PREVENT_UNLOAD_CLASSES = [
+const PREVENT_UNLOAD_SELECTORS = [
 	'.ajax',
 	'.download',
 	'#scroll-to-top',
@@ -52,9 +48,8 @@ const PREVENT_UNLOAD_CLASSES = [
 	'[target^=_blank]',
 ]
 const SCROLL_OFFSET = 64
-// const DESKTOP_BREAKPOINT = 768
 
-export const rootComponent: Component = {
+export const rootComponent = defineComponent({
 	/* == GLOBAL COMPONENTS == */
 	components: {
 		PageHeader,
@@ -71,28 +66,8 @@ export const rootComponent: Component = {
 		// 'scroll-to': VueScrollTo,  //NOTE: Include if needed
 	},
 
-	computed: {
-		scrollOffset() {
-			let offset = -SCROLL_OFFSET
-
-			if (this.header && this.header.value) {
-				offset -= this.header.value.offsetHeight
-			}
-
-			return offset
-		},
-	},
-
-	provide() {
-		return {
-			lazyLoad: this.lazyLoad,
-			scrollOffset: this.scrollOffset,
-		}
-	},
-
 	/* ======== SETUP ======== */
 	setup() {
-		const header = ref<HTMLElement | null>(null)
 		const lazyLoad = new LazyLoad({
 			threshold: 0,
 			elements_selector: '[lazy]',
@@ -101,98 +76,134 @@ export const rootComponent: Component = {
 			class_applied: 'lazy-bg-loaded',
 			class_error: 'lazy-error',
 		})
+		const scrollOffset = computed(() => {
+			const headerElement = document.querySelector<HTMLElement>('page-header header')
+
+			return -(SCROLL_OFFSET + (headerElement?.offsetHeight ?? 0))
+		})
+		let unloadController: AbortController | null = null
+
+		const createdHook = () => {
+			/* Placeholder function used to extend Vue created hook in projects */
+		}
+		const loadedHook = () => {
+			/* Placeholder function used to extend document on-load event in projects */
+		}
+		const mountedHook = () => {
+			/* Placeholder function used to extend Vue mounted hook in projects */
+		}
+
+		const onDocumentClick = (event: MouseEvent) => {
+			const target = event.target instanceof Element ? event.target.closest('a') : null
+
+			if (!(target instanceof HTMLAnchorElement)) {
+				return
+			}
+
+			if (target.matches(PREVENT_UNLOAD_SELECTORS.join(', '))) {
+				return
+			}
+
+			if (event.defaultPrevented || event.ctrlKey || event.shiftKey || event.metaKey || event.button === 1) {
+				return
+			}
+
+			if (target.id === 'history-back') {
+				event.preventDefault()
+
+				if (window.history.length > 1) {
+					window.history.back()
+				}
+
+				return
+			}
+
+			const currentUrl = new URL(window.location.href)
+			const targetUrl = new URL(target.href, window.location.href)
+
+			if (
+				targetUrl.origin === currentUrl.origin
+				&& targetUrl.pathname === currentUrl.pathname
+				&& targetUrl.search === currentUrl.search
+			) {
+				return
+			}
+
+			document.body.classList.remove('loaded')
+		}
+
+		const initUnload = () => {
+			unloadController?.abort()
+			unloadController = new AbortController()
+
+			document.addEventListener('click', onDocumentClick, {
+				signal: unloadController.signal,
+			})
+		}
+
+		const onLoad = () => {
+			document.body.classList.add('loaded')
+			initUnload()
+			loadedHook()
+		}
+
+		const onScroll = () => {
+			const scrollToTopButton = document.querySelector<HTMLElement>('.page-return-top')
+
+			if (!scrollToTopButton) {
+				return
+			}
+
+			scrollToTopButton.classList.toggle('active', window.scrollY >= 200)
+		}
+
+		const scrollToTop = () => {
+			window.scrollTo({ top: 0, behavior: 'smooth' })
+		}
+
+		provide('lazyLoad', lazyLoad)
+		provide('scrollOffset', scrollOffset)
+		createdHook()
+
+		onMounted(() => {
+			// AOS.init({
+			// 	duration: 900,
+			// 	once: true,
+			// })
+
+			if (document.readyState === 'complete') {
+				onLoad()
+			} else {
+				window.addEventListener('load', onLoad, { once: true })
+			}
+
+			window.addEventListener('scroll', onScroll, { passive: true })
+			onScroll()
+			lazyLoad.update()
+			document.body.classList.add('loaded')
+			mountedHook()
+		})
+
+		onBeforeUnmount(() => {
+			window.removeEventListener('load', onLoad)
+			window.removeEventListener('scroll', onScroll)
+			unloadController?.abort()
+		})
 
 		return {
-			header,
 			lazyLoad,
+			scrollOffset,
+			scrollToTop,
 		}
 	},
-
-	/* === LIFECYCLE HOOKS === */
-	created() {
-		window.addEventListener('load', this.onLoad)
-		window.addEventListener('scroll', this.onScroll)
-		this.createdHook()
-	},
-	mounted() {
-		// AOS.init({
-		// 	duration: 900,
-		// 	once: true,
-		// })
-
-		this.lazyLoad.update()
-		document.body.classList.add('loaded')
-		this.mountedHook()
-	},
-
-	/* ======= METHODS ======= */
-	methods: {
-		/* === LIFECYCLE METHODS HOOKS === */
-		createdHook() {
-			/* Placeholder function used to extend Vue created hook in projects */
-		},
-		loadedHook() {
-			/* Placeholder function used to extend document on-load event in projects */
-		},
-		mountedHook() {
-			/* Placeholder function used to extend Vue mounted hook in projects */
-		},
-
-		/* ======= GENERAL METHODS ======= */
-		initUnload() {
-			let links = 'a'
-
-			PREVENT_UNLOAD_CLASSES.forEach((className) => {
-				links += `:not(${className})`
-			})
-
-			document.querySelectorAll<HTMLAnchorElement>(links).forEach((link) => {
-				link.addEventListener('click', (event) => {
-					const target = event.currentTarget as HTMLAnchorElement | null
-
-					if (event.ctrlKey || event.shiftKey || event.metaKey || event.button === 1) {
-						return true
-					}
-					if (target?.pathname === window.location.pathname) {
-						return true
-					}
-					if (target?.getAttribute('id') === 'history-back') {
-						event.preventDefault()
-						if (window.history.length > 1) {
-							window.history.back()
-						}
-
-						return false
-					}
-					document.body.classList.remove('loaded')
-
-					return true
-				})
-			})
-		},
-		onLoad() {
-			document.body.classList.add('loaded')
-			this.initUnload()
-			this.loadedHook()
-		},
-		onScroll() {
-			/* Scroll to top show/hide */
-			const scrollToTopButton = document.querySelector('.page-return-top')
-			if (scrollToTopButton) {
-				if (window.scrollY >= 200) {
-					scrollToTopButton.classList.add('active')
-				} else {
-					scrollToTopButton.classList.remove('active')
-				}
-			}
-		},
-		scrollToTop() {
-			window.scrollTo({ top: 0, behavior: 'smooth' })
-		},
-	},
-}
+})
 
 const app = createApp(rootComponent)
 app.config.compilerOptions.isCustomElement = (tag) => tag === 'nobr'
 app.use(i18n)
-app.mount('#page')
+
+const appRoot = document.querySelector('#page')
+
+if (appRoot) {
+	app.mount(appRoot)
+}

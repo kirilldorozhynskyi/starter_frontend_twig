@@ -4,67 +4,69 @@
 	</div>
 </template>
 
-<script>
-import { defineComponent, onMounted, inject } from 'vue'
+<script setup lang="ts">
+import { inject, onBeforeUnmount, onMounted } from 'vue'
+import type { ILazyLoadInstance } from 'vanilla-lazyload'
 
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
 
-export default defineComponent({
-	props: {
-		id: {
-			type: String,
-			required: true
+const props = defineProps<{
+	id: string
+}>()
+
+const lazyLoad = inject<ILazyLoadInstance | null>('lazyLoad', null)
+let lightbox: PhotoSwipeLightbox | null = null
+
+onMounted(() => {
+	lazyLoad?.update()
+
+	if (lightbox) {
+		return
+	}
+
+	lightbox = new PhotoSwipeLightbox({
+		gallery: `#${props.id}`,
+		children: 'a',
+		pswpModule: () => import('photoswipe'),
+	})
+
+	lightbox.addFilter('itemData', (itemData) => {
+		const element = itemData.element
+
+		if (element instanceof HTMLElement) {
+			const iframeUrl = element.dataset.iframeUrl
+
+			if (iframeUrl) {
+				itemData.iframeUrl = iframeUrl
+			}
 		}
-	},
 
-	setup() {
-		const lazyLoad = inject('lazyLoad')
+		return itemData
+	})
 
-		onMounted(() => {
-			lazyLoad.update()
-		})
-	},
-	mounted() {
-		if (!this.lightbox) {
-			this.lightbox = new PhotoSwipeLightbox({
-				gallery: '#' + this.$props.id,
-				children: 'a',
-				pswpModule: () => import('photoswipe')
-			})
+	lightbox.on('contentLoad', (event) => {
+		const { content } = event
 
-			this.lightbox.addFilter('itemData', (itemData, index) => {
-				const iframeUrl = itemData.element.dataset.iframeUrl
-				if (iframeUrl) {
-					itemData.iframeUrl = iframeUrl
-				}
-				return itemData
-			})
-
-			// override slide content
-			this.lightbox.on('contentLoad', (e) => {
-				const { content } = e
-				if (content.type === 'iframe') {
-					e.preventDefault()
-
-					content.element = document.createElement('div')
-					content.element.className = 'pswp__iframe-container'
-
-					const iframe = document.createElement('iframe')
-					iframe.setAttribute('allowfullscreen', '')
-					iframe.src = content.data.iframeUrl
-					content.element.appendChild(iframe)
-				}
-			})
-
-			this.lightbox.init()
+		if (content.type !== 'iframe' || !content.data.iframeUrl) {
+			return
 		}
-	},
-	unmounted() {
-		if (this.lightbox) {
-			this.lightbox.destroy()
-			this.lightbox = null
-		}
-	},
-	methods: {}
+
+		event.preventDefault()
+
+		content.element = document.createElement('div')
+		content.element.className = 'pswp__iframe-container'
+
+		const iframe = document.createElement('iframe')
+		iframe.setAttribute('allowfullscreen', '')
+		iframe.src = content.data.iframeUrl
+		content.element.appendChild(iframe)
+	})
+
+	lightbox.init()
+})
+
+onBeforeUnmount(() => {
+	lightbox?.destroy()
+	lightbox = null
 })
 </script>
