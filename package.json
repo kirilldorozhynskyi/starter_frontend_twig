@@ -1,7 +1,7 @@
 {
 	"title": "Vite front-end twig boilerplate",
 	"name": "starter_frontend_twig",
-	"version": "3.2.0",
+	"version": "3.2.1",
 	"type": "module",
 	"private": true,
 	"keywords": [
@@ -31,7 +31,7 @@
 		"i18n:remove": "vue-i18n-extract remove --vueFiles './src/scripts/**/*.?(js|vue)' --languageFiles './src/scripts/util/lang/*.?(json|yml|yaml|js|ts)' --remove"
 	},
 	"devDependencies": {
-		"@spiriit/vite-plugin-svg-spritemap": "^6.0.0",
+		"@spiriit/vite-plugin-svg-spritemap": "^7.0.0",
 		"@vitejs/plugin-vue": "^6.0.5",
 		"@vituum/vite-plugin-twig": "^2.0.1",
 		"@vue/runtime-core": "^3.5.31",
@@ -57,7 +57,6 @@
 	"dependencies": {
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.2.2",
-		"aos": "^2.3.4",
 		"embla-carousel-vue": "^8.6.0",
 		"photoswipe": "^5.4.4",
 		"swiper": "^12.1.3",

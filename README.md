@@ -1,140 +1,221 @@
-# ⚡️ Vite front-end twig boilerplate
+# starter_frontend_twig
 
-This repository contains a frontend boilerplate made with Vite, SASS, Twig.
-It is shipped with some pre-made mixins, a configured SVG-Sprite setup and some image optimization functionalities.
-It also includes some great performance enhancement tools : Purge & Critical CSS.
+Starter template for static frontends built with Vite, Twig, Vue 3, and Tailwind CSS 4. It combines file-based pages, reusable Twig components, a small Vue app layer, image helpers, SVG spritemap generation, and a simple WordPress handoff for production themes.
+
+## Stack
+
+- Vite 8
+- Vituum + Twig
+- Vue 3 + TypeScript
+- Tailwind CSS 4
+- `vanilla-lazyload`
+- `vue-i18n`
+- `@spiriit/vite-plugin-svg-spritemap`
+- `vite-plugin-imagemin`
 
 ## Requirements
 
-* `node` : `>=16`
-* `yarn` (or equivalent)
+- Node.js LTS, preferably Node 20+
+- npm
+- Optional: PHP and Composer if you want to bootstrap a project via `composer create-project`
 
 ## Installation
 
-You can install with composer 
+### Use this repository directly
+
 ```sh
-$ composer create-project justdev/starter_frontend_twig "name"
+npm install
 ```
 
-Or standart from project folder
+### Create a new project from Composer
+
 ```sh
-$ yarn install
+composer create-project justdev/starter_frontend_twig your-project-name
+cd your-project-name
 ```
 
-## Configuration
+The Composer installer will:
 
-Edit the [`config.js`](config.js) according to your needs.
+- remove template-only Composer files
+- rename the workspace file
+- initialize a new Git repository
+- run `npm install`
 
-### Environment
+## Available scripts
 
-* **`rootDir`**: specify the project's root directory (where your index.html file is located). The specified path can be an absolute path or be relative to the location of the config.js file.
-* **`buildDir`**: specify the output directory (relative to the project's root).
+```sh
+npm run dev
+npm run build
+npm run preview
+npm run webp
+npm run i18n:add
+npm run i18n:remove
+```
 
-### Purge CSS
+- `npm run dev`: start the Vite development server
+- `npm run build`: create a production build in `dist/`
+- `npm run preview`: preview the production build locally
+- `npm run webp`: convert `.png` and `.jpg` files inside `src/public/assets/images/` to `.webp`
+- `npm run i18n:add`: add missing translation keys found in Vue files
+- `npm run i18n:remove`: remove unused translation keys
 
-* **`purgecss`**:
-  * `enable`: boolean, toggle to activate or deactivate Purge CSS.
-  * `safeList`: optional, an array of classes to add to the [`safelist`](https://purgecss.com/safelisting.html). The safelist specifies the selectors which are safe to leave in the final CSS.
+## Project structure
 
-### Critical CSS
+```text
+.
+├── config.js
+├── doc/
+├── scripts/
+├── src/
+│   ├── data/
+│   ├── pages/
+│   ├── public/
+│   ├── resources/fonts/
+│   ├── scripts/
+│   ├── styles/
+│   └── views/
+└── vite.config.js
+```
 
-* **`critical`**:
-  * `enable`: boolean, toggle to activate or deactivate Critical CSS.
+- `src/data/main.json`: global site data shared across pages
+- `src/pages/`: routes generated from `.twig` and `.json` files
+- `src/views/`: layouts, templates, and Twig components
+- `src/scripts/`: Vue components, directives, i18n config, and the main app entry
+- `src/styles/`: Tailwind entry file, Sass partials, and Tailwind safelist
+- `src/public/`: static assets copied to the final build
+- `src/resources/fonts/`: local font files
+- `doc/`: WordPress integration helpers
 
+## Working with pages
+
+The project supports both direct Twig pages and data-driven JSON pages.
+
+### Twig page
+
+Create a file such as `src/pages/about.twig`:
+
+```twig
+{% extends 'views/layouts/main.twig' %}
+
+{% block page %}
+	<section class="container py-16">
+		<h1>About</h1>
+	</section>
+{% endblock %}
+```
+
+### JSON page
+
+Create a file such as `src/pages/about.json`:
+
+```json
+{
+	"title": "About",
+	"template": "views/templates/page.twig",
+	"flexible": [
+		{
+			"name": "content",
+			"title": "About",
+			"text": "Page content defined in JSON."
+		}
+	]
+}
+```
+
+The default page templates in `src/views/templates/` loop over `flexible` blocks and include matching Twig partials from `src/views/components/flexible/<name>/_<name>.twig`.
+
+## Styling
+
+`src/styles/app.css` is the main entry point. It uses Tailwind CSS 4 and can also pull in Sass partials with `@use`.
+
+- add reusable utilities directly in `src/styles/app.css`
+- keep shared Sass helpers in `src/styles/base/`
+- keep always-included Tailwind classes in `src/styles/safelist.txt`
+
+## Vue layer
+
+`src/scripts/app.ts` mounts Vue on `#page` and wires up:
+
+- lazy loading for images and background assets
+- locale detection through `vue-i18n`
+- a small page transition/unload handler
+- scroll-to-top behavior
+- custom directives such as PhotoSwipe
+
+Put Vue components in `src/scripts/components/` and directives in `src/scripts/directives/`.
+
+## Assets and Twig helpers
 
 ### Images
 
-* **`imagemin`**: an object containing all image optimization configurations. For more information you can refer to [`vite-plugin-imagemin`](https://github.com/vbenjs/vite-plugin-imagemin)
-
-### HTML Minify
-* **`htmlMinify`**:
-  * `enable`: boolean, toggle to activate or deactivate HTML Minify (uses Terser).
-  * `options`: For a detailed look at the overall configuration options, please refer to [html-minifier-terser](https://github.com/terser/html-minifier-terser#options-quick-reference),
-
-### HTML Beautify
-* **`htmlBeautify`**:
-  * `enable`: boolean, toggle to activate or deactivate HTML Minify (uses Terser).
-  * `options`: For a detailed look at the overall configuration options, please refer to 
-
-
-## Development
-
-
-* #### Images
-
-**Image** files are located under `src/assets/images/`
-You can convert all your `.png` and `.jpg` images to WebP format by using this command :
-
-```sh
-$ yarn webp
-```
-Example with a simple image
+Store image files in `src/public/assets/images/` and render them with the Twig `image()` helper:
 
 ```twig
-# image.src: path to your image (required)
-# image.ext: image source extension (required)
-# pictureClass: Class attribute for the picture element
-# image.src_2x: path to the retina version of your image
-# image.webp: set webp to true if you want to use your webp image converted
-
-{% set img = {
+{% set media = {
 	pictureClass: 'picture',
 	image: {
-		src: 'logo',
-		src_2x: 'logo@2x',
+		src: 'content/example',
+		src_2x: 'content/example@2x',
 		ext: 'png',
 		webp: true,
-		alt: 'Hero logo'
-	},
+		alt: 'Example image',
+		width: 1200,
+		height: 800
+	}
 } %}
 
-{{ image(img) }}
+{{ image(media) }}
 ```
 
-* #### Fonts
+When `webp` is enabled, the helper adds a WebP source in production builds.
 
-**Font** files are located under `src/assets/fonts/`
+### SVG spritemap
 
-* #### Icons
+Place icons in `src/public/assets/icons/`. They are bundled into a spritemap automatically.
 
-**Icons** files are located under `src/assets/icons`, they are used to create a svg sprite.
-Feel free to use the icon twig template as a reference, it is located under : 
 ```twig
-# iconID is the name of your svg file (required)
-
-{{ sprite('iconID') }}
+{{ sprite('instagram') }}
+{{ sprite('instagram', 'h-6 w-6') }}
 ```
 
-* #### Lazyloading
+### SVG object helper
 
-[`vanilla-lazyload`](https://github.com/verlok/vanilla-lazyload) is used to lazyload images and background images.
-Simply add `lazy` atribute on your image elements and `data-bg="path/to/your/background"` for background images.
+Use the `svg()` helper for standalone SVG files from `src/public/assets/images/`:
 
-* #### Twig
-
-**Twig** files are located under `src/assets/templates`. For twig modules or components, prefix the file name with `_` to avoid html conversion.
-
-
-## Build Assets
-
-### Development
-
-Start a local development server with previous defined settings, default is `https://localhost:8000/`
-
-```sh
-$ yarn dev
+```twig
+{{ svg({
+	title: 'Brand logo',
+	width: '40',
+	height: '32',
+	src: '/brand/logo.svg'
+}) }}
 ```
 
-### Production
+### Fonts
 
-Build all assets for production :
+Store local fonts in `src/resources/fonts/`. The Vite config exposes them through the `~fonts` alias.
 
-```sh
-$ yarn build
-```
+## Configuration
 
-Preview your production build :
+Main build options live in `config.js`.
 
-```sh
-$ yarn preview
-```
+- `base`: public base path used by Vite
+- `rootDir`: Twig root directory passed to Vituum
+- `assetsDir`: source directory used for icons and favicon generation
+- `fonts`: font source and output path settings
+- `htmlMinify`: HTML minification options
+- `htmlBeautify`: optional beautify step after build
+- `imagemin`: image optimization settings
+- `SvgSpritemap`: SVG spritemap generation settings
+
+Production favicon files are generated from `src/public/assets/favicon.svg`.
+
+## WordPress integration
+
+If the built assets need to be consumed by a WordPress theme, see:
+
+- `doc/README.md`
+- `doc/wp_vite_plugin.php`
+- `doc/wp_vite_enqueue.php`
+
+Those files cover both an MU plugin approach and a `functions.php` include approach.
