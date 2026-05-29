@@ -1,48 +1,48 @@
 {#
  # File: /src/views/components/flexible/hero/_hero.twig
  # Project: starter_frontend_twig
- # Version: 2.2.8
- # Created Date: Friday, September 29th 2023, 14:27:10
+ # Version: 3.2.0
+ # Created Date: Friday, May 29th 2026, 11:51:56
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Tuesday, May 28th 2024 14:31:20
+ # Last Modified: Friday, May 29th 2026 12:00:18
  # Modified By: Kirill Dorozhynskyi
  # -----
- # Copyright (c) 2024 justDev
+ # Copyright (c) 2026 justDev
  #}
 
-<section class="hero">
+<section class="hero py-16">
 	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-md-6">
+		<div class="grid items-center gap-8 md:grid-cols-2">
+			<div>
 				{% if ce.title %}
-					<h1 class="mb-3">
-						{{ ce.title }}
-					</h1>
+					<h1 class="mb-4 text-balance text-4xl font-bold lg:text-5xl">{{ ce.title }}</h1>
 				{% endif %}
+
 				{% if ce.text %}
-					<p>
+					<p class="text-pretty text-lg text-neutral-600">
 						{{ ce.text }}
 					</p>
 				{% endif %}
 
 				{% if ce.button %}
-					{% include paths.btn_ex with {
-						button: ce.button
-					} only %}
+					<div class="mt-6">
+						{% include paths.btn_ex with {
+							button: ce.button
+						} only %}
+					</div>
 				{% endif %}
 			</div>
 
 			{% if ce.image %}
-				<div class="col-md-6">
-					<div v-photoswipe>
-						<a class=""
-							data-pswp-width="{{ ce.image.image.width }}"
-							data-pswp-height="{{ ce.image.image.height }}"
-							href="/assets/images/{{ ce.image.image.src ~ '.' ~ ce.image.image.ext }}">
-							{{ image(ce.image) }}
-						</a>
-					</div>
+				<div v-photoswipe>
+					<a
+						data-pswp-width="{{ ce.image.image.width }}"
+						data-pswp-height="{{ ce.image.image.height }}"
+						href="/assets/images/{{ ce.image.image.src ~ '.' ~ ce.image.image.ext }}"
+					>
+						{{ image(ce.image) }}
+					</a>
 				</div>
 			{% endif %}
 		</div>

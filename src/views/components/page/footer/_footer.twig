@@ -1,21 +1,21 @@
 {#
  # File: /src/views/components/page/footer/_footer.twig
  # Project: starter_frontend_twig
- # Version: 2.2.8
- # Created Date: Thursday, September 28th 2023, 14:29:21
+ # Version: 3.2.0
+ # Created Date: Friday, May 29th 2026, 11:51:48
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Wednesday, May 29th 2024 21:50:31
+ # Last Modified: Friday, May 29th 2026 12:00:15
  # Modified By: Kirill Dorozhynskyi
  # -----
- # Copyright (c) 2024 justDev
+ # Copyright (c) 2026 justDev
  #}
 
-<footer class="footer py-5 mt-5 bg-light">
-	<div class="container py-5">
-		<div class="row">
-			<div class="col-lg-2 mb-3">
-				<a class="header-logo" href="/" aria-label="{{ site_title }}">
+<footer class="footer mt-20 bg-neutral-100 py-12">
+	<div class="container py-12">
+		<div class="grid gap-8 lg:grid-cols-12 lg:items-start">
+			<div class="lg:col-span-2">
+				<a class="inline-flex" href="/" aria-label="{{ site_title }}">
 					{% if logoRaw %}
 						{{ source(rootDir ~ '/public/assets/images/brand/logo.svg')|raw }}
 					{% else %}
@@ -23,32 +23,31 @@
 					{% endif %}
 				</a>
 			</div>
+
 			{% if footer.copyright %}
-				<div class="col-5 offset-lg-1 mb-3">
-					<div class="small text-muted">
-						{% if footer.copyright %}
-							<div class="mb-2">
-								{{ '© ' ~ ('now'|date('Y')) ~ ' ' ~ footer.copyright }}
-							</div>
-						{% endif %}
-					</div>
+				<div class="text-sm text-neutral-500 lg:col-span-5 lg:col-start-4">
+					{{ '© ' ~ ('now'|date('Y')) ~ ' ' ~ footer.copyright }}
 				</div>
 			{% endif %}
 
-			<div class="col-6 col-lg-4">
-				<ul class="list-unstyled text-muted">
-					{% for item in footer_menu %}
-						<li><a class="nav-link" href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a></li>
-					{% endfor %}
-				</ul>
+			<div class="flex flex-col gap-4 lg:col-span-4">
+				{% if footer_menu %}
+					<ul class="flex flex-col gap-2 text-neutral-500">
+						{% for item in footer_menu %}
+							<li><a class="hover:text-neutral-900" href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a></li>
+						{% endfor %}
+					</ul>
+				{% endif %}
 
-				<div class="social-media d-flex gap-1 order-md-1">
-					{% for item in social %}
-						<a class="social-media-link fs-hd lh-1 d-flex" href="{{ item.url }}" aria-label="{{ item.title }}" target="_blank" rel="noopener noreferrer">
-							{{ sprite(item.icon) }}
-						</a>
-					{% endfor %}
-				</div>
+				{% if social %}
+					<div class="flex gap-2">
+						{% for item in social %}
+							<a class="text-2xl leading-none" href="{{ item.url }}" aria-label="{{ item.title }}" target="_blank" rel="noopener noreferrer">
+								{{ sprite(item.icon) }}
+							</a>
+						{% endfor %}
+					</div>
+				{% endif %}
 			</div>
 		</div>
 	</div>
