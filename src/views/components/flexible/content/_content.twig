@@ -1,32 +1,28 @@
 {#
  # File: /src/views/components/flexible/content/_content.twig
  # Project: starter_frontend_twig
- # Version: 2.0.0
- # Created Date: Friday, September 29th 2023, 12:44:36
+ # Version: 3.2.0
+ # Created Date: Friday, May 29th 2026, 11:52:01
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Friday, September 29th 2023 12:45:48
+ # Last Modified: Friday, May 29th 2026 12:00:20
  # Modified By: Kirill Dorozhynskyi
  # -----
- # Copyright (c) 2023 justDev
+ # Copyright (c) 2026 justDev
  #}
 
-<section class="content">
+<section class="content py-16">
 	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				{% if ce.title %}
-					<h1>
-						{{ ce.title }}
-					</h1>
-				{% endif %}
+		<div class="prose max-w-none">
+			{% if ce.title %}
+				<h1 class="text-balance">{{ ce.title }}</h1>
+			{% endif %}
 
-				{% if ce.text %}
-					<p>
-						{{ ce.text }}
-					</p>
-				{% endif %}
-			</div>
+			{% if ce.text %}
+				<p class="text-pretty">
+					{{ ce.text }}
+				</p>
+			{% endif %}
 		</div>
 	</div>
 </section>

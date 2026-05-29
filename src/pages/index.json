@@ -5,11 +5,11 @@
 		{
 			"name": "hero",
 			"title": "Vite front-end twig boilerplate",
-			"text": "This repository contains a frontend boilerplate made with Vite, SASS, Twig.\n\nIt is shipped with some pre-made mixins, a configured SVG-Sprite setup and some image optimization functionalities.It also includes some great performance enhancement tools : Purge & Critical CSS.",
+			"text": "This repository contains a frontend boilerplate made with Vite, Tailwind, Twig.\n\nIt ships SVG sprite generation, image optimization, native lazy loading and a small Vue 3 layer for interactive components.",
 			"image": {
 				"pictureClass": "picture",
 				"image": {
-					"class": "img-fluid",
+					"class": "h-auto max-w-full",
 					"src": "bootstrap-icons",
 					"src_2x": "bootstrap-icons@2x",
 					"ext": "png",
@@ -20,11 +20,10 @@
 				}
 			},
 			"button": {
-				"class": "btn-primary",
+				"class": "bg-neutral-900 text-white",
 				"btn": {
 					"title": "Home",
-					"url": "/",
-					"target": ""
+					"url": "/"
 				}
 			}
 		}

@@ -1,21 +1,23 @@
 {#
  # File: /src/views/components/page/header/main_navigation.twig
  # Project: starter_frontend_twig
- # Version: 3.0.0
- # Created Date: Thursday, September 28th 2023, 20:33:39
+ # Version: 3.2.0
+ # Created Date: Friday, May 29th 2026, 11:52:30
  # Author: Kirill Dorozhynskyi - kyrylo.dorozhynskyi@justdev.org
  # -----
- # Last Modified: Friday, April 11th 2025 14:03:38
+ # Last Modified: Friday, May 29th 2026 12:00:09
  # Modified By: Kirill Dorozhynskyi
  # -----
- # Copyright (c) 2025 justDev
+ # Copyright (c) 2026 justDev
  #}
 
 <nav class="main-nav">
 	<ul class="flex flex-col items-start justify-center gap-8 lg:flex-row lg:items-center xl:gap-8">
 		{% for item in header_menu %}
-			<li class="d-inline-block main-nav-item {{ item.children ? 'sub' }}">
-				<a href="{{ item.url }}" target="{{ item.target ? item.target : '_self' }}" {{ item.target == '_blank' ? 'rel="noopener noreferrer"' }}>{{ item.title }}</a>
+			<li class="main-nav-item {{ item.children ? 'has-children' }}">
+				<a href="{{ item.url }}" {{ item.target ? 'target="' ~ item.target ~ '"' }} {{ item.target == '_blank' ? 'rel="noopener noreferrer"' }}>
+					{{ item.title }}
+				</a>
 			</li>
 		{% endfor %}
 	</ul>

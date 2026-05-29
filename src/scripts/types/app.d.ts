@@ -15,18 +15,6 @@ import type { ComputedRef } from 'vue'
 import type { ILazyLoadInstance } from 'vanilla-lazyload'
 
 declare global {
-	interface Window {
-		bootstrap?: {
-			Tooltip?: new (
-				element: Element,
-				options?: Record<string, unknown>
-			) => {
-				dispose: () => void
-				update: () => void
-			}
-		}
-	}
-
 	export type Dictionary<T> = Record<string, T>
 }
 
