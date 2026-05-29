@@ -22,19 +22,17 @@ const activeLocale = supportedLocales.includes(normalizedLocale as (typeof suppo
 	? normalizedLocale
 	: 'en'
 
-const translate = {
+const i18nConfig: I18nOptions = {
 	legacy: false,
+	locale: activeLocale,
 	datetimeFormats: {
 		en: en.datetimeFormats,
 		sk: sk.datetimeFormats,
 	},
-	locale: activeLocale,
 	messages: {
-		en: en,
-		sk: sk,
+		en,
+		sk,
 	},
-} as I18nOptions
-
-const i18nConfig = translate
+}
 
 export default i18nConfig
