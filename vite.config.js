@@ -27,6 +27,8 @@ const { base, rootDir, assetsDir, imagemin, htmlBeautify, fonts, SvgSpritemap } 
 
 import main from './src/data/main.json'
 
+const skipImagemin = process.env.SKIP_IMAGEMIN === 'true'
+
 export default {
 	esbuild: {
 		drop: ['console', 'debugger']
@@ -73,7 +75,7 @@ export default {
 				}
 			}
 		}),
-		viteImagemin(imagemin),
+		skipImagemin ? false : viteImagemin(imagemin),
 		VitePluginSvgSpritemap(path.resolve(process.cwd(), `${assetsDir}/icons/*.svg`), SvgSpritemap),
 		fixCSSPlugin(),
 		tailwindcss(),
