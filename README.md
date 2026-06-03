@@ -59,6 +59,31 @@ npm run i18n:remove
 - `npm run i18n:add`: add missing translation keys found in Vue files
 - `npm run i18n:remove`: remove unused translation keys
 
+## Dokploy deployment
+
+The project is prepared for Dokploy as a static nginx container.
+
+### Recommended: Application with Dockerfile
+
+1. Create a new Application in Dokploy from this Git repository.
+2. Set Build Type to `Dockerfile`.
+3. Use `Dockerfile` as Dockerfile Path and `.` as Docker Context Path.
+4. Add a domain in the Dokploy Domains tab and use port `80`.
+5. Deploy.
+
+The Dockerfile builds the Vite/Twig site and serves `dist/` from nginx. Extensionless static routes such as `/gdpr` are mapped to `gdpr.html`.
+
+### Alternative: Docker Compose
+
+Create a Docker Compose application in Dokploy and use the repository `docker-compose.yml`. Configure the domain in the Dokploy Domains tab for the `web` service on port `80`.
+
+For a local container test:
+
+```sh
+docker build -t static-frontend .
+docker run --rm -p 8080:80 static-frontend
+```
+
 ## Project structure
 
 ```text
